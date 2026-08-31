@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <g filter="url(#glow)">
+    <!-- 3D Extrusion (Indigo) -->
+    <polygon points="2,22 8,16 13,26 17,24 12,14 20,14 2,2 6,6 24,18 16,18 21,28 17,30 12,20 6,26" fill="#4F46E5" />
+    <!-- Top Face (Cyan) -->
+    <polygon points="2,2 2,22 8,16 13,26 17,24 12,14 20,14" fill="#22D3EE" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="miter"/>
+  </g>
+</svg>

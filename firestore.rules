@@ -1,0 +1,179 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Helper functions ──────────────────────────────────────
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return isAuthenticated() && request.auth.uid == uid;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.admin == true ||
+        request.auth.token.role == 'admin'
+      );
+    }
+
+    function isTeamLeader(teamId) {
+      return isAuthenticated() &&
+        get(/databases/$(database)/documents/teams/$(teamId)).data.leaderUid == request.auth.uid;
+    }
+
+    function notChangingPaymentStatus() {
+      return !('paymentStatus' in request.resource.data) ||
+        request.resource.data.paymentStatus == resource.data.paymentStatus;
+    }
+
+    function hasRequiredFields(fields) {
+      return request.resource.data.keys().hasAll(fields);
+    }
+
+    // ── Users ──────────────────────────────────────────────────
+
+    match /users/{uid} {
+      allow read: if isOwner(uid) || isAdmin();
+      allow create: if isOwner(uid) && hasRequiredFields(['uid', 'email']);
+      allow update: if isOwner(uid) && !('role' in request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    // ── Teams ──────────────────────────────────────────────────
+
+    match /teams/{teamId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() &&
+        request.resource.data.leaderUid == request.auth.uid;
+      allow update: if isTeamLeader(teamId) &&
+        notChangingPaymentStatus() &&
+        !('leaderUid' in request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    // ── Team Members ───────────────────────────────────────────
+
+    match /teamMembers/{memberId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() &&
+        isTeamLeader(request.resource.data.teamId);
+      allow update: if isAuthenticated() &&
+        isTeamLeader(resource.data.teamId);
+      allow delete: if isAdmin();
+    }
+
+    // ── Registrations ──────────────────────────────────────────
+
+    match /registrations/{regId} {
+      allow read: if isAuthenticated() && (
+        resource.data.leaderUid == request.auth.uid || isAdmin()
+      );
+      allow create: if isAuthenticated() &&
+        request.resource.data.leaderUid == request.auth.uid &&
+        request.resource.data.paymentStatus == 'PENDING' &&
+        request.resource.data.registrationStatus != 'COMPLETE';
+      // No client updates — only Cloud Functions update registrations
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ── Payments ───────────────────────────────────────────────
+
+    match /payments/{paymentId} {
+      // Clients can only read their own payments
+      allow read: if isAuthenticated() && (
+        resource.data.userUid == request.auth.uid || isAdmin()
+      );
+      // NO client writes — payments are server-side only
+      allow write: if isAdmin();
+    }
+
+    // ── Submissions ────────────────────────────────────────────
+
+    match /submissions/{submissionId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() &&
+        isTeamLeader(request.resource.data.teamId) &&
+        request.resource.data.submissionStatus != 'EVALUATED';
+      allow update: if isAuthenticated() &&
+        isTeamLeader(resource.data.teamId) &&
+        resource.data.submissionStatus != 'EVALUATED' &&
+        resource.data.submissionStatus != 'UNDER_REVIEW';
+      allow delete: if isAdmin();
+    }
+
+    // ── Problem Statements ─────────────────────────────────────
+
+    match /problemStatements/{problemId} {
+      allow read: if isAuthenticated() || true; // public
+      allow write: if isAdmin();
+    }
+
+    // ── Timeline ───────────────────────────────────────────────
+
+    match /timeline/{eventId} {
+      allow read: if true; // public
+      allow write: if isAdmin();
+    }
+
+    // ── Announcements ──────────────────────────────────────────
+
+    match /announcements/{announcementId} {
+      allow read: if resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // ── FAQs ───────────────────────────────────────────────────
+
+    match /faqs/{faqId} {
+      allow read: if true; // public
+      allow write: if isAdmin();
+    }
+
+    // ── Contact Messages ───────────────────────────────────────
+
+    match /contactMessages/{messageId} {
+      allow create: if hasRequiredFields(['name', 'email', 'subject', 'message']);
+      allow read, update, delete: if isAdmin();
+    }
+
+    // ── Activity Logs ──────────────────────────────────────────
+
+    match /activityLogs/{logId} {
+      // Users can read their own logs
+      allow read: if isAuthenticated() && (
+        resource.data.userId == request.auth.uid || isAdmin()
+      );
+      // Users can create their own activity logs
+      allow create: if isAuthenticated() &&
+        request.resource.data.userId == request.auth.uid;
+      // No updates or deletes by clients
+      allow update, delete: if isAdmin();
+    }
+
+    // ── Event Settings ─────────────────────────────────────────
+
+    match /eventSettings/{settingId} {
+      allow read: if true; // public
+      allow write: if isAdmin();
+    }
+
+    // ── Sync Queue ─────────────────────────────────────────────
+
+    match /syncQueue/{queueId} {
+      // Only Cloud Functions (admin SDK) access this
+      allow read, write: if false;
+    }
+
+    // ── Organizers ─────────────────────────────────────────────
+
+    match /organizers/{orgId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}
