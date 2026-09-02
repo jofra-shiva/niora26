@@ -94,7 +94,7 @@ function HighlightCard({ item, index }: { item: typeof HIGHLIGHTS[0]; index: num
 
       {/* Card body */}
       <motion.div
-        className="relative w-full h-full bg-white rounded-[26px] p-8 flex flex-col overflow-hidden z-10"
+        className="relative w-full h-full bg-white rounded-[26px] p-6 sm:p-8 flex flex-col overflow-hidden z-10"
         style={{ boxShadow }}
       >
         {/* Background color fill */}
@@ -169,7 +169,7 @@ export default function AboutSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 mb-6">
             <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
@@ -178,18 +178,18 @@ export default function AboutSection() {
             </span>
           </div>
 
-          <h2 className="font-heading font-black text-4xl sm:text-5xl md:text-6xl text-slate-900 tracking-tight leading-tight mb-6">
+          <h2 className="font-heading font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-slate-900 tracking-tight leading-tight mb-4 sm:mb-6">
             What is <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-500">HackSpark?</span>
           </h2>
 
-          <p className="text-lg sm:text-xl leading-relaxed text-slate-600 max-w-4xl mx-auto font-medium">
+          <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-slate-600 max-w-4xl mx-auto font-medium">
             HackSpark '26 is a premium <span className="font-bold text-slate-900 border-b-2 border-blue-200">24-hour hackathon</span> organized by the PG Department of Computer Applications,
             Nehru Institute of Information Technology and Management in collaboration with Nehru College of Management. Participants build <span className="font-bold text-slate-900 border-b-2 border-blue-200">real-world solutions</span>{' '}
             under time pressure, compete for prizes, and push the boundaries of technology.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
           {HIGHLIGHTS.map((item, i) => (
             <HighlightCard key={item.highlight} item={item} index={i} />
           ))}

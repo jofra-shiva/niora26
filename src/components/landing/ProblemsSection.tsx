@@ -57,7 +57,7 @@ const PROBLEMS = [
 
 export default function ProblemsSection() {
   return (
-    <section id="problems" className="pt-8 pb-24 relative overflow-hidden bg-slate-50/50">
+    <section id="problems" className="pt-8 pb-16 sm:pb-24 relative overflow-hidden bg-slate-50/50">
       {/* Background Grid Pattern with Radial Mask */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
       
@@ -86,7 +86,7 @@ export default function ProblemsSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {PROBLEMS.map((prob, i) => {
             const Icon = prob.icon;
             return (
@@ -98,7 +98,7 @@ export default function ProblemsSection() {
                 transition={{ duration: 0.5, delay: prob.delay }}
                 className="group relative h-full flex"
               >
-                <div className="relative w-full h-full bg-white border border-slate-200/80 rounded-[26px] p-8 flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_40px_-15px_rgba(0,0,0,0.1)] overflow-hidden z-10">
+                <div className="relative w-full h-full bg-white border border-slate-200/80 rounded-[26px] p-5 sm:p-8 flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_40px_-15px_rgba(0,0,0,0.1)] overflow-hidden z-10">
                   
                   {/* Top Subtle Gradient Line Accent */}
                   <div className={`absolute top-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-transparent via-${prob.accent} to-transparent`} />

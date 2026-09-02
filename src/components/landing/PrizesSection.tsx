@@ -51,7 +51,7 @@ export default function PrizesSection() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="prizes" className="py-24 relative overflow-hidden bg-slate-50">
+    <section id="prizes" className="py-16 sm:py-24 relative overflow-hidden bg-slate-50">
       {/* Premium Background Elements */}
       <div className="absolute inset-0 bg-slate-50" />
       
@@ -68,7 +68,7 @@ export default function PrizesSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 mb-6 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
@@ -84,14 +84,20 @@ export default function PrizesSection() {
           </p>
         </motion.div>
 
-        {/* Podium-style layout */}
-        <div className="flex flex-col lg:flex-row items-end justify-center gap-8 lg:gap-10 mt-12 max-w-5xl mx-auto">
-          {/* 2nd Place */}
-          <PrizeCardContainer prize={PRIZES[1]} delay={0.2} isCenter={false} />
-          {/* 1st Place */}
-          <PrizeCardContainer prize={PRIZES[0]} delay={0.1} isCenter={true} />
-          {/* 3rd Place */}
-          <PrizeCardContainer prize={PRIZES[2]} delay={0.3} isCenter={false} />
+        {/* Mobile: vertical stack (1st, 2nd, 3rd). Desktop: podium (2nd, 1st, 3rd) */}
+        <div className="max-w-5xl mx-auto mt-8 sm:mt-12">
+          {/* Mobile layout: 1st, 2nd, 3rd */}
+          <div className="flex flex-col gap-6 sm:hidden">
+            <PrizeCardContainer prize={PRIZES[0]} delay={0.1} isCenter={true} />
+            <PrizeCardContainer prize={PRIZES[1]} delay={0.2} isCenter={false} />
+            <PrizeCardContainer prize={PRIZES[2]} delay={0.3} isCenter={false} />
+          </div>
+          {/* Desktop podium layout: 2nd, 1st, 3rd */}
+          <div className="hidden sm:flex items-end justify-center gap-6 lg:gap-10">
+            <PrizeCardContainer prize={PRIZES[1]} delay={0.2} isCenter={false} />
+            <PrizeCardContainer prize={PRIZES[0]} delay={0.1} isCenter={true} />
+            <PrizeCardContainer prize={PRIZES[2]} delay={0.3} isCenter={false} />
+          </div>
         </div>
 
       </div>
@@ -107,49 +113,49 @@ function PrizeCardContainer({ prize, delay, isCenter }: { prize: typeof PRIZES[0
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay, type: "spring", stiffness: 100 }}
-      className={`relative w-full max-w-sm mx-auto group ${isCenter ? 'lg:mb-8 lg:scale-[1.08] z-20' : 'z-10'}`}
+      className={`relative w-full max-w-sm mx-auto group ${isCenter ? 'sm:mb-8 sm:scale-[1.05] z-20' : 'z-10'}`}
     >
       {/* Animated Gradient Border wrapper */}
       <div className={`relative rounded-[32px] p-[2px] transition-transform duration-500 hover:-translate-y-2 ${prize.glow} bg-slate-200/50`}>
         <div className={`absolute inset-0 rounded-[32px] bg-gradient-to-b ${prize.borderGradient} opacity-50 group-hover:opacity-100 transition-opacity duration-500 ${isCenter ? 'animate-pulse' : ''}`} />
         
         {isCenter && (
-          <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 rounded-full bg-gradient-to-r from-amber-100 to-orange-100 border border-amber-200/80 text-amber-700 text-[10px] font-black tracking-[0.2em] uppercase shadow-sm flex items-center gap-2 whitespace-nowrap z-30">
+          <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-100 to-orange-100 border border-amber-200/80 text-amber-700 text-[10px] font-black tracking-[0.2em] uppercase shadow-sm flex items-center gap-2 whitespace-nowrap z-30">
             <Star className="w-3 h-3 fill-amber-500 text-amber-500 animate-pulse" />
             Grand Prize
             <Star className="w-3 h-3 fill-amber-500 text-amber-500 animate-pulse" />
           </div>
         )}
 
-        <div className={`relative bg-white/95 backdrop-blur-xl rounded-[30px] h-full overflow-hidden ${isCenter ? 'p-10' : 'p-8'} flex flex-col items-center`}>
+        <div className={`relative bg-white/95 backdrop-blur-xl rounded-[30px] h-full overflow-hidden ${isCenter ? 'p-7 sm:p-10' : 'p-6 sm:p-8'} flex flex-col items-center`}>
           
           {/* Inner subtle glow */}
           <div className={`absolute inset-0 ${prize.bgGradient} opacity-50`} />
           
           {/* Subtle Background Watermark Icon */}
           <div className={`absolute -right-8 -bottom-8 opacity-[0.03] ${prize.iconColor} transform group-hover:scale-125 group-hover:opacity-[0.08] transition-all duration-700 pointer-events-none origin-bottom-right`}>
-            <Icon className="w-64 h-64" strokeWidth={1} />
+            <Icon className="w-48 h-48 sm:w-64 sm:h-64" strokeWidth={1} />
           </div>
 
-          <div className={`relative w-20 h-20 shrink-0 rounded-[24px] bg-gradient-to-br ${prize.iconGradient} flex items-center justify-center text-white shadow-xl shadow-slate-200 group-hover:scale-110 transition-transform duration-500 mb-8`}>
-             <Icon className="w-10 h-10" strokeWidth={2} />
+          <div className={`relative w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-[20px] sm:rounded-[24px] bg-gradient-to-br ${prize.iconGradient} flex items-center justify-center text-white shadow-xl shadow-slate-200 group-hover:scale-110 transition-transform duration-500 mb-5 sm:mb-8`}>
+             <Icon className="w-8 h-8 sm:w-10 sm:h-10" strokeWidth={2} />
              {/* Sparkle effect on hover */}
-             <div className="absolute inset-0 rounded-[24px] bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
+             <div className="absolute inset-0 rounded-[20px] sm:rounded-[24px] bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
           </div>
           
-          <p className={`text-xs font-black ${prize.iconColor} mb-3 uppercase tracking-[0.25em]`}>{prize.place}</p>
-          <p className={`font-black text-4xl sm:text-5xl mb-10 text-transparent bg-clip-text bg-gradient-to-br ${prize.textGradient}`}>
+          <p className={`text-xs font-black ${prize.iconColor} mb-2 sm:mb-3 uppercase tracking-[0.25em]`}>{prize.place}</p>
+          <p className={`font-black text-3xl sm:text-4xl lg:text-5xl mb-6 sm:mb-10 text-transparent bg-clip-text bg-gradient-to-br ${prize.textGradient}`}>
             {prize.amount}
           </p>
           
-          <ul className="space-y-4 w-full relative z-10">
+          <ul className="space-y-2 sm:space-y-4 w-full relative z-10">
             {prize.perks.map((p: string, i: number) => (
               <motion.li 
                 key={p} 
                 initial={{ opacity: 0, x: -10 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: delay + 0.3 + (i * 0.1) }}
-                className="text-sm font-semibold text-slate-700 flex items-center gap-3 bg-white/60 py-2.5 px-4 rounded-xl border border-slate-100 shadow-sm backdrop-blur-sm"
+                className="text-xs sm:text-sm font-semibold text-slate-700 flex items-center gap-2 sm:gap-3 bg-white/60 py-2 sm:py-2.5 px-3 sm:px-4 rounded-xl border border-slate-100 shadow-sm backdrop-blur-sm"
               >
                 <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 shadow-[0_0_8px] ${prize.dotColor}`} />
                 {p}

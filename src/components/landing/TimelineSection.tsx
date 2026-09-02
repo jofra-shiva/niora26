@@ -106,7 +106,7 @@ const TimelineCard = ({ event, index, isLast }: { event: typeof TIMELINE_EVENTS[
   return (
     <motion.div
       ref={cardRef}
-      className={`relative flex items-center justify-between w-full mb-12 sm:mb-20 ${
+      className={`relative flex items-center justify-between w-full mb-8 sm:mb-16 lg:mb-20 ${
         isRight ? 'sm:flex-row-reverse' : 'sm:flex-row'
       } flex-row-reverse`}
     >
@@ -115,16 +115,16 @@ const TimelineCard = ({ event, index, isLast }: { event: typeof TIMELINE_EVENTS[
 
       {/* Mask to hide timeline line below the last item */}
       {isLast && (
-        <div className="absolute top-1/2 left-[28px] sm:left-1/2 transform -translate-x-1/2 w-12 bottom-[-200px] bg-slate-50 z-[15]" />
+        <div className="absolute top-1/2 left-[24px] sm:left-1/2 transform -translate-x-1/2 w-12 bottom-[-200px] bg-slate-50 z-[15]" />
       )}
 
       {/* Center Icon */}
-      <div className="absolute left-[28px] sm:left-1/2 transform -translate-x-1/2 flex items-center justify-center z-20">
+      <div className="absolute left-[24px] sm:left-1/2 transform -translate-x-1/2 flex items-center justify-center z-20">
         <motion.div 
           initial={{ scale: 0, opacity: 0 }}
           animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
           transition={{ delay: 0.2, type: "spring", stiffness: 200, damping: 15 }}
-          className={`relative w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-lg ${event.glow} p-[3px] overflow-hidden bg-slate-200/60`}
+          className={`relative w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center shadow-lg ${event.glow} p-[3px] overflow-hidden bg-slate-200/60`}
         >
           {/* Animated Icon Border Fill */}
           <div className="absolute inset-0 z-0">
@@ -137,7 +137,7 @@ const TimelineCard = ({ event, index, isLast }: { event: typeof TIMELINE_EVENTS[
           </div>
 
           <div className={`relative z-10 w-full h-full rounded-full bg-gradient-to-br ${event.gradient} flex items-center justify-center text-white border-[3px] border-white`}>
-            <Icon className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
+            <Icon className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2.5} />
           </div>
         </motion.div>
       </div>
@@ -147,7 +147,7 @@ const TimelineCard = ({ event, index, isLast }: { event: typeof TIMELINE_EVENTS[
         initial={{ opacity: 0, y: 50, x: isRight ? 50 : -50 }}
         animate={isInView ? { opacity: 1, y: 0, x: 0 } : { opacity: 0, y: 50, x: isRight ? 50 : -50 }}
         transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-        className="w-full sm:w-5/12 ml-[70px] sm:ml-0"
+        className="w-full sm:w-5/12 ml-[56px] sm:ml-0"
       >
         <div className="relative rounded-[20px] p-[2px] overflow-hidden group shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 bg-slate-200/50">
           
@@ -159,21 +159,21 @@ const TimelineCard = ({ event, index, isLast }: { event: typeof TIMELINE_EVENTS[
             className={`absolute top-0 left-0 w-full bg-gradient-to-b ${event.gradient} z-0`}
           />
 
-          <div className="relative z-10 bg-white/95 backdrop-blur-xl rounded-[18px] p-5 sm:p-6 h-full overflow-hidden">
+          <div className="relative z-10 bg-white/95 backdrop-blur-xl rounded-[18px] p-4 sm:p-5 lg:p-6 h-full overflow-hidden">
             {/* Subtle hover gradient blob */}
             <div className={`absolute -right-20 -top-20 w-40 h-40 bg-gradient-to-br ${event.gradient} rounded-full blur-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none`} />
             
             <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-100 mb-3`}>
               <span className={`w-2 h-2 rounded-full ${event.bg} animate-pulse`} />
-              <span className={`text-xs font-bold tracking-widest uppercase bg-gradient-to-r ${event.gradient} bg-clip-text text-transparent`}>
+              <span className={`text-[10px] sm:text-xs font-bold tracking-widest uppercase bg-gradient-to-r ${event.gradient} bg-clip-text text-transparent`}>
                 {event.time}
               </span>
             </div>
             
-            <h3 className="font-heading font-bold text-xl sm:text-2xl text-slate-900 mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-slate-900 group-hover:to-slate-700 transition-colors">
+            <h3 className="font-heading font-bold text-lg sm:text-xl text-slate-900 mb-1.5 sm:mb-2">
               {event.title}
             </h3>
-            <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+            <p className="text-slate-600 leading-relaxed text-xs sm:text-sm">
               {event.desc}
             </p>
           </div>
@@ -233,12 +233,12 @@ export default function TimelineSection() {
 
         <div className="relative max-w-4xl mx-auto">
           {/* Static background line */}
-          <div className="absolute left-[28px] sm:left-1/2 transform sm:-translate-x-1/2 top-0 bottom-0 w-1 sm:w-1.5 bg-slate-200/60 rounded-full" />
+          <div className="absolute left-[24px] sm:left-1/2 transform sm:-translate-x-1/2 top-0 bottom-0 w-1 sm:w-1.5 bg-slate-200/60 rounded-full" />
           
           {/* Animated progress line */}
           <motion.div 
             style={{ scaleY }}
-            className="absolute left-[28px] sm:left-1/2 transform sm:-translate-x-1/2 top-0 bottom-0 w-1 sm:w-1.5 bg-gradient-to-b from-blue-500 via-indigo-500 to-purple-500 origin-top rounded-full z-10 shadow-[0_0_15px_rgba(59,130,246,0.5)]" 
+            className="absolute left-[24px] sm:left-1/2 transform sm:-translate-x-1/2 top-0 bottom-0 w-1 sm:w-1.5 bg-gradient-to-b from-blue-500 via-indigo-500 to-purple-500 origin-top rounded-full z-10 shadow-[0_0_15px_rgba(59,130,246,0.5)]" 
           />
 
           <div className="pt-8">

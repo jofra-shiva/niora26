@@ -71,6 +71,18 @@ export default function Navbar() {
     }
   };
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('/#') && pathname === '/') {
+      e.preventDefault();
+      const id = href.replace('/#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        const y = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <>
       {/* Floating bottom pill navbar */}
@@ -106,6 +118,7 @@ export default function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 outline-none ${
                       isActive
                         ? 'text-white bg-blue-600 shadow-sm'
@@ -167,7 +180,10 @@ export default function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    onClick={() => setMobileOpen(false)}
+                    onClick={(e) => {
+                      setMobileOpen(false);
+                      handleNavClick(e, link.href);
+                    }}
                     className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors border ${
                       isActive 
                         ? 'bg-blue-50 text-blue-700 border-blue-200' 

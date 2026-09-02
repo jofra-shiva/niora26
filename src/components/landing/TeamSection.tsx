@@ -23,7 +23,7 @@ const CONVENORS: Member[] = [
   {
     name: 'Meera Bai C',
     role: 'Convenor',
-    image: '/team/meera-bai.jpg',
+    image: 'http://niitm.org/assets/images/about/MEERA-BAI.jpg',
     linkedin: 'https://linkedin.com',
     phone: '9944560889',
     headline: 'Head of Department · PG Dept. of Computer Applications',
@@ -33,7 +33,7 @@ const CONVENORS: Member[] = [
   {
     name: 'Indulekha K V',
     role: 'Convenor',
-    image: '/team/indulekha.jpg',
+    image: 'http://niitm.org/assets/images/about/INDULEKHA.jpg',
     linkedin: 'https://linkedin.com',
     phone: '7561078733',
     headline: 'Faculty · PG Dept. of Computer Applications',
@@ -155,7 +155,7 @@ function ProfileModal({ member, onClose }: { member: Member; onClose: () => void
         {/* Avatar — overlaps banner */}
         <div className="absolute left-6 top-16 w-24 h-24 rounded-[22px] overflow-hidden border-[3px] border-white shadow-lg z-10 bg-slate-100">
           {!imgError ? (
-            <Image src={member.image} alt={member.name} fill className="object-cover" onError={() => setImgError(true)} />
+            <Image src={member.image} alt={member.name} fill className="object-cover" onError={() => setImgError(true)} unoptimized={member.image.startsWith('http://')} />
           ) : (
             <div className="w-full h-full bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
               <span className="font-black text-3xl text-blue-600">{member.name.charAt(0)}</span>
@@ -303,53 +303,62 @@ function TeamCard({ member, index }: { member: Member; index: number }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-50px' }}
         transition={{ duration: 0.5, delay: index * 0.1, type: 'spring', stiffness: 100 }}
-        whileHover={{ y: -4 }}
         onClick={() => setProfileOpen(true)}
-        className="group relative bg-white/80 backdrop-blur-xl rounded-[24px] p-5 border border-slate-200/70 hover:border-blue-300/60 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.2)] transition-all duration-500 flex items-start gap-5 text-left overflow-hidden cursor-pointer"
+        className="relative rounded-[26px] p-[2px] overflow-hidden group cursor-pointer shadow-sm hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-500 bg-slate-200/70"
       >
-        {/* Background glow on hover */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/60 via-transparent to-indigo-50/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        {/* Animated Border Fill on hover (Bottom to top) */}
+        <div className="absolute bottom-0 left-0 right-0 w-full h-0 group-hover:h-full bg-gradient-to-t from-blue-500 to-indigo-500 transition-all duration-700 ease-out z-0" />
 
-        {/* Left: Big Avatar */}
-        <div className="relative w-28 h-28 flex-shrink-0 z-10">
-          <div className="absolute inset-[-4px] rounded-2xl bg-gradient-to-br from-blue-400 to-indigo-500 opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500" />
-          <div className="absolute inset-[-2px] rounded-2xl bg-gradient-to-br from-blue-400 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        {/* Inner Card Content */}
+        <div className="relative z-10 bg-white/95 backdrop-blur-xl group-hover:bg-blue-50/80 transition-colors duration-700 rounded-[24px] p-4 sm:p-5 flex items-start gap-3 sm:gap-5 text-left h-full w-full">
+
+        {/* Left: Avatar */}
+        <div className="relative w-20 h-20 sm:w-28 sm:h-28 flex-shrink-0 z-10">
           <div className="relative w-full h-full rounded-2xl overflow-hidden bg-slate-100 border-[3px] border-white shadow-sm z-10">
             {!imgError && (
-              <Image src={member.image} alt={member.name} fill className="object-cover group-hover:scale-105 transition-transform duration-700" onError={() => setImgError(true)} sizes="112px" />
+              <Image
+                src={member.image}
+                alt={member.name}
+                fill
+                className="object-cover"
+                onError={() => setImgError(true)}
+                sizes="(max-width: 640px) 80px, 112px"
+                unoptimized={member.image.startsWith('http://')}
+              />
             )}
             <div className={`absolute inset-0 bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center ${!imgError ? 'opacity-0' : 'opacity-100'} transition-opacity`}>
-              <span className="font-heading font-black text-3xl text-blue-500">{member.name.charAt(0)}</span>
+              <span className="font-heading font-black text-2xl sm:text-3xl text-blue-500">{member.name.charAt(0)}</span>
             </div>
           </div>
         </div>
 
         {/* Right: Content */}
-        <div className="flex flex-col flex-1 h-full min-h-[112px] z-10">
+        <div className="flex flex-col flex-1 h-full min-h-[80px] sm:min-h-[112px] z-10 min-w-0">
           <div>
-            <h3 className="font-heading font-bold text-slate-900 text-lg group-hover:text-blue-600 transition-colors leading-tight mb-1">
+            <h3 className="font-heading font-bold text-slate-900 text-base sm:text-lg group-hover:text-blue-600 transition-colors leading-tight mb-0.5 sm:mb-1 truncate">
               {member.name}
             </h3>
-            <p className="text-[10px] text-slate-400 font-mono font-semibold uppercase tracking-[0.2em] mb-2">
+            <p className="text-[9px] sm:text-[10px] text-slate-400 font-mono font-semibold uppercase tracking-[0.2em] mb-1.5 sm:mb-2 group-hover:text-blue-500 transition-colors">
               {member.role}
             </p>
           </div>
 
           {member.about && (
-            <p className="text-[11px] sm:text-xs text-slate-500 line-clamp-2 leading-relaxed mb-3 flex-1">
+            <p className="text-[10px] sm:text-[11px] text-slate-500 line-clamp-2 leading-relaxed mb-2 sm:mb-3 flex-1 group-hover:text-slate-700 transition-colors">
               {member.about}
             </p>
           )}
 
           {/* "View Profile" hint */}
-          <div className="flex items-center justify-between mt-auto pt-2 border-t border-slate-100/80">
-            <div className="flex items-center gap-1.5 text-[10px] font-semibold text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="flex items-center justify-between mt-auto pt-1.5 sm:pt-2 border-t border-slate-100/80 group-hover:border-blue-200 transition-colors">
+            <div className="flex items-center gap-1.5 text-[9px] sm:text-[10px] font-semibold text-blue-500 group-hover:text-blue-600 opacity-0 group-hover:opacity-100 transition-all duration-300">
               <ExternalLink className="w-3 h-3" />
               <span>View Full Profile</span>
             </div>
-            <div className="w-5 h-5 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-blue-50 transition-colors">
-              <span className="text-slate-400 group-hover:text-blue-500 text-sm leading-none transform group-hover:translate-x-0.5 transition-all">→</span>
+            <div className="w-5 h-5 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+              <span className="text-slate-400 group-hover:text-blue-600 text-sm leading-none transform group-hover:translate-x-0.5 transition-all">→</span>
             </div>
+          </div>
           </div>
         </div>
       </motion.div>
@@ -387,34 +396,16 @@ export default function TeamSection() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="team" className="pt-8 pb-24 relative overflow-hidden bg-slate-50">
-      {/* Premium Animated Aurora Background */}
+    <section id="team" className="pt-8 pb-16 sm:pb-24 relative overflow-hidden bg-slate-50">
+      {/* Premium Animated Aurora Background (Static to prevent lag) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+        <div
           className="absolute -top-[20%] -right-[10%] w-[800px] h-[800px] bg-gradient-to-bl from-blue-300/40 via-indigo-300/20 to-purple-300/30 rounded-full blur-[100px]"
         />
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, -80, 0],
-            y: [0, 80, 0],
-          }}
-          transition={{ duration: 18, repeat: Infinity, ease: "linear", delay: 2 }}
+        <div
           className="absolute top-[30%] -left-[15%] w-[700px] h-[700px] bg-gradient-to-tr from-cyan-300/30 via-blue-200/20 to-sky-300/30 rounded-full blur-[120px]"
         />
-        <motion.div
-          animate={{
-            scale: [1, 1.1, 1],
-            x: [0, 50, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear", delay: 5 }}
+        <div
           className="absolute -bottom-[20%] left-[20%] w-[1000px] h-[600px] bg-gradient-to-r from-violet-200/40 via-fuchsia-200/20 to-blue-200/40 rounded-full blur-[130px]"
         />
       </div>
@@ -451,9 +442,6 @@ export default function TeamSection() {
           <h2 className="section-heading text-slate-900 mb-4">
             Who's behind <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">HackSpark '26</span>
           </h2>
-          <p className="section-subheading text-slate-600 mx-auto">
-            The masterminds behind the event. <span className="text-blue-600 font-semibold">Click any card</span> to view their full profile.
-          </p>
         </motion.div>
 
         <TeamGroup title="Convenors"           members={CONVENORS}            delay={0.1} />
