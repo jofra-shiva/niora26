@@ -11,7 +11,7 @@ type Member = {
   name: string;
   role: string;
   image: string;
-  linkedin: string;
+  linkedin?: string;
   phone?: string;
   headline?: string;
   about?: string;
@@ -24,7 +24,6 @@ const CONVENORS: Member[] = [
     name: 'Meera Bai C',
     role: 'Convenor',
     image: 'http://niitm.org/assets/images/about/MEERA-BAI.jpg',
-    linkedin: 'https://linkedin.com',
     phone: '9944560889',
     headline: 'Head of Department · PG Dept. of Computer Applications',
     about: 'A dedicated academician and researcher with deep expertise in computer science and application development. Leads the PG Department of Computer Applications at NIITM, guiding students toward excellence in technology.',
@@ -34,11 +33,19 @@ const CONVENORS: Member[] = [
     name: 'Indulekha K V',
     role: 'Convenor',
     image: 'http://niitm.org/assets/images/about/INDULEKHA.jpg',
-    linkedin: 'https://linkedin.com',
     phone: '7561078733',
     headline: 'Faculty · PG Dept. of Computer Applications',
     about: 'Passionate educator and event organizer with a strong background in software engineering. Plays a key role in shaping the technical curriculum and mentoring students through industry-relevant projects.',
     education: 'NIITM, Coimbatore',
+  },
+  {
+    name: 'Dr. A. Nandhini',
+    role: 'Convenor',
+    image: 'http://ncmbschool.com/images/team12.jpg',
+    phone: '7561078733',
+    headline: 'Assistant Professor (Senior Grade) · Nehru College of Management',
+    about: 'Expert in Computer Science Information Systems with over 15 years of academic experience. Holds a Doctor of Philosophy and has authored multiple scholarly publications, including research on Explainable AI and Image Analysis.',
+    education: 'Doctor of Philosophy',
   },
 ];
 
@@ -56,7 +63,7 @@ const STUDENT_COORDINATORS: Member[] = [
   {
     name: 'Logendiran R',
     role: 'Student Coordinator',
-    image: 'https://media.licdn.com/dms/image/v2/D4D35AQE08fos83KJGA/profile-framedphoto-shrink_800_800/B4DaAJy59hKIAc-/0/1786870735087?e=1788415200&v=beta&t=j6Nnq4OZhKREL2X1GbAyU3jVZEKMUoAr893rWG-n95g',
+    image: 'https://media.licdn.com/dms/image/v2/D5603AQG_XcJrNuFQEA/profile-displayphoto-crop_800_800/B56aBEAP_hKkAI-/0/1787847313126?e=1790208000&v=beta&t=74JPbFH8nb4JqvhgBSmfc4CXDO6yUWLEvK07cm23SNI',
     linkedin: 'https://www.linkedin.com/in/logendiran-r-24567a295/',
     headline: 'MCA Student · UI/UX & Web Developer',
     about: 'Enthusiastic about creating seamless user experiences and contributing to open-source projects. Coordinating logistics and participant experience for HackSpark \'26.',
@@ -220,14 +227,16 @@ function ProfileModal({ member, onClose }: { member: Member; onClose: () => void
 
             {/* Action buttons */}
             <div className="flex gap-3">
-              <a
-                href={member.linkedin}
-                target="_blank" rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-2.5 rounded-2xl transition-colors"
-              >
-                <ExternalLink className="w-4 h-4" />
-                View LinkedIn
-              </a>
+              {member.linkedin && (
+                <a
+                  href={member.linkedin}
+                  target="_blank" rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-2.5 rounded-2xl transition-colors"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  View LinkedIn
+                </a>
+              )}
               {member.phone && (
                 <a
                   href={`https://wa.me/91${member.phone}?text=Hi%2C%20I%20have%20a%20query%20regarding%20HACKSPARK%2026.`}

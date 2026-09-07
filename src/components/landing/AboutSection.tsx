@@ -113,13 +113,18 @@ function HighlightCard({ item, index }: { item: typeof HIGHLIGHTS[0]; index: num
 
         {/* Header (Icon + Text) */}
         <div className="flex items-center gap-4 mb-6 relative z-10">
-          {/* Icon image — static, no hover scale */}
-          <div className="w-16 h-16 shrink-0 rounded-2xl overflow-hidden shadow-lg relative">
-            <Image
-              src={item.image}
-              alt={item.label}
-              fill
-              className="object-cover"
+          {/* Modern Icon instead of raster image */}
+          <div 
+            className="w-16 h-16 shrink-0 rounded-2xl flex items-center justify-center shadow-sm relative overflow-hidden"
+            style={{ 
+              background: `linear-gradient(135deg, ${item.borderColor}15, ${item.borderColor}30)`,
+              border: `1px solid ${item.borderColor}40`
+            }}
+          >
+            <Icon 
+              className="w-8 h-8 relative z-10" 
+              style={{ color: item.borderColor }} 
+              strokeWidth={2.5}
             />
           </div>
 
@@ -152,16 +157,42 @@ function HighlightCard({ item, index }: { item: typeof HIGHLIGHTS[0]; index: num
 }
 
 export default function AboutSection() {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  });
+  
+  // Parallax movement for the background image
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="about" className="pt-8 pb-10 relative bg-white overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent opacity-60" />
-      <div className="absolute -top-[200px] left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-blue-50/80 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-blue-50/50 rounded-full blur-[100px] pointer-events-none translate-x-1/3 -translate-y-1/2" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-50/50 rounded-full blur-[100px] pointer-events-none -translate-x-1/3 translate-y-1/3" />
-      <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-60 pointer-events-none" />
+    <section ref={sectionRef} id="about" className="pt-8 pb-10 relative bg-white overflow-hidden">
+      {/* ––– Animated Aurora & Grid Background ––– */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <motion.div 
+          animate={{ x: [0, 40, 0], y: [0, 30, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-[20%] -left-[10%] w-[60%] h-[70%] bg-blue-400/20 rounded-full blur-[120px] mix-blend-multiply" 
+        />
+        <motion.div 
+          animate={{ x: [0, -30, 0], y: [0, 50, 0], scale: [1, 1.2, 1] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[10%] -right-[10%] w-[50%] h-[60%] bg-purple-400/20 rounded-full blur-[120px] mix-blend-multiply" 
+        />
+        <motion.div 
+          animate={{ x: [0, 30, 0], y: [0, -40, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -bottom-[20%] left-[20%] w-[60%] h-[60%] bg-pink-400/15 rounded-full blur-[120px] mix-blend-multiply" 
+        />
+        {/* Subtle Modern Grid */}
+        <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.5]" />
+        {/* Top Fade Edge */}
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white to-transparent" />
+      </div>
 
       <div className="section-container relative z-10 max-w-6xl mx-auto px-4">
         <motion.div

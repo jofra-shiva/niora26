@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { Menu, X, Command } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { logout } from '@/lib/firebase/auth';
@@ -26,6 +26,13 @@ export default function Navbar() {
   const [activeHash, setActiveHash] = useState('/');
   const pathname = usePathname();
   const { user, profile } = useAuth();
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -85,28 +92,33 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Floating bottom pill navbar */}
-      <div className="fixed bottom-5 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
+      {/* Navbar Container */}
+      <div className={`fixed left-0 right-0 z-50 flex justify-center pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${scrolled ? 'top-5 px-4' : 'top-0 px-0'}`}>
         <motion.header
-          initial={{ y: 80, opacity: 0 }}
+          initial={{ y: -80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="pointer-events-auto w-full max-w-3xl"
+          className={`pointer-events-auto w-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${scrolled ? 'max-w-4xl' : 'max-w-full'}`}
         >
           <div
-            className={`flex items-center justify-between gap-2 px-4 py-2.5 rounded-full transition-all duration-300 ${
+            className={`flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] relative overflow-hidden ${
               scrolled
-                ? 'bg-white/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.12),0_2px_8px_rgba(37,99,235,0.08)] border border-slate-200/80'
-                : 'bg-white/85 backdrop-blur-lg shadow-[0_8px_24px_rgba(0,0,0,0.10),0_2px_6px_rgba(37,99,235,0.06)] border border-slate-100'
+                ? 'gap-2 px-8 py-3 rounded-3xl bg-white/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.12),0_2px_8px_rgba(37,99,235,0.08)] border border-slate-200/80'
+                : 'gap-4 px-8 py-4 rounded-none bg-white/80 backdrop-blur-lg shadow-sm border-b border-slate-200/60'
             }`}
           >
+            {/* Scroll Progress Line */}
+            <motion.div
+              className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-400 z-0 origin-left"
+              style={{ scaleX }}
+            />
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group outline-none shrink-0">
-              <div className="relative w-8 h-8 rounded-full overflow-hidden shadow-sm border border-slate-200">
+            <Link href="/" className="flex items-center gap-2 sm:gap-3 group outline-none shrink-0">
+              <div className="relative w-9 h-9 sm:w-11 sm:h-11 rounded-full overflow-hidden shadow-sm border border-slate-200 transition-transform group-hover:scale-105">
                 <Image src="/logoo.png" alt="HackSpark Logo" fill className="object-cover" />
               </div>
-              <span className="font-heading font-semibold text-base text-slate-900 tracking-tight hidden sm:block">
-                HackSpark <span className="text-blue-600 font-medium">&apos;26</span>
+              <span className="font-heading font-extrabold text-lg sm:text-xl text-slate-900 tracking-tight hidden sm:block">
+                HackSpark <span className="text-blue-600 font-bold">&apos;26</span>
               </span>
             </Link>
 
@@ -119,7 +131,7 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 outline-none ${
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 outline-none whitespace-nowrap ${
                       isActive
                         ? 'text-white bg-blue-600 shadow-sm'
                         : 'text-slate-600 hover:text-blue-600 hover:bg-white'
@@ -143,8 +155,8 @@ export default function Navbar() {
                   </button>
                 </>
               ) : (
-                <Link href="/login" className="px-4 py-1.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-full transition-all duration-200 shadow-sm">
-                  Login
+                <Link href="/register" className="px-6 py-2 text-sm sm:text-base font-extrabold text-white bg-blue-600 hover:bg-blue-700 rounded-full transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105">
+                  Register
                 </Link>
               )}
             </div>
@@ -167,11 +179,11 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.97 }}
+            initial={{ opacity: 0, y: -10, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.97 }}
+            exit={{ opacity: 0, y: -10, scale: 0.97 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-4 bottom-[80px] z-40 lg:hidden rounded-2xl bg-white/95 backdrop-blur-xl border border-slate-200/80 shadow-[0_-4px_32px_rgba(0,0,0,0.12)] p-3"
+            className="fixed inset-x-4 top-[80px] z-40 lg:hidden rounded-2xl bg-white/95 backdrop-blur-xl border border-slate-200/80 shadow-[0_4px_32px_rgba(0,0,0,0.12)] p-3"
           >
             <nav className="flex flex-col gap-1">
               {NAV_LINKS.map((link) => {
@@ -205,8 +217,8 @@ export default function Navbar() {
                     </button>
                   </>
                 ) : (
-                  <Link href="/login" onClick={() => setMobileOpen(false)} className="px-4 py-3 rounded-xl text-sm font-semibold bg-blue-600 text-white text-center">
-                    Login
+                  <Link href="/register" onClick={() => setMobileOpen(false)} className="px-4 py-3 rounded-xl text-base font-extrabold bg-blue-600 text-white text-center shadow-md">
+                    Register
                   </Link>
                 )}
               </div>

@@ -8,25 +8,58 @@ import { ArrowRight } from 'lucide-react';
 import { EVENT_START_DATE } from '@/lib/utils/constants';
 
 /* -- Clean Countdown Unit -- */
-function CountUnit({ value, label }: { value: number; label: string }) {
+function CountUnit({ value, max, label }: { value: number; max: number; label: string }) {
   const str = value.toString().padStart(2, '0');
+  const percentage = (value / max) * 100;
+  const radius = 38;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference - (percentage / 100) * circumference;
+
   return (
-    <div className="flex flex-col items-center gap-2">
-      <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center bg-white/30 backdrop-blur-md border border-white/50 shadow-[0_8px_32px_rgba(37,99,235,0.05)]">
-        <AnimatePresence mode="popLayout">
-          <motion.span
-            key={str}
-            initial={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            exit={{ opacity: 0, y: -10, filter: 'blur(4px)' }}
-            transition={{ duration: 0.3 }}
-            className="font-heading font-black text-2xl sm:text-4xl text-slate-900 tracking-tight"
-          >
-            {str}
-          </motion.span>
-        </AnimatePresence>
+    <div className="flex flex-col items-center gap-3">
+      <div className="relative w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
+        {/* SVG Progress Ring */}
+        <svg className="absolute inset-0 w-full h-full -rotate-90 drop-shadow-sm" viewBox="0 0 84 84">
+          <circle
+            cx="42"
+            cy="42"
+            r={radius}
+            className="stroke-slate-200/40"
+            strokeWidth="4"
+            fill="none"
+          />
+          <motion.circle
+            cx="42"
+            cy="42"
+            r={radius}
+            className="stroke-blue-600"
+            strokeWidth="4"
+            fill="none"
+            strokeLinecap="round"
+            initial={{ strokeDashoffset: circumference }}
+            animate={{ strokeDashoffset }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            style={{ strokeDasharray: circumference }}
+          />
+        </svg>
+
+        {/* Inner Circle Background */}
+        <div className="absolute inset-2 sm:inset-2.5 rounded-full flex items-center justify-center bg-white/40 backdrop-blur-md shadow-[inset_0_2px_10px_rgba(255,255,255,0.4),0_8px_32px_rgba(37,99,235,0.08)] border border-white/60">
+          <AnimatePresence mode="popLayout">
+            <motion.span
+              key={str}
+              initial={{ opacity: 0, scale: 0.5, filter: 'blur(4px)' }}
+              animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+              exit={{ opacity: 0, scale: 1.5, filter: 'blur(4px)' }}
+              transition={{ duration: 0.4, ease: "backOut" }}
+              className="font-heading font-black text-2xl sm:text-4xl text-slate-900 tracking-tight"
+            >
+              {str}
+            </motion.span>
+          </AnimatePresence>
+        </div>
       </div>
-      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{label}</span>
+      <span className="text-[10px] sm:text-xs font-black text-slate-500 uppercase tracking-[0.2em]">{label}</span>
     </div>
   );
 }
@@ -63,22 +96,22 @@ function FlipClock() {
         transition={{ duration: 0.6, delay: 0.65 }}
         className="flex items-center gap-2 sm:gap-4"
       >
-        <CountUnit value={timeLeft.days} label="Days" />
-        <div className="flex flex-col gap-1.5 pb-6">
-          <div className="w-1 h-1 rounded-full bg-slate-300" />
-          <div className="w-1 h-1 rounded-full bg-slate-300" />
+        <CountUnit value={timeLeft.days} max={30} label="Days" />
+        <div className="flex flex-col gap-2 pb-8">
+          <div className="w-1.5 h-1.5 rounded-full bg-slate-300" />
+          <div className="w-1.5 h-1.5 rounded-full bg-slate-300" />
         </div>
-        <CountUnit value={timeLeft.hours} label="Hours" />
-        <div className="flex flex-col gap-1.5 pb-6">
-          <div className="w-1 h-1 rounded-full bg-slate-300" />
-          <div className="w-1 h-1 rounded-full bg-slate-300" />
+        <CountUnit value={timeLeft.hours} max={24} label="Hours" />
+        <div className="flex flex-col gap-2 pb-8">
+          <div className="w-1.5 h-1.5 rounded-full bg-slate-300" />
+          <div className="w-1.5 h-1.5 rounded-full bg-slate-300" />
         </div>
-        <CountUnit value={timeLeft.minutes} label="Mins" />
-        <div className="flex flex-col gap-1.5 pb-6">
-          <div className="w-1 h-1 rounded-full bg-blue-300" />
-          <div className="w-1 h-1 rounded-full bg-blue-300" />
+        <CountUnit value={timeLeft.minutes} max={60} label="Mins" />
+        <div className="flex flex-col gap-2 pb-8">
+          <div className="w-1.5 h-1.5 rounded-full bg-blue-300" />
+          <div className="w-1.5 h-1.5 rounded-full bg-blue-300" />
         </div>
-        <CountUnit value={timeLeft.seconds} label="Secs" />
+        <CountUnit value={timeLeft.seconds} max={60} label="Secs" />
       </motion.div>
     </AnimatePresence>
   );
@@ -103,7 +136,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative min-h-screen flex flex-col justify-center pt-16 pb-24 sm:pt-8 sm:pb-12 overflow-hidden"
+      className="relative w-full overflow-hidden"
       onMouseMove={handleMouseMove}
     >
       {/* ––– Video Background ––– */}
@@ -153,48 +186,52 @@ export default function HeroSection() {
         style={{ background: 'radial-gradient(circle, rgba(147,197,253,0.15) 0%, rgba(37,99,235,0.06) 50%, transparent 75%)', filter: 'blur(32px)' }}
       />
 
-      {/* ---- Main Content ---- */}
-      <div className="section-container relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center justify-center text-center">
+      {/* ---- Main Content First Screen (100svh) ---- */}
+      <div className="relative z-10 w-full min-h-[100svh] max-w-6xl mx-auto flex flex-col items-center justify-center text-center pt-28 pb-10 sm:pt-24 md:pt-32 px-4">
         
         {/* ---- College Badge ---- */}
         <motion.div
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.05 }}
-          className="w-full sm:w-auto mb-3 sm:mb-4"
+          className="w-full sm:w-auto mb-2 sm:mb-3"
         >
-          <div className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3.5 rounded-2xl sm:rounded-full bg-white/80 backdrop-blur-md border border-slate-200/60 shadow-md p-2 sm:p-1.5 hover:shadow-lg hover:bg-white/95 transition-all duration-300 max-w-full">
-            <div className="flex items-center gap-1.5">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center border border-slate-100 shadow-sm shrink-0 overflow-hidden">
-                <Image src="/footer.png" alt="NIITM" width={20} height={20} className="object-contain" />
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-4 sm:gap-6 rounded-2xl bg-white/95 backdrop-blur-xl border border-slate-200 shadow-[0_8px_32px_rgba(0,0,0,0.08)] p-4 sm:p-5 hover:shadow-[0_16px_48px_rgba(0,0,0,0.12)] hover:bg-white transition-all duration-500 w-full max-w-4xl">
+            <div className="flex items-center justify-center gap-4">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-white flex items-center justify-center border border-slate-100 shadow-sm shrink-0 overflow-hidden">
+                <Image src="/footer.png" alt="NIITM" width={40} height={40} className="object-contain" />
               </div>
-              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center border border-slate-100 shadow-sm shrink-0 overflow-hidden">
-                <Image src="/images.jpg" alt="Partner" width={22} height={22} className="object-contain rounded-full" />
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-white flex items-center justify-center border border-slate-100 shadow-sm shrink-0 overflow-hidden">
+                <Image src="/images.jpg" alt="Partner" width={42} height={42} className="object-contain rounded-xl" />
               </div>
             </div>
             
-            <div className="w-px h-8 sm:h-10 bg-slate-200" />
+            {/* Divider - Vertical on lg, Horizontal on small */}
+            <div className="hidden lg:block w-[1px] h-20 bg-gradient-to-b from-transparent via-slate-300 to-transparent" />
+            <div className="lg:hidden w-32 h-[1px] bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
             
-            <div className="flex flex-col justify-center items-center py-0.5 text-center">
-              <p className="text-[8px] sm:text-[11px] font-extrabold text-slate-900 tracking-wide uppercase leading-tight">
+            <div className="flex flex-col justify-center items-center text-center px-2">
+              <p className="text-lg sm:text-xl lg:text-2xl font-black text-slate-900 tracking-wide uppercase leading-tight drop-shadow-sm">
                 Nehru Institute of Information Technology <span className="text-blue-600">&amp;</span> Management
               </p>
-              <div className="flex flex-wrap items-center justify-center gap-1 mt-0.5">
-                <p className="text-[7px] sm:text-[8px] text-slate-500 font-bold tracking-[0.08em] uppercase">
-                  In Collab With
+              <div className="flex flex-wrap items-center justify-center gap-2 lg:gap-3 mt-2">
+                <p className="text-[10px] sm:text-xs text-slate-500 font-bold tracking-[0.2em] uppercase">
+                  In Association With
                 </p>
-                <span className="w-1 h-1 rounded-full bg-blue-400" />
-                <p className="text-[7px] sm:text-[9px] font-bold text-slate-700 tracking-wide uppercase leading-tight">
+                <span className="hidden sm:block w-1.5 h-1.5 rounded-sm bg-blue-500/80 rotate-45" />
+                <p className="text-xs sm:text-base font-black text-slate-800 tracking-wider uppercase leading-tight">
                   Nehru College of Management
                 </p>
               </div>
             </div>
 
-            <div className="w-px h-8 sm:h-10 bg-slate-200" />
+            {/* Divider - Vertical on lg, Horizontal on small */}
+            <div className="hidden lg:block w-[1px] h-20 bg-gradient-to-b from-transparent via-slate-300 to-transparent" />
+            <div className="lg:hidden w-32 h-[1px] bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
 
-            <div className="pr-0.5">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center border border-slate-100 shadow-sm shrink-0 overflow-hidden">
-                <Image src="/ngi-7051616-logo.png" alt="NCM" width={24} height={24} className="object-contain" />
+            <div className="flex items-center justify-center">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-white flex items-center justify-center border border-slate-100 shadow-sm shrink-0 overflow-hidden">
+                <Image src="/ngi-7051616-logo.png" alt="NCM" width={48} height={48} className="object-contain" />
               </div>
             </div>
           </div>
@@ -205,11 +242,11 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex items-center justify-center gap-3 mb-6 sm:mb-8"
+          className="flex items-center justify-center gap-3 mb-2 sm:mb-4"
         >
           <div className="w-8 h-px bg-slate-400" />
           <span className="text-[10px] text-slate-500 uppercase tracking-[0.35em] font-bold">
-            National Level Hackathon &apos;26
+            Organizes National Level Hackathon &apos;26
           </span>
           <div className="w-8 h-px bg-slate-400" />
         </motion.div>
@@ -220,11 +257,18 @@ export default function HeroSection() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="mb-6 sm:mb-8"
+          className="mb-4 sm:mb-6 relative"
         >
-          <h1 className="font-heading font-black text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tighter text-slate-900 drop-shadow-sm leading-none flex items-start justify-center flex-wrap">
-            HACKSPARK
-            <span className="text-3xl sm:text-4xl md:text-5xl text-blue-600 mt-2 sm:mt-4 ml-1 sm:ml-2">&apos;26</span>
+          {/* Animated Glow Behind Text */}
+          <div className="absolute inset-0 blur-3xl opacity-40 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mix-blend-multiply" />
+          
+          <h1 className="relative font-heading font-black text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tighter leading-none flex items-start justify-center flex-wrap">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-violet-600 to-fuchsia-600 drop-shadow-[0_0_15px_rgba(139,92,246,0.3)]">
+              HACKSPARK
+            </span>
+            <span className="text-3xl sm:text-4xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-br from-fuchsia-500 to-pink-500 mt-2 sm:mt-4 ml-1 sm:ml-2 drop-shadow-[0_0_15px_rgba(236,72,153,0.4)]">
+              &apos;26
+            </span>
           </h1>
         </motion.div>
 
@@ -233,7 +277,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-col items-center gap-4 sm:gap-6 mb-10 sm:mb-12"
+          className="flex flex-col items-center gap-2 sm:gap-4 mb-6 sm:mb-8"
         >
           <p className="text-sm sm:text-base lg:text-lg font-mono font-bold text-slate-600 tracking-[0.2em] uppercase flex items-center justify-center gap-3 flex-wrap">
             <span>Innovate</span>
@@ -252,7 +296,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-row items-center justify-center gap-4 mb-16 sm:mb-20"
+          className="flex flex-row items-center justify-center gap-4 mb-8 sm:mb-12"
         >
           <Link
             href="/register"
@@ -272,17 +316,16 @@ export default function HeroSection() {
             Learn More
           </Link>
         </motion.div>
+      </div>
 
-        {/* ––– Flip Clock Countdown ––– */}
-        <div className="flex flex-col items-center">
-           <div className="flex items-center gap-4 mb-6">
-             <div className="w-12 h-px bg-slate-300" />
-             <p className="text-[10px] font-bold tracking-[0.3em] text-slate-400 uppercase">Event Starts In</p>
-             <div className="w-12 h-px bg-slate-300" />
-           </div>
-           <FlipClock />
+      {/* ––– Flip Clock Countdown (Below the Fold) ––– */}
+      <div className="relative z-10 w-full flex flex-col items-center pb-24 pt-12">
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-12 h-px bg-slate-300" />
+          <p className="text-[10px] font-bold tracking-[0.3em] text-slate-400 uppercase">Event Starts In</p>
+          <div className="w-12 h-px bg-slate-300" />
         </div>
-
+        <FlipClock />
       </div>
     </section>
   );

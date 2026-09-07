@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Nunito, JetBrains_Mono } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from '@/context/AuthContext';
 import RippleEffect from '@/components/ui/RippleEffect';
 import SmoothScroller from '@/components/layout/SmoothScroller';
 import './globals.css';
 
-const inter = Inter({
+const nunito = Nunito({
   subsets: ['latin'],
   variable: '--font-next-body',
   display: 'swap',
@@ -18,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
-const headingFont = Inter({
+const headingFont = Nunito({
   subsets: ['latin'],
   variable: '--font-next-heading',
   display: 'swap',
@@ -66,7 +66,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
-      <body className={`${inter.variable} ${jetbrainsMono.variable} ${headingFont.variable} font-body antialiased`}>
+      <body className={`${nunito.variable} ${jetbrainsMono.variable} ${headingFont.variable} font-body antialiased`}>
         <AuthProvider>
           <SmoothScroller>
             <RippleEffect />

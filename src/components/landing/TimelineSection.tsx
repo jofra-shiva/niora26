@@ -2,9 +2,39 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, useInView, useSpring } from 'framer-motion';
-import { Code, Coffee, Presentation, Rocket, Trophy, Lightbulb, Pizza, Users } from 'lucide-react';
+import { Code, Coffee, Presentation, Rocket, Trophy, Lightbulb, Pizza, Users, Mail, CreditCard, FileText } from 'lucide-react';
 
 const TIMELINE_EVENTS = [
+  {
+    time: 'September 25',
+    title: 'Idea & PPT Submission',
+    desc: 'Submit your innovative ideas along with a detailed presentation for the initial screening phase.',
+    icon: FileText,
+    color: 'text-indigo-500',
+    bg: 'bg-indigo-500',
+    glow: 'shadow-indigo-500/40',
+    gradient: 'from-indigo-600 to-violet-500'
+  },
+  {
+    time: 'September 27',
+    title: 'Shortlist Confirmation',
+    desc: 'Selected teams will receive an official confirmation email to proceed to the next stage.',
+    icon: Mail,
+    color: 'text-emerald-500',
+    bg: 'bg-emerald-500',
+    glow: 'shadow-emerald-500/40',
+    gradient: 'from-emerald-500 to-teal-400'
+  },
+  {
+    time: 'September 28',
+    title: 'Registration Payment',
+    desc: 'Complete the payment process to officially secure your spot for the main hackathon event.',
+    icon: CreditCard,
+    color: 'text-amber-500',
+    bg: 'bg-amber-500',
+    glow: 'shadow-amber-500/40',
+    gradient: 'from-amber-500 to-orange-400'
+  },
   {
     time: 'Day 1 · 09:00 AM',
     title: 'Registration & Check-in',
@@ -64,6 +94,26 @@ const TIMELINE_EVENTS = [
     bg: 'bg-rose-500',
     glow: 'shadow-rose-500/40',
     gradient: 'from-rose-600 to-pink-500'
+  },
+  {
+    time: 'Day 2 · 01:00 AM',
+    title: 'Mentorship Round 2',
+    desc: 'Mentors check in on your progress, help debug issues, and guide you toward the final stretch.',
+    icon: Lightbulb,
+    color: 'text-violet-500',
+    bg: 'bg-violet-500',
+    glow: 'shadow-violet-500/40',
+    gradient: 'from-violet-600 to-fuchsia-500'
+  },
+  {
+    time: 'Day 2 · 04:00 AM',
+    title: 'Recharge Break',
+    desc: 'Take a quick power nap or grab some early morning tea to stay awake!',
+    icon: Coffee,
+    color: 'text-pink-500',
+    bg: 'bg-pink-500',
+    glow: 'shadow-pink-500/40',
+    gradient: 'from-pink-600 to-rose-400'
   },
   {
     time: 'Day 2 · 07:00 AM',
