@@ -200,6 +200,7 @@ export default function HeroSection() {
             src="/laptop.png"
             alt="HackSpark Coding Laptop"
             fill
+            sizes="(max-width: 1024px) 100vw, 480px"
             className="object-contain drop-shadow-[0_0_35px_rgba(0,240,255,0.35)]"
             priority
           />
@@ -216,7 +217,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="w-full max-w-5xl mx-auto mb-4 sm:mb-6 px-2 sm:px-4"
+          className="w-full max-w-5xl mx-auto mb-3 sm:mb-6 px-2 sm:px-4 -mt-3 sm:-mt-5"
         >
           <div className="p-3 xs:p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#070D22]/90 border border-cyan-400/30 backdrop-blur-2xl shadow-[0_0_20px_rgba(0,240,255,0.12)] w-full">
             
@@ -236,14 +237,14 @@ export default function HeroSection() {
               </div>
 
               {/* Below: College Name Text */}
-              <div className="flex flex-col justify-center items-center text-center px-1 w-full overflow-hidden">
-                <h2 className="text-[9.5px] xs:text-[11px] sm:text-[13px] font-heading font-black text-white tracking-tight uppercase leading-snug text-center whitespace-nowrap drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]">
+              <div className="flex flex-col justify-center items-center text-center px-1 w-full">
+                <h2 className="text-[10.5px] xs:text-[12px] sm:text-[13.5px] font-heading font-black text-white tracking-tight uppercase leading-tight text-center drop-shadow-[0_0_8px_rgba(255,255,255,0.25)] max-w-full">
                   Nehru Institute of Information Technology <span className="text-[#00F0FF] font-black">&amp;</span> Management
                 </h2>
-                <p className="text-[8.5px] xs:text-[9.5px] font-black tracking-[0.18em] uppercase mt-0.5 mb-0.5 text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#D946EF] drop-shadow-[0_0_6px_rgba(168,85,247,0.4)] whitespace-nowrap">
+                <p className="text-[8px] xs:text-[9px] font-black tracking-[0.15em] uppercase my-0.5 text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#D946EF] drop-shadow-[0_0_6px_rgba(168,85,247,0.4)]">
                   IN ASSOCIATION WITH
                 </p>
-                <p className="text-[11px] xs:text-[12px] font-black text-white uppercase tracking-wider leading-snug whitespace-nowrap drop-shadow-[0_0_6px_rgba(255,255,255,0.2)]">
+                <p className="text-[10.5px] xs:text-[12px] font-black text-white uppercase tracking-wider leading-tight text-center drop-shadow-[0_0_6px_rgba(255,255,255,0.2)]">
                   Nehru College of Management
                 </p>
               </div>
@@ -310,9 +311,9 @@ export default function HeroSection() {
         >
           <div className="relative inline-flex items-center justify-center">
             {/* ZIG-ZAG ELECTRIC LIGHTNING LINE TOUCHING 'H' (CONTINUOUS ELECTRIC SURGE WAVE ANIMATION) */}
-            <div className="hidden sm:flex items-center absolute right-full top-1/2 -translate-y-1/2 pr-0 pointer-events-none z-20">
+            <div className="flex items-center absolute right-full top-1/2 -translate-y-1/2 pr-0 pointer-events-none z-20">
               <div className="relative flex items-center justify-end">
-                <svg className="w-24 sm:w-36 md:w-48 lg:w-56 h-12 text-[#00F0FF] overflow-visible" viewBox="0 0 200 40" fill="none">
+                <svg className="w-10 xs:w-16 sm:w-36 md:w-48 lg:w-56 h-6 sm:h-12 text-[#00F0FF] overflow-visible" viewBox="0 0 200 40" fill="none">
                   <defs>
                     <filter id="electric-glow" x="-20%" y="-20%" width="140%" height="140%">
                       <feGaussianBlur stdDeviation="3" result="blur" />
@@ -365,8 +366,8 @@ export default function HeroSection() {
                 </svg>
 
                 {/* Electric Contact Node Directly Touching 'H' */}
-                <div className="relative -ml-1 flex items-center justify-center">
-                  <span className="w-3.5 h-3.5 rounded-full bg-[#00F0FF] shadow-[0_0_20px_#00F0FF] shrink-0" />
+                <div className="relative -ml-0.5 sm:-ml-1 flex items-center justify-center">
+                  <span className="w-2 h-2 sm:w-3.5 sm:h-3.5 rounded-full bg-[#00F0FF] shadow-[0_0_20px_#00F0FF] shrink-0" />
                 </div>
               </div>
             </div>
@@ -390,14 +391,14 @@ export default function HeroSection() {
                 </span>
 
                 {/* ZIG-ZAG ELECTRIC LIGHTNING LINE TOUCHING '26' (CONTINUOUS ELECTRIC SURGE WAVE ANIMATION) */}
-                <div className="hidden sm:flex items-center absolute left-full top-1/2 -translate-y-1/2 pl-0 pointer-events-none z-20">
+                <div className="flex items-center absolute left-full top-1/2 -translate-y-1/2 pl-0 pointer-events-none z-20">
                   <div className="relative flex items-center justify-start">
                     {/* Electric Contact Node Directly Touching '26' */}
-                    <div className="relative -mr-1 flex items-center justify-center">
-                      <span className="w-3.5 h-3.5 rounded-full bg-[#8B5CF6] shadow-[0_0_20px_#8B5CF6] shrink-0" />
+                    <div className="relative -mr-0.5 sm:-mr-1 flex items-center justify-center">
+                      <span className="w-2 h-2 sm:w-3.5 sm:h-3.5 rounded-full bg-[#8B5CF6] shadow-[0_0_20px_#8B5CF6] shrink-0" />
                     </div>
 
-                    <svg className="w-24 sm:w-36 md:w-48 lg:w-56 h-12 text-[#8B5CF6] overflow-visible" viewBox="0 0 200 40" fill="none">
+                    <svg className="w-10 xs:w-16 sm:w-36 md:w-48 lg:w-56 h-6 sm:h-12 text-[#8B5CF6] overflow-visible" viewBox="0 0 200 40" fill="none">
                       <defs>
                         <filter id="electric-glow-purple" x="-20%" y="-20%" width="140%" height="140%">
                           <feGaussianBlur stdDeviation="3" result="blur" />
@@ -493,6 +494,19 @@ export default function HeroSection() {
                 <span className="text-slate-300">Reg Fee</span> <span className="text-emerald-400">₹500</span> <span className="text-slate-500 font-medium normal-case text-[9px]">/team</span>
               </span>
             </div>
+          </div>
+
+          {/* Mobile Only: Register Now CTA Button below Reg Fee pill */}
+          <div className="block sm:hidden mt-3 w-full max-w-[260px] mx-auto">
+            <a
+              href="https://forms.gle/mjS16iuhAF7CTpMMA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center justify-center gap-2 w-full py-3 px-6 rounded-full font-black text-xs text-white bg-gradient-to-r from-[#00F0FF] via-[#3B82F6] to-[#8B5CF6] active:scale-95 transition-all duration-300 uppercase tracking-widest border border-cyan-400/40"
+            >
+              <span>REGISTER NOW</span>
+              <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+            </a>
           </div>
         </motion.div>
 

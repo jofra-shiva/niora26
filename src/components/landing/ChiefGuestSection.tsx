@@ -40,10 +40,10 @@ export default function ChiefGuestSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-10 sm:mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#070D22]/85 border border-blue-500/30 backdrop-blur-xl mb-4 shadow-[0_0_20px_rgba(0,240,255,0.15)]">
-            <Sparkles className="w-3.5 h-3.5 text-[#00F0FF] animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#070D22]/85 border border-cyan-400/40 backdrop-blur-xl mb-4 shadow-[0_0_20px_rgba(0,240,255,0.2)]">
+            <Award className="w-3.5 h-3.5 text-[#00F0FF]" />
             <span className="text-xs font-black tracking-widest uppercase text-cyan-300">
-              Valedictory Ceremony
+              CHIEF GUEST
             </span>
           </div>
           <h2 className="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight mb-3">

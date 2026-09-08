@@ -102,123 +102,145 @@ export default function PrizesSection() {
           </div>
         </div>
 
-        {/* Additional Perks & Chief Guest (2 Side-by-Side Glass Cards in Advisory Board Card Style) */}
-        <div className="max-w-5xl mx-auto mt-8 sm:mt-14 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-          {/* Card 1: Valedictory Chief Guest */}
-          <motion.div
-            initial={{ opacity: 0, y: 35, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            whileHover={{ y: -6, scale: 1.02 }}
-            viewport={{ once: false, margin: "-40px" }}
-            transition={{ duration: 0.5, delay: 0.1, type: "spring", stiffness: 120, damping: 15 }}
-            className="relative rounded-[20px] sm:rounded-[26px] p-[1.5px] overflow-hidden group cursor-pointer w-full shadow-[0_10px_30px_rgba(0,0,0,0.7)]"
-          >
-            {/* Glowing Gradient Border */}
-            <div className="absolute inset-0 rounded-[20px] sm:rounded-[26px] bg-gradient-to-r from-blue-500/40 via-cyan-400/30 to-purple-500/40 opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
-
-            {/* Inner Card Content */}
-            <div className="relative z-10 bg-[#070D22]/85 backdrop-blur-2xl group-hover:bg-[#0A1230]/95 transition-all duration-500 rounded-[18px] sm:rounded-[24px] p-3.5 sm:p-5 flex items-start gap-3 sm:gap-5 text-left h-full w-full border border-blue-500/30">
-              {/* Left Avatar */}
-              <div className="relative w-16 h-16 sm:w-28 sm:h-28 flex-shrink-0 z-10">
-                <div className="relative w-full h-full rounded-xl sm:rounded-2xl overflow-hidden bg-[#0B1536] border-2 border-cyan-400/30 shadow-[0_0_15px_rgba(0,240,255,0.2)] group-hover:border-cyan-400 group-hover:shadow-[0_0_25px_rgba(0,240,255,0.4)] transition-all duration-300 z-10">
-                  <Image
-                    src="/team/shasunder.jpg"
-                    alt="Shanmuga Sundaram"
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-              </div>
-
-              {/* Right Content */}
-              <div className="flex flex-col flex-1 h-full min-h-[64px] sm:min-h-[112px] z-10 min-w-0">
-                <div>
-                  <h3 className="font-heading font-bold text-white text-sm sm:text-lg group-hover:text-[#00F0FF] transition-colors leading-tight mb-0.5 sm:mb-1 truncate">
-                    Shanmuga Sundaram
-                  </h3>
-                  <p className="text-[9px] sm:text-[10px] text-cyan-400 font-mono font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-1 sm:mb-2">
-                    Valedictory Chief Guest
-                  </p>
-                </div>
-
-                <p className="text-[10px] sm:text-[11px] text-slate-300 line-clamp-2 leading-relaxed mb-1.5 sm:mb-3 flex-1 font-medium">
-                  Associate Director - Delivery. 18+ years driving product engineering &amp; delivery programs across enterprise environments.
-                </p>
-
-                {/* Bottom link */}
-                <div className="flex items-center justify-between mt-auto pt-1 sm:pt-2 border-t border-blue-500/20">
-                  <div className="flex items-center gap-1 sm:gap-1.5 text-[9px] sm:text-[10px] font-semibold text-cyan-400 opacity-80 group-hover:opacity-100 transition-all duration-300">
-                    <CheckCircle2 className="w-3 h-3" />
-                    <span>Guest of Honor</span>
-                  </div>
-                  <a
-                    href="https://in.linkedin.com/in/shasunder"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-cyan-400 hover:text-white transition-colors"
-                  >
-                    <span>LinkedIn</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                </div>
+        {/* Additional Perks: Chief Guest (Top Centered) & Internship (Below Centered) */}
+        <div className="max-w-2xl mx-auto mt-8 sm:mt-14 flex flex-col gap-6 sm:gap-8">
+          
+          {/* Card 1: Valedictory Chief Guest (Centered Top) */}
+          <div className="w-full">
+            <div className="flex justify-center mb-2.5">
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#070D22]/90 border border-cyan-400/40 text-cyan-300 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-widest shadow-[0_0_12px_rgba(0,240,255,0.2)] backdrop-blur-xl">
+                <Award className="w-3.5 h-3.5 text-[#00F0FF]" />
+                <span>CHIEF GUEST</span>
               </div>
             </div>
-          </motion.div>
 
-          {/* Card 2: Internship Opportunity by Inexpensive Coders */}
-          <motion.div
-            initial={{ opacity: 0, y: 35, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            whileHover={{ y: -6, scale: 1.02 }}
-            viewport={{ once: false, margin: "-40px" }}
-            transition={{ duration: 0.5, delay: 0.2, type: "spring", stiffness: 120, damping: 15 }}
-            className="relative rounded-[20px] sm:rounded-[26px] p-[1.5px] overflow-hidden group cursor-pointer w-full shadow-[0_10px_30px_rgba(0,0,0,0.7)]"
-          >
-            {/* Glowing Gradient Border */}
-            <div className="absolute inset-0 rounded-[20px] sm:rounded-[26px] bg-gradient-to-r from-purple-500/40 via-pink-400/30 to-indigo-500/40 opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
+            <motion.div
+              initial={{ opacity: 0, y: 35, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              whileHover={{ y: -6, scale: 1.02 }}
+              viewport={{ once: false, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: 0.1, type: "spring", stiffness: 120, damping: 15 }}
+              className="relative rounded-[20px] sm:rounded-[26px] p-[1.5px] overflow-hidden group cursor-pointer w-full shadow-[0_10px_30px_rgba(0,0,0,0.7)]"
+            >
+              {/* Glowing Gradient Border */}
+              <div className="absolute inset-0 rounded-[20px] sm:rounded-[26px] bg-gradient-to-r from-blue-500/40 via-cyan-400/30 to-purple-500/40 opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
 
-            {/* Inner Card Content */}
-            <div className="relative z-10 bg-[#070D22]/85 backdrop-blur-2xl group-hover:bg-[#0A1230]/95 transition-all duration-500 rounded-[18px] sm:rounded-[24px] p-3.5 sm:p-5 flex items-start gap-3 sm:gap-5 text-left h-full w-full border border-purple-500/30">
-              {/* Left Logo - Inexpensive Coders */}
-              <div className="relative w-16 h-16 sm:w-28 sm:h-28 flex-shrink-0 z-10">
-                <div className="relative w-full h-full rounded-xl sm:rounded-2xl overflow-hidden bg-white p-1.5 sm:p-2 border-2 border-purple-400/40 shadow-[0_0_15px_rgba(168,85,247,0.3)] group-hover:border-purple-400 group-hover:shadow-[0_0_25px_rgba(168,85,247,0.5)] transition-all duration-300 z-10 flex items-center justify-center">
-                  <Image
-                    src="/inexpensive_coders.png"
-                    alt="Inexpensive Coders"
-                    fill
-                    className="object-contain p-1 group-hover:scale-110 transition-transform duration-500"
-                  />
+              {/* Inner Card Content */}
+              <div className="relative z-10 bg-[#070D22]/85 backdrop-blur-2xl group-hover:bg-[#0A1230]/95 transition-all duration-500 rounded-[18px] sm:rounded-[24px] p-3.5 sm:p-5 flex items-start gap-3 sm:gap-5 text-left h-full w-full border border-blue-500/30">
+                {/* Left Avatar */}
+                <div className="relative w-16 h-16 sm:w-28 sm:h-28 flex-shrink-0 z-10">
+                  <div className="relative w-full h-full rounded-xl sm:rounded-2xl overflow-hidden bg-[#0B1536] border-2 border-cyan-400/30 shadow-[0_0_15px_rgba(0,240,255,0.2)] group-hover:border-cyan-400 group-hover:shadow-[0_0_25px_rgba(0,240,255,0.4)] transition-all duration-300 z-10">
+                    <Image
+                      src="/team/shasunder.jpg"
+                      alt="Shanmuga Sundaram"
+                      fill
+                      sizes="(max-width: 640px) 64px, 112px"
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+
+                {/* Right Content */}
+                <div className="flex flex-col flex-1 h-full min-h-[64px] sm:min-h-[112px] z-10 min-w-0">
+                  <div>
+                    <h3 className="font-heading font-bold text-white text-sm sm:text-lg group-hover:text-[#00F0FF] transition-colors leading-tight mb-0.5 sm:mb-1 truncate">
+                      Shanmuga Sundaram
+                    </h3>
+                    <p className="text-[9px] sm:text-[10px] text-cyan-400 font-mono font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-1 sm:mb-2">
+                      Valedictory Chief Guest
+                    </p>
+                  </div>
+
+                  <p className="text-[10px] sm:text-[11px] text-slate-300 line-clamp-2 leading-relaxed mb-1.5 sm:mb-3 flex-1 font-medium">
+                    Associate Director - Delivery. 18+ years driving product engineering &amp; delivery programs across enterprise environments.
+                  </p>
+
+                  {/* Bottom link */}
+                  <div className="flex items-center justify-between mt-auto pt-1 sm:pt-2 border-t border-blue-500/20">
+                    <div className="flex items-center gap-1 sm:gap-1.5 text-[9px] sm:text-[10px] font-semibold text-cyan-400 opacity-80 group-hover:opacity-100 transition-all duration-300">
+                      <CheckCircle2 className="w-3 h-3" />
+                      <span>Guest of Honor</span>
+                    </div>
+                    <a
+                      href="https://in.linkedin.com/in/shasunder"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-cyan-400 hover:text-white transition-colors"
+                    >
+                      <span>LinkedIn</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
                 </div>
               </div>
+            </motion.div>
+          </div>
 
-              {/* Right Content */}
-              <div className="flex flex-col flex-1 h-full min-h-[64px] sm:min-h-[112px] z-10 min-w-0">
-                <div>
-                  <h3 className="font-heading font-bold text-white text-sm sm:text-lg group-hover:text-purple-300 transition-colors leading-tight mb-0.5 sm:mb-1 truncate">
-                    Internship Opportunity
-                  </h3>
-                  <p className="text-[9px] sm:text-[10px] text-purple-300 font-mono font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-1 sm:mb-2">
-                    Inexpensive Coders
-                  </p>
-                </div>
-
-                <p className="text-[10px] sm:text-[11px] text-slate-300 line-clamp-2 leading-relaxed mb-1.5 sm:mb-3 flex-1 font-medium">
-                  Exclusive Internship Opportunities for ALL Participants offered by <strong className="text-purple-300 font-bold">Inexpensive Coders</strong>.
-                </p>
-
-                {/* Bottom bar */}
-                <div className="flex items-center justify-between mt-auto pt-1 sm:pt-2 border-t border-purple-500/20">
-                  <div className="flex items-center gap-1 sm:gap-1.5 text-[9px] sm:text-[10px] font-semibold text-purple-300">
-                    <Building2 className="w-3 h-3 text-pink-400" />
-                    <span>Inexpensive Coders</span>
-                  </div>
-                  <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-purple-950/80 border border-purple-500/30 flex items-center justify-center group-hover:bg-purple-500 group-hover:text-white transition-all">
-                    <span className="text-purple-300 group-hover:text-white text-xs sm:text-sm leading-none transform group-hover:translate-x-0.5 transition-all">→</span>
-                  </div>
-                </div>
+          {/* Card 2: Internship Opportunity by Inexpensive Coders (Placed Below Chief Guest) */}
+          <div className="w-full">
+            <div className="flex justify-center mb-2.5">
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#070D22]/90 border border-purple-400/40 text-purple-300 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-widest shadow-[0_0_12px_rgba(168,85,247,0.2)] backdrop-blur-xl">
+                <Building2 className="w-3.5 h-3.5 text-pink-400" />
+                <span>INTERNSHIP OPPORTUNITY</span>
               </div>
             </div>
-          </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 35, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              whileHover={{ y: -6, scale: 1.02 }}
+              viewport={{ once: false, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: 0.2, type: "spring", stiffness: 120, damping: 15 }}
+              className="relative rounded-[20px] sm:rounded-[26px] p-[1.5px] overflow-hidden group cursor-pointer w-full shadow-[0_10px_30px_rgba(0,0,0,0.7)]"
+            >
+              {/* Glowing Gradient Border */}
+              <div className="absolute inset-0 rounded-[20px] sm:rounded-[26px] bg-gradient-to-r from-purple-500/40 via-pink-400/30 to-indigo-500/40 opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
+
+              {/* Inner Card Content */}
+              <div className="relative z-10 bg-[#070D22]/85 backdrop-blur-2xl group-hover:bg-[#0A1230]/95 transition-all duration-500 rounded-[18px] sm:rounded-[24px] p-3.5 sm:p-5 flex items-start gap-3 sm:gap-5 text-left h-full w-full border border-purple-500/30">
+                {/* Left Logo - Inexpensive Coders */}
+                <div className="relative w-16 h-16 sm:w-28 sm:h-28 flex-shrink-0 z-10">
+                  <div className="relative w-full h-full rounded-xl sm:rounded-2xl overflow-hidden bg-white p-1.5 sm:p-2 border-2 border-purple-400/40 shadow-[0_0_15px_rgba(168,85,247,0.3)] group-hover:border-purple-400 group-hover:shadow-[0_0_25px_rgba(168,85,247,0.5)] transition-all duration-300 z-10 flex items-center justify-center">
+                    <Image
+                      src="/inexpensive_coders.png"
+                      alt="Inexpensive Coders"
+                      fill
+                      sizes="(max-width: 640px) 64px, 112px"
+                      className="object-contain p-1 group-hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+
+                {/* Right Content */}
+                <div className="flex flex-col flex-1 h-full min-h-[64px] sm:min-h-[112px] z-10 min-w-0">
+                  <div>
+                    <h3 className="font-heading font-bold text-white text-sm sm:text-lg group-hover:text-purple-300 transition-colors leading-tight mb-0.5 sm:mb-1 truncate">
+                      Internship Opportunity
+                    </h3>
+                    <p className="text-[9px] sm:text-[10px] text-purple-300 font-mono font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-1 sm:mb-2">
+                      Inexpensive Coders
+                    </p>
+                  </div>
+
+                  <p className="text-[10px] sm:text-[11px] text-slate-300 line-clamp-2 leading-relaxed mb-1.5 sm:mb-3 flex-1 font-medium">
+                    Exclusive Internship Opportunities for ALL Participants offered by <strong className="text-purple-300 font-bold">Inexpensive Coders</strong>.
+                  </p>
+
+                  {/* Bottom bar */}
+                  <div className="flex items-center justify-between mt-auto pt-1 sm:pt-2 border-t border-purple-500/20">
+                    <div className="flex items-center gap-1 sm:gap-1.5 text-[9px] sm:text-[10px] font-semibold text-purple-300">
+                      <Building2 className="w-3 h-3 text-pink-400" />
+                      <span>Inexpensive Coders</span>
+                    </div>
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-purple-950/80 border border-purple-500/30 flex items-center justify-center group-hover:bg-purple-500 group-hover:text-white transition-all">
+                      <span className="text-purple-300 group-hover:text-white text-xs sm:text-sm leading-none transform group-hover:translate-x-0.5 transition-all">→</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
         </div>
 
       </div>

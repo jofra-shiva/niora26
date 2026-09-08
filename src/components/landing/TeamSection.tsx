@@ -80,27 +80,27 @@ const ADVISORY_BOARD: Member[] = [
 
 const CONVENORS: Member[] = [
   {
-    name: 'Meera Bai C',
+    name: 'Mrs. Meera Bai C',
     role: 'Convenor',
-    image: 'http://niitm.org/assets/images/about/MEERA-BAI.jpg',
+    image: '/team/meera_bai.jpg',
     phone: '9944560889',
     headline: 'Head of Department · PG Dept. of Computer Applications',
     about: 'A dedicated academician and researcher with deep expertise in computer science and application development. Leads the PG Department of Computer Applications at NIITM, guiding students toward excellence in technology.',
     education: 'NIITM, Coimbatore',
   },
   {
-    name: 'Indulekha K V',
+    name: 'Mrs. Indulekha K V',
     role: 'Convenor',
-    image: 'http://niitm.org/assets/images/about/INDULEKHA.jpg',
+    image: '/team/indulekha.jpg',
     phone: '7561078733',
     headline: 'Faculty · PG Dept. of Computer Applications',
     about: 'Passionate educator and event organizer with a strong background in software engineering. Plays a key role in shaping the technical curriculum and mentoring students through industry-relevant projects.',
     education: 'NIITM, Coimbatore',
   },
   {
-    name: 'Dr. A. Nandhini',
+    name: 'Mrs. Nandhini A',
     role: 'Convenor',
-    image: 'http://ncmbschool.com/images/team12.jpg',
+    image: '/team/nandhini.jpg',
     phone: '7561078733',
     headline: 'Assistant Professor (Senior Grade) · Nehru College of Management',
     about: 'Expert in Computer Science Information Systems with over 15 years of academic experience. Holds a Doctor of Philosophy and has authored multiple scholarly publications, including research on Explainable AI and Image Analysis.',
@@ -132,7 +132,7 @@ const STUDENT_COORDINATORS: Member[] = [
   {
     name: 'Jeevanantha Perumal M',
     role: 'Student Coordinator',
-    image: 'https://media.licdn.com/dms/image/v2/D5635AQHIlLSQZ7QO-w/profile-framedphoto-shrink_800_800/B56Z_7516ZJcAc-/0/1786637672703?e=1788415200&v=beta&t=3GlRV7ewS5FM2_IXnOil6Agk3q-xJINtZIlSTSSUYdA',
+    image: '/team/jeevanantha.jpg',
     linkedin: 'https://www.linkedin.com/in/jeevanantha-perumal-m-197b78296/',
     headline: 'MCA Student · Backend & Cloud Developer',
     about: 'Focuses on backend systems, cloud infrastructure, and DevOps practices. Managing technical operations for HackSpark \'26.',
@@ -269,7 +269,7 @@ function ProfileModal({ member, onClose }: { member: Member; onClose: () => void
         {/* Avatar — overlaps banner */}
         <div className="absolute left-6 top-14 w-24 h-32 rounded-[22px] overflow-hidden border-[3px] border-[#070D22] shadow-[0_0_20px_rgba(0,240,255,0.3)] z-10 bg-[#0B1536]">
           {!imgError ? (
-            <Image src={member.image} alt={member.name} fill className="object-cover" onError={() => setImgError(true)} unoptimized={member.image.startsWith('http://')} />
+            <Image src={member.image} alt={member.name} fill sizes="96px" className="object-cover object-top" onError={() => setImgError(true)} unoptimized={member.image.startsWith('http://')} />
           ) : (
             <div className="w-full h-full bg-gradient-to-br from-blue-900 to-indigo-900 flex items-center justify-center">
               <span className="font-black text-3xl text-[#00F0FF]">{member.name.charAt(0)}</span>
@@ -438,7 +438,7 @@ function TeamCard({ member, index }: { member: Member; index: number }) {
                     src={member.image}
                     alt={member.name}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="object-cover object-top group-hover:scale-110 transition-transform duration-500"
                     onError={() => setImgError(true)}
                     sizes="(max-width: 640px) 64px, 96px"
                     unoptimized={member.image.startsWith('http://')}
@@ -472,15 +472,15 @@ function TeamCard({ member, index }: { member: Member; index: number }) {
         ) : (
           <div className="relative z-10 bg-[#070D22]/85 backdrop-blur-2xl group-hover:bg-[#0A1230]/95 transition-all duration-500 rounded-[18px] sm:rounded-[22px] p-3 xs:p-3.5 sm:p-4 flex items-center gap-3 sm:gap-4 text-left h-full w-full border border-blue-500/30">
 
-            {/* Left: Avatar (Slim Portrait Rectangle) */}
-            <div className="relative w-16 xs:w-20 sm:w-24 aspect-[3/4] flex-shrink-0 z-10">
+            {/* Left: Avatar (Prominent Square Avatar) */}
+            <div className="relative w-18 xs:w-22 sm:w-28 aspect-square flex-shrink-0 z-10">
               <div className="relative w-full h-full rounded-lg sm:rounded-xl overflow-hidden bg-[#0B1536] border-2 border-cyan-400/30 shadow-[0_0_15px_rgba(0,240,255,0.2)] group-hover:border-cyan-400 group-hover:shadow-[0_0_25px_rgba(0,240,255,0.4)] transition-all duration-300 z-10">
                 {!imgError && (
                   <Image
                     src={member.image}
                     alt={member.name}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="object-cover object-top group-hover:scale-110 transition-transform duration-500"
                     onError={() => setImgError(true)}
                     sizes="(max-width: 640px) 80px, 96px"
                     unoptimized={member.image.startsWith('http://')}

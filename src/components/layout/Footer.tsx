@@ -26,13 +26,13 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
           
-          {/* Column 1: Brand & Institution Logos (lg:col-span-4) */}
-          <div className="lg:col-span-4 flex flex-col justify-between">
+          {/* Column 1: Brand & Institution (lg:col-span-5) */}
+          <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
               {/* Brand Header */}
               <div className="flex items-center gap-3 mb-4">
                 <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-cyan-400/50 bg-white p-0.5 shadow-[0_0_20px_rgba(0,240,255,0.4)]">
-                  <Image src="/logoo.png" alt="HackSpark Logo" fill className="object-cover" />
+                  <Image src="/logoo.png" alt="HackSpark Logo" fill sizes="44px" className="object-cover" />
                 </div>
                 <div>
                   <span className="font-logo text-xl sm:text-2xl font-black text-white tracking-wider drop-shadow-[0_0_10px_rgba(0,240,255,0.5)]">
@@ -46,20 +46,6 @@ export default function Footer() {
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-sm mb-4 font-medium">
                 Code Beyond Limits. Build the Future. A premier 24-hour national hackathon bringing together visionary developers, creators, and innovators.
               </p>
-
-              {/* College Logos Pill (Desktop PC View Highlight) */}
-              <div className="inline-flex items-center gap-3 p-2.5 rounded-xl bg-[#091128]/80 border border-cyan-500/30 backdrop-blur-md shadow-md mb-4">
-                <div className="w-10 h-10 rounded-lg bg-white p-1 flex items-center justify-center border border-slate-200 shrink-0">
-                  <Image src="/footer.png" alt="NIITM Logo" width={36} height={36} className="object-contain" />
-                </div>
-                <div className="w-10 h-10 rounded-lg bg-white p-1 flex items-center justify-center border border-slate-200 shrink-0">
-                  <Image src="/ngi-7051616-logo.png" alt="NGI Logo" width={36} height={36} className="object-contain" />
-                </div>
-                <div className="text-left pr-1">
-                  <p className="text-[11px] font-bold text-white leading-tight">NIITM &amp; NCM</p>
-                  <p className="text-[9.5px] text-cyan-400 font-mono">Coimbatore, Tamil Nadu</p>
-                </div>
-              </div>
             </div>
 
             <p className="text-[11px] text-slate-400 font-medium leading-tight">
@@ -67,36 +53,8 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Column 2: Quick Links (lg:col-span-2) */}
-          <div className="lg:col-span-2">
-            <h3 className="font-heading font-bold text-xs sm:text-sm text-[#00F0FF] mb-4 uppercase tracking-widest flex items-center gap-2 drop-shadow-[0_0_8px_#00F0FF]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00F0FF] animate-pulse" />
-              Quick Links
-            </h3>
-            <ul className="space-y-2 text-xs sm:text-sm">
-              {[
-                { label: 'Home', href: '/' },
-                { label: 'About Event', href: '/#about' },
-                { label: 'Problem Themes', href: '/#problems' },
-                { label: 'Timeline', href: '/#timeline' },
-                { label: 'Prizes & Rewards', href: '/#prizes' },
-                { label: 'Contact Us', href: '/#contact' },
-              ].map((link) => (
-                <li key={link.label}>
-                  <Link 
-                    href={link.href} 
-                    className="text-slate-300 hover:text-[#00F0FF] transition-all duration-200 flex items-center gap-1.5 group"
-                  >
-                    <span className="text-cyan-500 opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-200 text-xs">›</span>
-                    <span>{link.label}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 3: Event Highlights (lg:col-span-3) */}
-          <div className="lg:col-span-3">
+          {/* Column 2: Event Highlights (lg:col-span-4) */}
+          <div className="lg:col-span-4">
             <h3 className="font-heading font-bold text-xs sm:text-sm text-[#00F0FF] mb-4 uppercase tracking-widest flex items-center gap-2 drop-shadow-[0_0_8px_#00F0FF]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00F0FF] animate-pulse" />
               Event Info

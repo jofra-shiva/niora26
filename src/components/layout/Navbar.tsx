@@ -120,7 +120,7 @@ export default function Navbar() {
             {/* Left Brand Logo */}
             <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group outline-none shrink-0">
               <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-blue-400/50 shadow-[0_0_15px_rgba(37,99,235,0.4)] transition-transform group-hover:scale-105">
-                <Image src="/logoo.png" alt="HackSpark Logo" fill className="object-cover" />
+                <Image src="/logoo.png" alt="HackSpark Logo" fill sizes="40px" className="object-cover" />
               </div>
               <span className="font-heading font-black text-lg sm:text-xl text-white tracking-tight flex items-center gap-1">
                 HackSpark
