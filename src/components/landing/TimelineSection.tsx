@@ -7,8 +7,8 @@ import { Code, Coffee, Presentation, Rocket, Trophy, Lightbulb, Pizza, Users, Ma
 const TIMELINE_EVENTS = [
   {
     time: 'September 25',
-    title: 'Idea & PPT Submission',
-    desc: 'Submit your innovative ideas along with a detailed presentation for the initial screening phase.',
+    title: 'Registration & PPT Submission',
+    desc: 'Complete registration and submit your PPT within this date.',
     icon: FileText,
     color: 'text-indigo-500',
     bg: 'bg-indigo-500',

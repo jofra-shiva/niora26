@@ -160,13 +160,31 @@ const STUDENT_COORDINATORS: Member[] = [
     education: 'NIITM, Coimbatore',
   },
   {
-    name: 'Jeevika Rajasekaran',
+    name: 'Jeevika R',
     role: 'Student Coordinator',
     image: '/team/jeevika.jpg',
     linkedin: 'https://www.linkedin.com/in/jeevika-rajasekaran-0a0369291',
     headline: 'MCA Student · Student Coordinator',
     about: 'Pursuing Master of Computer Applications. Dedicated student coordinator assisting with event operations and participant management for HackSpark \'26.',
     skills: ['Management', 'Coordination', 'Communication'],
+    education: 'NIITM, Coimbatore',
+  },
+  {
+    name: 'Athul U K',
+    role: 'Student Coordinator',
+    image: '/team/athul.jpg',
+    headline: 'MCA Student · Student Coordinator',
+    about: 'Pursuing Master of Computer Applications at NIITM. Dedicated student coordinator assisting with event management and participant support for HackSpark \'26.',
+    skills: ['Management', 'Coordination'],
+    education: 'NIITM, Coimbatore',
+  },
+  {
+    name: 'Kumaran M',
+    role: 'Student Coordinator',
+    image: '/team/kumaran.jpg',
+    headline: 'MCA Student · Student Coordinator',
+    about: 'Pursuing Master of Computer Applications at NIITM. Dedicated student coordinator assisting with event management and participant support for HackSpark \'26.',
+    skills: ['Management', 'Coordination'],
     education: 'NIITM, Coimbatore',
   },
 ];
@@ -249,7 +267,7 @@ function ProfileModal({ member, onClose }: { member: Member; onClose: () => void
         </div>
 
         {/* Avatar — overlaps banner */}
-        <div className="absolute left-6 top-16 w-24 h-24 rounded-[22px] overflow-hidden border-[3px] border-[#070D22] shadow-[0_0_20px_rgba(0,240,255,0.3)] z-10 bg-[#0B1536]">
+        <div className="absolute left-6 top-14 w-24 h-32 rounded-[22px] overflow-hidden border-[3px] border-[#070D22] shadow-[0_0_20px_rgba(0,240,255,0.3)] z-10 bg-[#0B1536]">
           {!imgError ? (
             <Image src={member.image} alt={member.name} fill className="object-cover" onError={() => setImgError(true)} unoptimized={member.image.startsWith('http://')} />
           ) : (
@@ -260,7 +278,7 @@ function ProfileModal({ member, onClose }: { member: Member; onClose: () => void
         </div>
 
         {/* Body */}
-        <div className="px-6 pt-14 pb-6">
+        <div className="px-6 pt-20 pb-6">
           {/* Name + role */}
           <div className="mb-1">
             <h2 className="text-xl font-black text-white leading-tight">{member.name}</h2>
@@ -389,6 +407,7 @@ function ContactPopup({ name, phone, onClose }: { name: string; phone: string; o
 function TeamCard({ member, index }: { member: Member; index: number }) {
   const [imgError, setImgError] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const isStudentCoordinator = member.role === 'Student Coordinator';
 
   return (
     <>
@@ -403,63 +422,105 @@ function TeamCard({ member, index }: { member: Member; index: number }) {
         viewport={{ once: false, margin: '-40px' }}
         transition={{ duration: 0.5, delay: (index % 4) * 0.08, type: 'spring', stiffness: 120, damping: 15 }}
         onClick={() => setProfileOpen(true)}
-        className="relative rounded-[20px] sm:rounded-[26px] p-[1.5px] overflow-hidden group cursor-pointer w-full shadow-[0_10px_30px_rgba(0,0,0,0.7)]"
+        className="relative rounded-[20px] sm:rounded-[24px] p-[1.5px] overflow-hidden group cursor-pointer w-full shadow-[0_10px_30px_rgba(0,0,0,0.7)] flex flex-col"
       >
         {/* Glowing Gradient Border */}
-        <div className="absolute inset-0 rounded-[20px] sm:rounded-[26px] bg-gradient-to-r from-blue-500/40 via-cyan-400/30 to-purple-500/40 opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 rounded-[20px] sm:rounded-[24px] bg-gradient-to-r from-blue-500/40 via-cyan-400/30 to-purple-500/40 opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
 
         {/* Inner Card Content */}
-        <div className="relative z-10 bg-[#070D22]/85 backdrop-blur-2xl group-hover:bg-[#0A1230]/95 transition-all duration-500 rounded-[18px] sm:rounded-[24px] p-3.5 xs:p-4 sm:p-5 flex items-start gap-3 sm:gap-5 text-left h-full w-full border border-blue-500/30">
+        {isStudentCoordinator ? (
+          <div className="relative z-10 bg-[#070D22]/85 backdrop-blur-2xl group-hover:bg-[#0A1230]/95 transition-all duration-500 rounded-[16px] sm:rounded-[22px] p-2.5 xs:p-3 sm:p-4 flex flex-col items-center justify-center text-center aspect-square h-full w-full border border-blue-500/30">
+            {/* Top: Square Avatar */}
+            <div className="relative w-12 h-12 xs:w-16 xs:h-16 sm:w-24 sm:h-24 aspect-square flex-shrink-0 z-10 mb-1.5 xs:mb-2 sm:mb-3">
+              <div className="relative w-full h-full rounded-lg sm:rounded-2xl overflow-hidden bg-[#0B1536] border-2 border-cyan-400/30 shadow-[0_0_15px_rgba(0,240,255,0.2)] group-hover:border-cyan-400 group-hover:shadow-[0_0_25px_rgba(0,240,255,0.4)] transition-all duration-300 z-10">
+                {!imgError && (
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    onError={() => setImgError(true)}
+                    sizes="(max-width: 640px) 64px, 96px"
+                    unoptimized={member.image.startsWith('http://')}
+                  />
+                )}
+                <div className={`absolute inset-0 bg-gradient-to-br from-blue-900 to-indigo-900 flex items-center justify-center ${!imgError ? 'opacity-0' : 'opacity-100'} transition-opacity`}>
+                  <span className="font-heading font-black text-xl sm:text-3xl text-[#00F0FF]">{member.name.charAt(0)}</span>
+                </div>
+              </div>
+            </div>
 
-          {/* Left: Avatar */}
-          <div className="relative w-16 h-16 xs:w-20 xs:h-20 sm:w-28 sm:h-28 flex-shrink-0 z-10">
-            <div className="relative w-full h-full rounded-xl sm:rounded-2xl overflow-hidden bg-[#0B1536] border-2 border-cyan-400/30 shadow-[0_0_15px_rgba(0,240,255,0.2)] group-hover:border-cyan-400 group-hover:shadow-[0_0_25px_rgba(0,240,255,0.4)] transition-all duration-300 z-10">
-              {!imgError && (
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  onError={() => setImgError(true)}
-                  sizes="(max-width: 640px) 80px, 112px"
-                  unoptimized={member.image.startsWith('http://')}
-                />
-              )}
-              <div className={`absolute inset-0 bg-gradient-to-br from-blue-900 to-indigo-900 flex items-center justify-center ${!imgError ? 'opacity-0' : 'opacity-100'} transition-opacity`}>
-                <span className="font-heading font-black text-xl sm:text-3xl text-[#00F0FF]">{member.name.charAt(0)}</span>
+            {/* Name */}
+            <h3 className="font-heading font-bold text-white text-[10px] xs:text-xs sm:text-base group-hover:text-[#00F0FF] transition-colors leading-snug mb-0.5 sm:mb-1 text-center line-clamp-1">
+              {member.name}
+            </h3>
+
+            {/* Subtitle: MCA, NIITM */}
+            <p className="text-[8px] xs:text-[9.5px] sm:text-xs text-cyan-400 font-mono font-semibold uppercase tracking-[0.1em] sm:tracking-[0.12em] text-center mb-0.5">
+              MCA, NIITM
+            </p>
+            <p className="text-[7px] xs:text-[8px] sm:text-[9px] text-slate-400 font-mono font-semibold uppercase tracking-[0.08em] text-center mb-1 sm:mb-2">
+              Student Coordinator
+            </p>
+
+            {/* View Details hint at bottom */}
+            <div className="flex items-center gap-1 text-[7.5px] xs:text-[9px] sm:text-[10px] font-semibold text-cyan-400 opacity-80 group-hover:opacity-100 transition-all duration-300 mt-auto pt-1 border-t border-blue-500/20 w-full justify-center">
+              <span>View Details</span>
+              <span className="transform group-hover:translate-x-0.5 transition-transform">→</span>
+            </div>
+          </div>
+        ) : (
+          <div className="relative z-10 bg-[#070D22]/85 backdrop-blur-2xl group-hover:bg-[#0A1230]/95 transition-all duration-500 rounded-[18px] sm:rounded-[22px] p-3 xs:p-3.5 sm:p-4 flex items-center gap-3 sm:gap-4 text-left h-full w-full border border-blue-500/30">
+
+            {/* Left: Avatar (Slim Portrait Rectangle) */}
+            <div className="relative w-16 xs:w-20 sm:w-24 aspect-[3/4] flex-shrink-0 z-10">
+              <div className="relative w-full h-full rounded-lg sm:rounded-xl overflow-hidden bg-[#0B1536] border-2 border-cyan-400/30 shadow-[0_0_15px_rgba(0,240,255,0.2)] group-hover:border-cyan-400 group-hover:shadow-[0_0_25px_rgba(0,240,255,0.4)] transition-all duration-300 z-10">
+                {!imgError && (
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    onError={() => setImgError(true)}
+                    sizes="(max-width: 640px) 80px, 96px"
+                    unoptimized={member.image.startsWith('http://')}
+                  />
+                )}
+                <div className={`absolute inset-0 bg-gradient-to-br from-blue-900 to-indigo-900 flex items-center justify-center ${!imgError ? 'opacity-0' : 'opacity-100'} transition-opacity`}>
+                  <span className="font-heading font-black text-xl sm:text-2xl text-[#00F0FF]">{member.name.charAt(0)}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Content */}
+            <div className="flex flex-col flex-1 h-full min-h-[90px] xs:min-h-[105px] sm:min-h-[115px] justify-between z-10 min-w-0">
+              <div>
+                <h3 className="font-heading font-bold text-white text-xs xs:text-sm sm:text-base group-hover:text-[#00F0FF] transition-colors leading-snug mb-0.5">
+                  {member.name}
+                </h3>
+                <p className="text-[8.5px] sm:text-[9.5px] text-cyan-400 font-mono font-semibold uppercase tracking-[0.1em] sm:tracking-[0.15em] mb-1 line-clamp-1">
+                  {member.role}
+                </p>
+                {member.about && (
+                  <p className="text-[9.5px] sm:text-[10.5px] text-slate-300 line-clamp-2 leading-relaxed mb-1 font-medium">
+                    {member.about}
+                  </p>
+                )}
+              </div>
+
+              {/* "View Profile" hint */}
+              <div className="flex items-center justify-between pt-1 border-t border-blue-500/20 mt-auto">
+                <div className="flex items-center gap-1 sm:gap-1.5 text-[8.5px] sm:text-[9.5px] font-semibold text-cyan-400 opacity-80 group-hover:opacity-100 transition-all duration-300">
+                  <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                  <span>View Full Profile</span>
+                </div>
+                <div className="w-4 h-4 sm:w-4.5 sm:h-4.5 rounded-full bg-blue-950/80 border border-blue-500/30 flex items-center justify-center group-hover:bg-[#00F0FF] group-hover:text-black transition-all">
+                  <span className="text-cyan-400 group-hover:text-black text-xs leading-none transform group-hover:translate-x-0.5 transition-all">→</span>
+                </div>
               </div>
             </div>
           </div>
-
-          {/* Right: Content */}
-          <div className="flex flex-col flex-1 h-full min-h-[64px] xs:min-h-[80px] sm:min-h-[112px] z-10 min-w-0">
-            <div>
-              <h3 className="font-heading font-bold text-white text-xs xs:text-sm sm:text-lg group-hover:text-[#00F0FF] transition-colors leading-snug mb-0.5 sm:mb-1">
-                {member.name}
-              </h3>
-              <p className="text-[9px] sm:text-[10px] text-cyan-400 font-mono font-semibold uppercase tracking-[0.12em] sm:tracking-[0.2em] mb-1 sm:mb-2">
-                {member.role}
-              </p>
-            </div>
-
-            {member.about && (
-              <p className="text-[10px] sm:text-[11px] text-slate-300 line-clamp-2 leading-relaxed mb-1.5 sm:mb-3 flex-1 font-medium">
-                {member.about}
-              </p>
-            )}
-
-            {/* "View Profile" hint */}
-            <div className="flex items-center justify-between mt-auto pt-1 sm:pt-2 border-t border-blue-500/20">
-              <div className="flex items-center gap-1 sm:gap-1.5 text-[9px] sm:text-[10px] font-semibold text-cyan-400 opacity-80 group-hover:opacity-100 transition-all duration-300">
-                <ExternalLink className="w-3 h-3" />
-                <span>View Full Profile</span>
-              </div>
-              <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-blue-950/80 border border-blue-500/30 flex items-center justify-center group-hover:bg-[#00F0FF] group-hover:text-black transition-all">
-                <span className="text-cyan-400 group-hover:text-black text-xs sm:text-sm leading-none transform group-hover:translate-x-0.5 transition-all">→</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        )}
       </motion.div>
     </>
   );
@@ -467,8 +528,7 @@ function TeamCard({ member, index }: { member: Member; index: number }) {
 
 /* -- Team group ------------------------------------- */
 function AdvisoryBoardGroup({ delay = 0.05 }: { delay?: number }) {
-  const patrons = [ADVISORY_BOARD[0], ADVISORY_BOARD[1]]; // Krishnadas & Krishnakumar
-  const director = [ADVISORY_BOARD[2]]; // Nagaraja (centered)
+  const topThree = [ADVISORY_BOARD[0], ADVISORY_BOARD[1], ADVISORY_BOARD[2]]; // Krishnadas, Krishnakumar, Nagaraja (Row of 3)
   const principals = [ADVISORY_BOARD[3], ADVISORY_BOARD[4]]; // Ravikumar & Moses Daniel
   const hods = [ADVISORY_BOARD[5], ADVISORY_BOARD[6]]; // Menaka & Sengaliappan
 
@@ -488,27 +548,23 @@ function AdvisoryBoardGroup({ delay = 0.05 }: { delay?: number }) {
         <div className="h-px flex-1 bg-gradient-to-l from-transparent via-blue-500/40 to-transparent" />
       </motion.div>
 
-      <div className="flex flex-col gap-3.5 sm:gap-5 max-w-5xl mx-auto">
-        {/* Row 1: Patrons (Krishnadas & Krishnakumar) */}
-        <div className="flex flex-wrap justify-center gap-3.5 sm:gap-5 w-full">
-          {patrons.map((m, i) => (
-            <div key={m.name} className="w-full md:w-[calc(50%-0.625rem)] flex">
+      <div className="flex flex-col gap-4 sm:gap-6 w-full max-w-[1320px] mx-auto">
+        {/* Row 1: Top 3 Wide Horizontal Rectangle Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-5 w-full">
+          {topThree.map((m, i) => (
+            <div key={m.name} className="w-full flex">
               <TeamCard member={m} index={i} />
             </div>
           ))}
         </div>
 
-        {/* Row 2: Executive Director (Nagaraja - Centered) */}
-        <div className="flex flex-wrap justify-center gap-3.5 sm:gap-5 w-full">
-          {director.map((m, i) => (
-            <div key={m.name} className="w-full md:w-[calc(50%-0.625rem)] flex">
-              <TeamCard member={m} index={i + 2} />
-            </div>
-          ))}
+        {/* Subtle Light Divider Line under the top 3 */}
+        <div className="w-full my-2 sm:my-3 flex items-center justify-center">
+          <div className="w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent shadow-[0_0_12px_rgba(0,240,255,0.4)]" />
         </div>
 
-        {/* Row 3: Principals (Ravikumar & Moses Daniel) */}
-        <div className="flex flex-wrap justify-center gap-3.5 sm:gap-5 w-full">
+        {/* Row 2: Principals (Ravikumar & Moses Daniel) */}
+        <div className="flex flex-wrap justify-center gap-3.5 sm:gap-5 w-full max-w-4xl mx-auto">
           {principals.map((m, i) => (
             <div key={m.name} className="w-full md:w-[calc(50%-0.625rem)] flex">
               <TeamCard member={m} index={i + 3} />
@@ -516,8 +572,8 @@ function AdvisoryBoardGroup({ delay = 0.05 }: { delay?: number }) {
           ))}
         </div>
 
-        {/* Row 4: HODs (Menaka & Sengaliappan) */}
-        <div className="flex flex-wrap justify-center gap-3.5 sm:gap-5 w-full">
+        {/* Row 3: HODs (Menaka & Sengaliappan) */}
+        <div className="flex flex-wrap justify-center gap-3.5 sm:gap-5 w-full max-w-4xl mx-auto">
           {hods.map((m, i) => (
             <div key={m.name} className="w-full md:w-[calc(50%-0.625rem)] flex">
               <TeamCard member={m} index={i + 5} />
@@ -530,6 +586,9 @@ function AdvisoryBoardGroup({ delay = 0.05 }: { delay?: number }) {
 }
 
 function TeamGroup({ title, members, delay = 0 }: { title: string; members: Member[]; delay?: number }) {
+  const isEight = members.length === 8;
+  const useThreeGrid = members.length % 3 === 0;
+
   return (
     <div className="mb-10 sm:mb-16">
       <motion.div 
@@ -546,13 +605,31 @@ function TeamGroup({ title, members, delay = 0 }: { title: string; members: Memb
         <div className="h-px flex-1 bg-gradient-to-l from-transparent via-blue-500/40 to-transparent" />
       </motion.div>
 
-      <div className="flex flex-wrap justify-center gap-3.5 sm:gap-5 max-w-5xl mx-auto">
-        {members.map((m, i) => (
-          <div key={m.name} className="w-full md:w-[calc(50%-0.625rem)] flex">
-            <TeamCard member={m} index={i} />
-          </div>
-        ))}
-      </div>
+      {isEight ? (
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5 w-full max-w-5xl mx-auto">
+          {members.map((m, i) => (
+            <div key={m.name} className="w-full flex">
+              <TeamCard member={m} index={i} />
+            </div>
+          ))}
+        </div>
+      ) : useThreeGrid ? (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-5 w-full max-w-[1320px] mx-auto">
+          {members.map((m, i) => (
+            <div key={m.name} className="w-full flex">
+              <TeamCard member={m} index={i} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-wrap justify-center gap-3.5 sm:gap-5 max-w-4xl mx-auto">
+          {members.map((m, i) => (
+            <div key={m.name} className="w-full md:w-[calc(50%-0.625rem)] flex">
+              <TeamCard member={m} index={i} />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -576,7 +653,7 @@ export default function TeamSection() {
         }}
       />
 
-      <div className="section-container relative z-10 max-w-6xl mx-auto px-4" ref={ref}>
+      <div className="section-container relative z-10 max-w-[1360px] mx-auto px-4" ref={ref}>
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

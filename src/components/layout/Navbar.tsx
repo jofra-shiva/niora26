@@ -80,18 +80,22 @@ export default function Navbar() {
   };
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith('/#') && pathname === '/') {
-      e.preventDefault();
-      const id = href.replace('/#', '');
-      if (!id) {
+    if (pathname === '/') {
+      if (href === '/') {
+        e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        setActiveHash('/');
         return;
       }
-      const element = document.getElementById(id);
-      if (element) {
-        const navOffset = 90;
-        const y = element.getBoundingClientRect().top + window.scrollY - navOffset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
+      if (href.startsWith('/#')) {
+        e.preventDefault();
+        const id = href.replace('/#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          const navOffset = 90;
+          const y = element.getBoundingClientRect().top + window.scrollY - navOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
       }
     }
   };
@@ -157,9 +161,9 @@ export default function Navbar() {
                   </button>
                 </>
               ) : (
-                <Link href="/register" className="inline-flex items-center gap-1.5 px-5 xl:px-6 py-2.5 rounded-full font-black text-xs sm:text-sm text-white bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#7C3AED] hover:from-[#1D4ED8] hover:to-[#6D28D9] transition-all duration-200 shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] uppercase tracking-wider whitespace-nowrap">
+                <a href="https://forms.gle/mjS16iuhAF7CTpMMA" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-5 xl:px-6 py-2.5 rounded-full font-black text-xs sm:text-sm text-white bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#7C3AED] hover:from-[#1D4ED8] hover:to-[#6D28D9] transition-all duration-200 shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] uppercase tracking-wider whitespace-nowrap">
                   REGISTER NOW
-                </Link>
+                </a>
               )}
             </div>
 
@@ -219,9 +223,9 @@ export default function Navbar() {
                     </button>
                   </>
                 ) : (
-                  <Link href="/register" onClick={() => setMobileOpen(false)} className="px-4 py-3 rounded-xl text-base font-black bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center shadow-md flex items-center justify-center gap-2">
+                  <a href="https://forms.gle/mjS16iuhAF7CTpMMA" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="px-4 py-3 rounded-xl text-base font-black bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center shadow-md flex items-center justify-center gap-2">
                     REGISTER NOW <ArrowRight className="w-4 h-4" />
-                  </Link>
+                  </a>
                 )}
               </div>
             </nav>

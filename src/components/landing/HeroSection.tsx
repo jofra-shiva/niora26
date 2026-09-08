@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Zap, Calendar, Clock, Timer, Hourglass, ArrowRight, Download, FileText, Presentation } from 'lucide-react';
+import { Calendar, Clock, Timer, Hourglass, ArrowRight, Download, FileText, Presentation } from 'lucide-react';
 import { EVENT_START_DATE } from '@/lib/utils/constants';
 
 /* -- 4 Dark Cyber Glass Cards Countdown -- */
@@ -139,7 +139,7 @@ export default function HeroSection() {
       {/* Floating Code Bits & Binary Symbols Background Animation */}
       <FloatingCodeBits />
 
-      {/* Bottom Left Cyber Motto Badge: "THINK BEYOND LIMITS" (Elevated, Larger & Stylish) */}
+      {/* Bottom Left: Circuit Lightbulb Icon */}
       <motion.div
         initial={{ opacity: 0, x: -40, scale: 0.9 }}
         animate={{ opacity: 1, x: 0, scale: 1, y: [0, -8, 0] }}
@@ -148,26 +148,39 @@ export default function HeroSection() {
           scale: { duration: 0.8 },
           y: { duration: 4.5, repeat: Infinity, ease: 'easeInOut' }
         }}
-        className="hidden lg:flex items-center gap-3 absolute bottom-28 left-8 xl:bottom-36 xl:left-14 pointer-events-none z-10"
+        className="hidden lg:flex absolute bottom-28 left-32 xl:bottom-36 xl:left-48 pointer-events-none z-10"
       >
-        <div className="flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-[#070D22]/90 border border-cyan-400/50 backdrop-blur-2xl shadow-[0_0_30px_rgba(0,240,255,0.35)] group relative overflow-hidden">
-          {/* Subtle Ambient Pulse Light */}
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-transparent pointer-events-none" />
-
-          {/* Electric Zap Icon & Pulsing Beacon */}
-          <div className="relative flex items-center justify-center">
-            <Zap className="w-5 h-5 text-[#00F0FF] drop-shadow-[0_0_10px_#00F0FF] fill-[#00F0FF]/30" />
-            <span className="absolute -top-0.5 -right-0.5 flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00F0FF] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00F0FF]"></span>
-            </span>
-          </div>
-
-          {/* Stylish Larger Typography */}
-          <span className="font-heading font-black italic text-sm sm:text-base lg:text-lg uppercase tracking-[0.25em] text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-[#00F0FF] drop-shadow-[0_0_12px_rgba(0,240,255,0.6)]">
-            THINK BEYOND LIMITS
-          </span>
-        </div>
+        {/* Circuit bulb SVG — subtle blink/flicker */}
+        <motion.svg
+          width="160" height="186" viewBox="0 0 38 44" fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="drop-shadow-[0_0_30px_rgba(251,191,36,0.95)]"
+          animate={{ opacity: [1, 0.55, 1, 0.75, 1] }}
+          transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', times: [0, 0.15, 0.3, 0.6, 1] }}
+        >
+            {/* Bulb outline */}
+            <path d="M19 2C10.716 2 4 8.716 4 17c0 5.2 2.6 9.8 6.5 12.6V33h17v-3.4C31.4 26.8 34 22.2 34 17c0-8.284-6.716-15-15-15z" stroke="#3B82F6" strokeWidth="1.5" fill="rgba(59,130,246,0.08)"/>
+            {/* Base rings */}
+            <rect x="11" y="34" width="16" height="2.5" rx="1.25" fill="#3B82F6" opacity="0.7"/>
+            <rect x="12.5" y="37.5" width="13" height="2" rx="1" fill="#3B82F6" opacity="0.5"/>
+            <rect x="14" y="40.5" width="10" height="2" rx="1" fill="#3B82F6" opacity="0.3"/>
+            {/* Circuit filament */}
+            <line x1="19" y1="29" x2="19" y2="22" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round"/>
+            <line x1="19" y1="22" x2="13" y2="16" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round"/>
+            <line x1="19" y1="22" x2="25" y2="16" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round"/>
+            <line x1="19" y1="22" x2="19" y2="14" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round"/>
+            {/* Circuit nodes */}
+            <circle cx="19" cy="29" r="2" fill="#FBBF24" opacity="0.9"/>
+            <circle cx="13" cy="16" r="1.5" fill="#FBBF24" opacity="0.8"/>
+            <circle cx="25" cy="16" r="1.5" fill="#FBBF24" opacity="0.8"/>
+            <circle cx="19" cy="14" r="1.5" fill="#FBBF24" opacity="0.8"/>
+            {/* Glow rays */}
+            <line x1="19" y1="4" x2="19" y2="1" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
+            <line x1="30" y1="8" x2="32.5" y2="5.5" stroke="#3B82F6" strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
+            <line x1="8" y1="8" x2="5.5" y2="5.5" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
+            <line x1="34" y1="17" x2="37" y2="17" stroke="#3B82F6" strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
+            <line x1="4" y1="17" x2="1" y2="17" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
+        </motion.svg>
       </motion.div>
       <motion.div
         initial={{ opacity: 0, y: 30, scale: 0.9 }}
@@ -197,74 +210,74 @@ export default function HeroSection() {
       <div className="relative z-10 w-full max-w-[1450px] mx-auto flex flex-col items-center text-center">
         
         {/* =========================================================================
-            INSTITUTIONAL / COLLEGE BRANDING FROSTED GLASS BANNER (FULL WIDTH TO CORNERS)
+            INSTITUTIONAL / COLLEGE BRANDING FROSTED GLASS BANNER (COMPACT BOX)
             ========================================================================= */}
         <motion.div
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="w-full mb-4 sm:mb-6 px-1 sm:px-4 lg:px-6"
+          className="w-full max-w-5xl mx-auto mb-4 sm:mb-6 px-2 sm:px-4"
         >
-          <div className="p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl bg-[#070D22]/90 border border-cyan-400/30 backdrop-blur-2xl shadow-[0_0_20px_rgba(0,240,255,0.12)] w-full">
+          <div className="p-3 xs:p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#070D22]/90 border border-cyan-400/30 backdrop-blur-2xl shadow-[0_0_20px_rgba(0,240,255,0.12)] w-full">
             
             {/* Mobile Layout (< md): 3 Logos on top row, College text below */}
-            <div className="flex md:hidden flex-col items-center gap-3.5 w-full">
+            <div className="flex md:hidden flex-col items-center gap-2.5 w-full">
               {/* Top Row: 3 Logos */}
-              <div className="flex items-center justify-center gap-3 xs:gap-4">
-                <div className="w-12 h-12 xs:w-14 xs:h-14 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_12px_rgba(0,240,255,0.25)] p-1.5 shrink-0">
-                  <Image src="/footer.png" alt="NIITM" width={52} height={52} className="object-contain" />
+              <div className="flex items-center justify-center gap-2.5 xs:gap-3">
+                <div className="w-10 h-10 xs:w-12 xs:h-12 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_10px_rgba(0,240,255,0.2)] p-1 shrink-0">
+                  <Image src="/footer.png" alt="NIITM" width={44} height={44} className="object-contain" />
                 </div>
-                <div className="w-12 h-12 xs:w-14 xs:h-14 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_12px_rgba(0,240,255,0.25)] p-1.5 shrink-0">
-                  <Image src="/images.jpg" alt="Partner" width={52} height={52} className="object-contain rounded-full" />
+                <div className="w-10 h-10 xs:w-12 xs:h-12 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_10px_rgba(0,240,255,0.2)] p-1 shrink-0">
+                  <Image src="/images.jpg" alt="Partner" width={44} height={44} className="object-contain rounded-full" />
                 </div>
-                <div className="w-12 h-12 xs:w-14 xs:h-14 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_12px_rgba(0,240,255,0.25)] p-1.5 shrink-0">
-                  <Image src="/ngi-7051616-logo.png" alt="NCM" width={52} height={52} className="object-contain" />
+                <div className="w-10 h-10 xs:w-12 xs:h-12 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_10px_rgba(0,240,255,0.2)] p-1 shrink-0">
+                  <Image src="/ngi-7051616-logo.png" alt="NCM" width={44} height={44} className="object-contain" />
                 </div>
               </div>
 
               {/* Below: College Name Text */}
-              <div className="flex flex-col justify-center items-center text-center px-1 w-full">
-                <h2 className="text-[12px] xs:text-[13px] font-heading font-black text-white tracking-tight uppercase leading-snug text-center drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]">
+              <div className="flex flex-col justify-center items-center text-center px-1 w-full overflow-hidden">
+                <h2 className="text-[9.5px] xs:text-[11px] sm:text-[13px] font-heading font-black text-white tracking-tight uppercase leading-snug text-center whitespace-nowrap drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]">
                   Nehru Institute of Information Technology <span className="text-[#00F0FF] font-black">&amp;</span> Management
                 </h2>
-                <p className="text-[10px] xs:text-[11px] font-black tracking-[0.2em] uppercase mt-1 mb-0.5 text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#D946EF] drop-shadow-[0_0_6px_rgba(168,85,247,0.4)]">
+                <p className="text-[8.5px] xs:text-[9.5px] font-black tracking-[0.18em] uppercase mt-0.5 mb-0.5 text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#D946EF] drop-shadow-[0_0_6px_rgba(168,85,247,0.4)] whitespace-nowrap">
                   IN ASSOCIATION WITH
                 </p>
-                <p className="text-[13px] xs:text-[14px] font-black text-white uppercase tracking-wider leading-snug drop-shadow-[0_0_6px_rgba(255,255,255,0.2)]">
+                <p className="text-[11px] xs:text-[12px] font-black text-white uppercase tracking-wider leading-snug whitespace-nowrap drop-shadow-[0_0_6px_rgba(255,255,255,0.2)]">
                   Nehru College of Management
                 </p>
               </div>
             </div>
 
             {/* Desktop / Tablet Layout (>= md): Left logos, Center text, Right logo */}
-            <div className="hidden md:flex flex-col lg:flex-row items-center justify-between gap-4 sm:gap-6 w-full">
+            <div className="hidden md:flex flex-col lg:flex-row items-center justify-between gap-3 sm:gap-4 w-full">
               {/* Left Logos */}
-              <div className="flex items-center gap-3 sm:gap-4 shrink-0">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_12px_rgba(0,240,255,0.2)] p-1.5 sm:p-2">
-                  <Image src="/footer.png" alt="NIITM" width={60} height={60} className="object-contain" />
+              <div className="flex items-center gap-2.5 shrink-0">
+                <div className="w-13 h-13 md:w-15 md:h-15 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_10px_rgba(0,240,255,0.2)] p-1.5">
+                  <Image src="/footer.png" alt="NIITM" width={48} height={48} className="object-contain" />
                 </div>
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_12px_rgba(0,240,255,0.2)] p-1.5 sm:p-2">
-                  <Image src="/images.jpg" alt="Partner" width={60} height={60} className="object-contain rounded-full" />
+                <div className="w-13 h-13 md:w-15 md:h-15 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_10px_rgba(0,240,255,0.2)] p-1.5">
+                  <Image src="/images.jpg" alt="Partner" width={48} height={48} className="object-contain rounded-full" />
                 </div>
               </div>
 
               {/* Center College Text */}
-              <div className="flex flex-col justify-center items-center text-center px-2 flex-1 min-w-0">
-                <h2 className="text-base md:text-xl lg:text-2xl xl:text-[27px] font-heading font-black text-white tracking-tight uppercase leading-tight text-center whitespace-nowrap drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]">
+              <div className="flex flex-col justify-center items-center text-center px-1 flex-1 min-w-0 overflow-hidden">
+                <h2 className="text-xs md:text-sm lg:text-base xl:text-lg font-heading font-black text-white tracking-tight uppercase leading-tight text-center whitespace-nowrap drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]">
                   Nehru Institute of Information Technology <span className="text-[#00F0FF] font-black">&amp;</span> Management
                 </h2>
-                <p className="text-xs sm:text-sm md:text-base font-black tracking-[0.25em] uppercase mt-2 mb-1 text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#D946EF] drop-shadow-[0_0_6px_rgba(168,85,247,0.4)]">
+                <p className="text-[9.5px] sm:text-[10.5px] md:text-xs font-black tracking-[0.2em] uppercase mt-1 mb-0.5 text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#D946EF] drop-shadow-[0_0_6px_rgba(168,85,247,0.4)] whitespace-nowrap">
                   IN ASSOCIATION WITH
                 </p>
-                <p className="text-sm sm:text-lg md:text-xl lg:text-2xl font-black text-white uppercase tracking-wider leading-snug drop-shadow-[0_0_6px_rgba(255,255,255,0.2)]">
+                <p className="text-xs sm:text-sm md:text-base font-black text-white uppercase tracking-wider leading-snug whitespace-nowrap drop-shadow-[0_0_6px_rgba(255,255,255,0.2)]">
                   Nehru College of Management
                 </p>
               </div>
 
               {/* Right Logo */}
               <div className="flex items-center shrink-0">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_12px_rgba(0,240,255,0.2)] p-1.5 sm:p-2">
-                  <Image src="/ngi-7051616-logo.png" alt="NCM" width={60} height={60} className="object-contain" />
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_10px_rgba(0,240,255,0.2)] p-1.5">
+                  <Image src="/ngi-7051616-logo.png" alt="NCM" width={52} height={52} className="object-contain" />
                 </div>
               </div>
             </div>
@@ -461,6 +474,26 @@ export default function HeroSection() {
           <p className="text-xs sm:text-sm text-slate-300 italic font-medium max-w-xl text-center leading-relaxed">
             &ldquo;The best way to predict the future is to build it. 24 hours, one idea, infinite possibilities.&rdquo;
           </p>
+
+          {/* Event Date + Fee creative pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-2">
+            {/* Date pill */}
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#070D22]/80 border border-cyan-400/40 backdrop-blur-xl shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+              <svg className="w-3.5 h-3.5 text-cyan-400 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
+              <span className="text-[10px] xs:text-xs font-black font-mono uppercase tracking-widest text-white">
+                <span className="text-cyan-400">8th</span> <span className="text-white/50">&amp;</span> <span className="text-cyan-400">9th</span> <span className="text-slate-300">October</span>
+              </span>
+            </div>
+            {/* Dot divider */}
+            <span className="w-1 h-1 rounded-full bg-slate-500 hidden xs:block" />
+            {/* Fee pill */}
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#070D22]/80 border border-emerald-400/40 backdrop-blur-xl shadow-[0_0_15px_rgba(52,211,153,0.2)]">
+              <span className="relative flex h-2 w-2 shrink-0"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" /></span>
+              <span className="text-[10px] xs:text-xs font-black font-mono uppercase tracking-widest">
+                <span className="text-slate-300">Reg Fee</span> <span className="text-emerald-400">₹500</span> <span className="text-slate-500 font-medium normal-case text-[9px]">/team</span>
+              </span>
+            </div>
+          </div>
         </motion.div>
 
         {/* =========================================================================
