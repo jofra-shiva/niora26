@@ -1,4 +1,4 @@
-﻿import Link from 'next/link';
+import Link from 'next/link';
 import { HelpCircle, Mail, MessageSquare } from 'lucide-react';
 
 const FAQS = [
@@ -25,13 +25,13 @@ export default function HelpPage() {
 
       {/* Quick contact */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-        <a href="mailto:hackspark26@niitm.ac.in" className="glass-card-hover rounded-xl p-4 flex items-center gap-3">
+        <a href="mailto:niitmhackathonmca@gmail.com" className="glass-card-hover rounded-xl p-4 flex items-center gap-3">
           <div className="w-9 h-9 rounded-lg bg-indigo-50 flex items-center justify-center">
             <Mail className="w-4 h-4 text-indigo-500" />
           </div>
           <div>
             <p className="font-semibold text-sm text-slate-800">Email Support</p>
-            <p className="text-xs text-slate-400">hackspark26@niitm.ac.in</p>
+            <p className="text-xs text-slate-400">niitmhackathonmca@gmail.com</p>
           </div>
         </a>
         <Link href="/#contact" className="glass-card-hover rounded-xl p-4 flex items-center gap-3">

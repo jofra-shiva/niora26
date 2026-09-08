@@ -20,33 +20,20 @@ const IntroAnimation = dynamic(
 const INTRO_SHOWN_KEY = 'hackspark26-intro-shown';
 
 export default function HomePage() {
-  const [showIntro, setShowIntro] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
   const [contentVisible, setContentVisible] = useState(false);
 
   useEffect(() => {
-    // Show intro only once per session
-    try {
-      const alreadyShown = sessionStorage.getItem(INTRO_SHOWN_KEY);
-      if (!alreadyShown) {
-        setShowIntro(true);
-        // Safety fallback: reveal page content after 3.5s even if intro chunk fails on mobile
-        const fallbackTimer = setTimeout(() => {
-          setContentVisible(true);
-        }, 3500);
-        return () => clearTimeout(fallbackTimer);
-      } else {
-        setContentVisible(true);
-      }
-    } catch {
-      // Storage unavailable (e.g. private browsing mode)
+    // Safety fallback: reveal page content after 3.5s in case of any dynamic load issue
+    const fallbackTimer = setTimeout(() => {
       setContentVisible(true);
-    }
+    }, 3500);
+    return () => clearTimeout(fallbackTimer);
   }, []);
 
   const handleIntroComplete = () => {
     setShowIntro(false);
     setContentVisible(true);
-    sessionStorage.setItem(INTRO_SHOWN_KEY, 'true');
   };
 
   return (

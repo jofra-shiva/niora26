@@ -146,10 +146,7 @@ export default function ContactSection() {
               </div>
               <div className="min-w-0">
                 <p className="text-[9px] font-black font-mono uppercase tracking-[0.2em] text-cyan-400 mb-1">Email</p>
-                <a href="mailto:hackspark26@niitm.ac.in" className="text-xs sm:text-sm text-slate-300 hover:text-[#00F0FF] transition-colors break-all font-medium block">
-                  hackspark26@niitm.ac.in
-                </a>
-                <a href="mailto:niitmhackathonmca@gmail.com" className="text-xs sm:text-sm text-slate-300 hover:text-[#00F0FF] transition-colors break-all font-medium block mt-1">
+                <a href="mailto:niitmhackathonmca@gmail.com" className="text-xs sm:text-sm text-slate-300 hover:text-[#00F0FF] transition-colors break-all font-medium block">
                   niitmhackathonmca@gmail.com
                 </a>
               </div>

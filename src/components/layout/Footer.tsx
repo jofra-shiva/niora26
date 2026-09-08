@@ -97,17 +97,10 @@ export default function Footer() {
             {/* Email Contact Links */}
             <div className="space-y-2 mb-4">
               <a 
-                href="mailto:hackspark26@niitm.ac.in" 
-                className="flex items-center gap-2.5 p-2 rounded-lg bg-[#091128] border border-cyan-500/20 hover:border-cyan-400/60 text-xs text-slate-300 hover:text-cyan-400 transition-colors group"
-              >
-                <Mail className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span className="truncate">hackspark26@niitm.ac.in</span>
-              </a>
-              <a 
                 href="mailto:niitmhackathonmca@gmail.com" 
                 className="flex items-center gap-2.5 p-2 rounded-lg bg-[#091128] border border-cyan-500/20 hover:border-cyan-400/60 text-xs text-slate-300 hover:text-cyan-400 transition-colors group"
               >
-                <Mail className="w-4 h-4 text-purple-400 shrink-0" />
+                <Mail className="w-4 h-4 text-cyan-400 shrink-0" />
                 <span className="truncate">niitmhackathonmca@gmail.com</span>
               </a>
             </div>
