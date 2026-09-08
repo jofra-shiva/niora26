@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -68,6 +68,8 @@ export default function RegisterPage() {
         toast.error('This email is already registered. Please log in.');
       } else if (msg.includes('weak-password')) {
         toast.error('Password is too weak. Use at least 8 characters.');
+      } else if (msg.includes('API key') || msg.includes('api-key') || msg.includes('placeholder') || msg.includes('400') || msg.includes('Bad Request')) {
+        toast.error('Firebase API key is missing! Please configure your .env.local file with real Firebase credentials.');
       } else {
         toast.error('Registration failed. Please try again.');
       }
@@ -77,15 +79,17 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 py-12 relative bg-slate-50">
-      <div className="absolute inset-0 pointer-events-none"
+    <div className="min-h-screen flex items-center justify-center p-4 py-12 relative bg-[#050914] text-white overflow-hidden">
+      {/* Background Radial Glow Orbs */}
+      <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,240,255,0.15),transparent_65%),radial-gradient(ellipse_at_top,rgba(139,92,246,0.18),transparent_55%)]" />
+
+      {/* Cyber Grid Overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none z-0 opacity-20"
         style={{
-          backgroundImage: 'linear-gradient(to right, rgba(37,99,235,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(37,99,235,0.05) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
+          backgroundImage: 'linear-gradient(to right, rgba(0, 240, 255, 0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 240, 255, 0.15) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
         }}
-      />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at center, rgba(37,99,235,0.06) 0%, transparent 70%)' }}
       />
 
       <motion.div
@@ -95,82 +99,100 @@ export default function RegisterPage() {
         className="w-full max-w-md relative z-10"
       >
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-2.5 mb-6">
-            <div className="w-10 h-10 flex items-center justify-center bg-blue-600 rounded-xl shadow-sm">
-              <span className="font-logo text-2xl font-bold text-white">N</span>
+          <Link href="/" className="inline-flex items-center gap-3 mb-5 group">
+            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-cyan-400/50 shadow-[0_0_15px_rgba(0,240,255,0.4)] p-0.5 bg-white">
+              <Image src="/logoo.png" alt="HackSpark Logo" width={38} height={38} className="object-cover rounded-full" />
             </div>
-            <span className="font-logo text-2xl text-slate-900">HACKSPARK <span className="text-blue-600">'26</span></span>
+            <span className="font-heading font-black text-2xl text-white tracking-tight">
+              HackSpark <span className="text-[#00F0FF]">'26</span>
+            </span>
           </Link>
-          <h1 className="font-heading font-bold text-2xl text-slate-900">Create your account</h1>
-          <p className="text-sm text-slate-500 mt-1">Step 1 of 7 — Account Setup</p>
+          <h1 className="font-heading font-black text-2xl sm:text-3xl text-white">Create Your Account</h1>
+          <p className="text-xs font-mono font-bold text-cyan-300 mt-1 uppercase tracking-widest">Step 1 of 7 — Account Setup</p>
 
           {/* Progress bar */}
-          <div className="mt-4 h-1 bg-slate-100 rounded-full overflow-hidden">
-            <div className="h-full w-[14%] rounded-full" style={{ background: 'linear-gradient(90deg, #2563EB, #1D4ED8)' }} />
+          <div className="mt-4 h-1.5 bg-blue-950/80 rounded-full overflow-hidden border border-blue-500/20">
+            <div className="h-full w-[14%] rounded-full bg-gradient-to-r from-[#00F0FF] to-[#3B82F6] shadow-[0_0_10px_#00F0FF]" />
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
+        <div className="bg-[#070D22]/90 backdrop-blur-2xl rounded-2xl p-6 sm:p-8 border border-blue-500/30 shadow-[0_12px_40px_rgba(0,0,0,0.85)]">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             <div>
-              <label className="form-label">Full Name</label>
+              <label className="block text-xs font-bold text-cyan-300 uppercase tracking-wider mb-2">Full Name</label>
               <div className="relative">
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                <input {...register('fullName')} placeholder="John Doe" className="input-field pl-10" autoComplete="name" />
+                <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-cyan-400" />
+                <input
+                  {...register('fullName')}
+                  placeholder="John Doe"
+                  className="w-full bg-[#0B1536]/90 border border-blue-500/30 focus:border-[#00F0FF] focus:ring-1 focus:ring-[#00F0FF] rounded-xl py-3 pl-10 pr-4 text-sm text-white placeholder-slate-400 outline-none transition-all"
+                  autoComplete="name"
+                />
               </div>
-              {errors.fullName && <p className="text-xs text-red-500 mt-1">{errors.fullName.message}</p>}
+              {errors.fullName && <p className="text-xs text-red-400 mt-1">{errors.fullName.message}</p>}
             </div>
 
             <div>
-              <label className="form-label">Email Address</label>
+              <label className="block text-xs font-bold text-cyan-300 uppercase tracking-wider mb-2">Email Address</label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                <input {...register('email')} type="email" placeholder="you@college.edu" className="input-field pl-10" autoComplete="email" />
+                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-cyan-400" />
+                <input
+                  {...register('email')}
+                  type="email"
+                  placeholder="you@college.edu"
+                  className="w-full bg-[#0B1536]/90 border border-blue-500/30 focus:border-[#00F0FF] focus:ring-1 focus:ring-[#00F0FF] rounded-xl py-3 pl-10 pr-4 text-sm text-white placeholder-slate-400 outline-none transition-all"
+                  autoComplete="email"
+                />
               </div>
-              {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email.message}</p>}
+              {errors.email && <p className="text-xs text-red-400 mt-1">{errors.email.message}</p>}
             </div>
 
             <div>
-              <label className="form-label">Password</label>
+              <label className="block text-xs font-bold text-cyan-300 uppercase tracking-wider mb-2">Password</label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-cyan-400" />
                 <input
                   {...register('password')}
                   type={showPw ? 'text' : 'password'}
                   placeholder="Min 8 characters"
-                  className="input-field pl-10 pr-10"
+                  className="w-full bg-[#0B1536]/90 border border-blue-500/30 focus:border-[#00F0FF] focus:ring-1 focus:ring-[#00F0FF] rounded-xl py-3 pl-10 pr-10 text-sm text-white placeholder-slate-400 outline-none transition-all"
                   autoComplete="new-password"
                 />
-                <button type="button" onClick={() => setShowPw(!showPw)} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
+                <button type="button" onClick={() => setShowPw(!showPw)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white transition-colors">
                   {showPw ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
-              {errors.password && <p className="text-xs text-red-500 mt-1">{errors.password.message}</p>}
+              {errors.password && <p className="text-xs text-red-400 mt-1">{errors.password.message}</p>}
             </div>
 
             <div>
-              <label className="form-label">Confirm Password</label>
+              <label className="block text-xs font-bold text-cyan-300 uppercase tracking-wider mb-2">Confirm Password</label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-cyan-400" />
                 <input
                   {...register('confirmPassword')}
                   type={showPw ? 'text' : 'password'}
                   placeholder="Repeat password"
-                  className="input-field pl-10"
+                  className="w-full bg-[#0B1536]/90 border border-blue-500/30 focus:border-[#00F0FF] focus:ring-1 focus:ring-[#00F0FF] rounded-xl py-3 pl-10 pr-4 text-sm text-white placeholder-slate-400 outline-none transition-all"
                   autoComplete="new-password"
                 />
               </div>
-              {errors.confirmPassword && <p className="text-xs text-red-500 mt-1">{errors.confirmPassword.message}</p>}
+              {errors.confirmPassword && <p className="text-xs text-red-400 mt-1">{errors.confirmPassword.message}</p>}
             </div>
 
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-400 leading-relaxed">
               By creating an account, you agree to our{' '}
-              <Link href="/terms" className="text-indigo-500 hover:underline">Terms of Service</Link>
+              <Link href="/terms" className="text-[#00F0FF] hover:underline">Terms of Service</Link>
               {' '}and{' '}
-              <Link href="/privacy" className="text-indigo-500 hover:underline">Privacy Policy</Link>.
+              <Link href="/privacy" className="text-[#00F0FF] hover:underline">Privacy Policy</Link>.
             </p>
 
-            <button type="submit" disabled={loading} className="btn-primary w-full py-3" id="register-submit-btn">
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full py-3.5 rounded-full font-black text-sm text-white bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#7C3AED] hover:from-[#1D4ED8] hover:to-[#6D28D9] transition-all duration-200 shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] uppercase tracking-wider flex items-center justify-center gap-2 border border-blue-400/30 cursor-pointer"
+              id="register-submit-btn"
+            >
               {loading ? (
                 <><span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />Creating account...</>
               ) : (
@@ -179,10 +201,15 @@ export default function RegisterPage() {
             </button>
           </form>
 
-          <div className="divider my-6">or</div>
-          <p className="text-center text-sm text-slate-500">
+          <div className="flex items-center gap-3 my-6">
+            <div className="h-px flex-1 bg-blue-500/20" />
+            <span className="text-xs font-mono text-slate-400 uppercase">or</span>
+            <div className="h-px flex-1 bg-blue-500/20" />
+          </div>
+
+          <p className="text-center text-sm text-slate-300">
             Already registered?{' '}
-            <Link href="/login" className="text-indigo-600 font-semibold hover:text-indigo-800 transition-colors">
+            <Link href="/login" className="text-[#00F0FF] font-bold hover:underline transition-colors">
               Sign in
             </Link>
           </p>

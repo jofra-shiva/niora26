@@ -94,12 +94,12 @@ function HighlightCard({ item, index }: { item: typeof HIGHLIGHTS[0]; index: num
 
       {/* Card body */}
       <motion.div
-        className="relative w-full h-full bg-white rounded-[26px] p-6 sm:p-8 flex flex-col overflow-hidden z-10"
+        className="relative w-full h-full bg-[#070D22]/85 border border-blue-500/30 backdrop-blur-xl rounded-[22px] sm:rounded-[26px] p-5 sm:p-8 flex flex-col overflow-hidden z-10 text-white shadow-[0_12px_40px_rgba(0,0,0,0.6)]"
         style={{ boxShadow }}
       >
         {/* Background color fill */}
         <motion.div
-          className="absolute inset-0 rounded-[26px] pointer-events-none"
+          className="absolute inset-0 rounded-[22px] sm:rounded-[26px] pointer-events-none"
           style={{
             background: item.fillColor,
             opacity: bgOpacity,
@@ -107,22 +107,22 @@ function HighlightCard({ item, index }: { item: typeof HIGHLIGHTS[0]; index: num
         />
 
         {/* Subtle Background Icon watermark */}
-        <div className="absolute right-0 bottom-0 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity duration-500 pointer-events-none">
-          <Icon className="w-48 h-48" strokeWidth={1} />
+        <div className="absolute right-0 bottom-0 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity duration-500 pointer-events-none text-white">
+          <Icon className="w-36 h-36 sm:w-48 sm:h-48" strokeWidth={1} />
         </div>
 
         {/* Header (Icon + Text) */}
-        <div className="flex items-center gap-4 mb-6 relative z-10">
+        <div className="flex items-center gap-3.5 sm:gap-4 mb-4 sm:mb-6 relative z-10">
           {/* Modern Icon instead of raster image */}
           <div 
-            className="w-16 h-16 shrink-0 rounded-2xl flex items-center justify-center shadow-sm relative overflow-hidden"
+            className="w-12 h-12 sm:w-16 sm:h-16 shrink-0 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-sm relative overflow-hidden"
             style={{ 
-              background: `linear-gradient(135deg, ${item.borderColor}15, ${item.borderColor}30)`,
-              border: `1px solid ${item.borderColor}40`
+              background: `linear-gradient(135deg, ${item.borderColor}25, ${item.borderColor}40)`,
+              border: `1px solid ${item.borderColor}60`
             }}
           >
             <Icon 
-              className="w-8 h-8 relative z-10" 
+              className="w-6 h-6 sm:w-8 sm:h-8 relative z-10" 
               style={{ color: item.borderColor }} 
               strokeWidth={2.5}
             />
@@ -130,19 +130,19 @@ function HighlightCard({ item, index }: { item: typeof HIGHLIGHTS[0]; index: num
 
           <div className="flex flex-col justify-center">
             <motion.h3
-              className="font-bold text-[32px] leading-none tracking-tight text-slate-900"
+              className="font-bold text-2xl sm:text-[32px] leading-none tracking-tight text-white"
               style={{ opacity: textOpacity }}
             >
               {item.highlight}
             </motion.h3>
-            <span className="text-xs font-bold text-slate-500 uppercase tracking-widest mt-1.5">
+            <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">
               {item.label}
             </span>
           </div>
         </div>
 
         {/* Description */}
-        <p className="text-slate-600 leading-relaxed font-medium relative z-10 mt-auto">
+        <p className="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed font-medium relative z-10 mt-auto">
           {item.desc}
         </p>
 
@@ -162,37 +162,23 @@ export default function AboutSection() {
     target: sectionRef,
     offset: ['start start', 'end start'],
   });
-  
-  // Parallax movement for the background image
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
 
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section ref={sectionRef} id="about" className="pt-8 pb-10 relative bg-white overflow-hidden">
-      {/* ––– Animated Aurora & Grid Background ––– */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <motion.div 
-          animate={{ x: [0, 40, 0], y: [0, 30, 0], scale: [1, 1.1, 1] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-[20%] -left-[10%] w-[60%] h-[70%] bg-blue-400/20 rounded-full blur-[120px] mix-blend-multiply" 
-        />
-        <motion.div 
-          animate={{ x: [0, -30, 0], y: [0, 50, 0], scale: [1, 1.2, 1] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[10%] -right-[10%] w-[50%] h-[60%] bg-purple-400/20 rounded-full blur-[120px] mix-blend-multiply" 
-        />
-        <motion.div 
-          animate={{ x: [0, 30, 0], y: [0, -40, 0], scale: [1, 1.1, 1] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -bottom-[20%] left-[20%] w-[60%] h-[60%] bg-pink-400/15 rounded-full blur-[120px] mix-blend-multiply" 
-        />
-        {/* Subtle Modern Grid */}
-        <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.5]" />
-        {/* Top Fade Edge */}
-        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white to-transparent" />
-      </div>
+    <section ref={sectionRef} id="about" className="pt-8 sm:pt-12 pb-12 sm:pb-16 relative bg-[#050914] text-white overflow-hidden">
+      {/* Background Radial Glow Orbs */}
+      <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,240,255,0.12),transparent_65%),radial-gradient(ellipse_at_top,rgba(139,92,246,0.15),transparent_55%)]" />
+
+      {/* Cyber Grid Lines Overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none z-0 opacity-15"
+        style={{
+          backgroundImage: 'linear-gradient(to right, rgba(0, 240, 255, 0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 240, 255, 0.15) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }}
+      />
 
       <div className="section-container relative z-10 max-w-6xl mx-auto px-4">
         <motion.div
@@ -200,34 +186,34 @@ export default function AboutSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
-          className="text-center mb-10 sm:mb-16"
+          className="text-center mb-8 sm:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 mb-6">
-            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-            <span className="text-xs font-black tracking-widest uppercase text-blue-700">
-              About HackSpark '26
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 sm:px-4 sm:py-1.5 rounded-full bg-[#070D22]/80 border border-blue-500/30 mb-4 sm:mb-6 shadow-[0_0_15px_rgba(0,240,255,0.15)]">
+            <span className="w-2 h-2 rounded-full bg-[#00F0FF] animate-pulse" />
+            <span className="text-[10px] sm:text-xs font-black tracking-widest uppercase text-[#00F0FF]">
+              About HackSpark &apos;26
             </span>
           </div>
 
-          <h2 className="font-heading font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-slate-900 tracking-tight leading-tight mb-4 sm:mb-6">
-            What is <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-500">HackSpark?</span>
+          <h2 className="font-heading font-black text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-tight mb-3 sm:mb-6">
+            What is <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] via-[#00F0FF] to-[#8B5CF6]">HackSpark?</span>
           </h2>
 
-          <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-slate-600 max-w-4xl mx-auto font-medium">
-            HackSpark '26 is a premium <span className="font-bold text-slate-900 border-b-2 border-blue-200">24-hour hackathon</span> organized by the PG Department of Computer Applications,
-            Nehru Institute of Information Technology and Management in collaboration with Nehru College of Management. Participants build <span className="font-bold text-slate-900 border-b-2 border-blue-200">real-world solutions</span>{' '}
+          <p className="text-xs xs:text-sm sm:text-lg lg:text-xl leading-relaxed text-slate-300 max-w-4xl mx-auto font-medium px-1 sm:px-0">
+            HackSpark &apos;26 is a premium <span className="font-bold text-cyan-300 border-b-2 border-cyan-500/40">24-hour hackathon</span> organized by the PG Department of Computer Applications,
+            Nehru Institute of Information Technology and Management in collaboration with Nehru College of Management. Participants build <span className="font-bold text-cyan-300 border-b-2 border-cyan-500/40">real-world solutions</span>{' '}
             under time pressure, compete for prizes, and push the boundaries of technology.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {HIGHLIGHTS.map((item, i) => (
             <HighlightCard key={item.highlight} item={item} index={i} />
           ))}
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
     </section>
   );
 }

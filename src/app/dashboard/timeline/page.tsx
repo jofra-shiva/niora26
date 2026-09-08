@@ -1,7 +1,7 @@
 import { Clock, Calendar } from 'lucide-react';
 
 const TIMELINE = [
-  { time: '09 Oct · 09:00 AM', title: 'Registration & Check-in', type: 'registration', color: 'bg-indigo-500' },
+  { time: '09 Oct · 09:00 AM', title: 'Check-in', type: 'registration', color: 'bg-indigo-500' },
   { time: '09 Oct · 10:00 AM', title: 'Inauguration & Kickoff', type: 'ceremony', color: 'bg-violet-500' },
   { time: '09 Oct · 01:00 PM', title: 'Lunch Break', type: 'meal', color: 'bg-amber-500' },
   { time: '09 Oct · 06:00 PM', title: 'Mentorship Round 1', type: 'event', color: 'bg-cyan-500' },

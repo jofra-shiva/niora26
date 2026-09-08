@@ -1,70 +1,14 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import { Zap, Calendar, Clock, Timer, Hourglass, ArrowRight, Download, FileText, Presentation } from 'lucide-react';
 import { EVENT_START_DATE } from '@/lib/utils/constants';
 
-/* -- Clean Countdown Unit -- */
-function CountUnit({ value, max, label }: { value: number; max: number; label: string }) {
-  const str = value.toString().padStart(2, '0');
-  const percentage = (value / max) * 100;
-  const radius = 38;
-  const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (percentage / 100) * circumference;
-
-  return (
-    <div className="flex flex-col items-center gap-3">
-      <div className="relative w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
-        {/* SVG Progress Ring */}
-        <svg className="absolute inset-0 w-full h-full -rotate-90 drop-shadow-sm" viewBox="0 0 84 84">
-          <circle
-            cx="42"
-            cy="42"
-            r={radius}
-            className="stroke-slate-200/40"
-            strokeWidth="4"
-            fill="none"
-          />
-          <motion.circle
-            cx="42"
-            cy="42"
-            r={radius}
-            className="stroke-blue-600"
-            strokeWidth="4"
-            fill="none"
-            strokeLinecap="round"
-            initial={{ strokeDashoffset: circumference }}
-            animate={{ strokeDashoffset }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
-            style={{ strokeDasharray: circumference }}
-          />
-        </svg>
-
-        {/* Inner Circle Background */}
-        <div className="absolute inset-2 sm:inset-2.5 rounded-full flex items-center justify-center bg-white/40 backdrop-blur-md shadow-[inset_0_2px_10px_rgba(255,255,255,0.4),0_8px_32px_rgba(37,99,235,0.08)] border border-white/60">
-          <AnimatePresence mode="popLayout">
-            <motion.span
-              key={str}
-              initial={{ opacity: 0, scale: 0.5, filter: 'blur(4px)' }}
-              animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, scale: 1.5, filter: 'blur(4px)' }}
-              transition={{ duration: 0.4, ease: "backOut" }}
-              className="font-heading font-black text-2xl sm:text-4xl text-slate-900 tracking-tight"
-            >
-              {str}
-            </motion.span>
-          </AnimatePresence>
-        </div>
-      </div>
-      <span className="text-[10px] sm:text-xs font-black text-slate-500 uppercase tracking-[0.2em]">{label}</span>
-    </div>
-  );
-}
-
-function FlipClock() {
+/* -- 4 Dark Cyber Glass Cards Countdown -- */
+function CountdownCards() {
   const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
   const [done, setDone] = useState(false);
 
@@ -85,247 +29,480 @@ function FlipClock() {
     return () => clearInterval(id);
   }, []);
 
-  if (done || !timeLeft) return null;
+  if (done) return null;
+
+  const daysStr = timeLeft ? timeLeft.days.toString().padStart(2, '0') : '31';
+  const hoursStr = timeLeft ? timeLeft.hours.toString().padStart(2, '0') : '17';
+  const minsStr = timeLeft ? timeLeft.minutes.toString().padStart(2, '0') : '55';
+  const secsStr = timeLeft ? timeLeft.seconds.toString().padStart(2, '0') : '17';
+
+  const units = [
+    { label: 'DAYS', value: daysStr, icon: Calendar, color: 'text-[#00F0FF]', border: 'border-[#00F0FF]/40 shadow-[0_0_20px_rgba(0,240,255,0.15)]' },
+    { label: 'HOURS', value: hoursStr, icon: Clock, color: 'text-[#3B82F6]', border: 'border-[#3B82F6]/40 shadow-[0_0_20px_rgba(59,130,246,0.15)]' },
+    { label: 'MINS', value: minsStr, icon: Timer, color: 'text-[#00F0FF]', border: 'border-[#00F0FF]/40 shadow-[0_0_20px_rgba(0,240,255,0.15)]' },
+    { label: 'SECS', value: secsStr, icon: Hourglass, color: 'text-[#8B5CF6]', border: 'border-[#8B5CF6]/40 shadow-[0_0_20px_rgba(139,92,246,0.15)]' },
+  ];
 
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10, transition: { duration: 0.5 } }}
-        transition={{ duration: 0.6, delay: 0.65 }}
-        className="flex items-center gap-2 sm:gap-4"
-      >
-        <CountUnit value={timeLeft.days} max={30} label="Days" />
-        <div className="flex flex-col gap-2 pb-8">
-          <div className="w-1.5 h-1.5 rounded-full bg-slate-300" />
-          <div className="w-1.5 h-1.5 rounded-full bg-slate-300" />
-        </div>
-        <CountUnit value={timeLeft.hours} max={24} label="Hours" />
-        <div className="flex flex-col gap-2 pb-8">
-          <div className="w-1.5 h-1.5 rounded-full bg-slate-300" />
-          <div className="w-1.5 h-1.5 rounded-full bg-slate-300" />
-        </div>
-        <CountUnit value={timeLeft.minutes} max={60} label="Mins" />
-        <div className="flex flex-col gap-2 pb-8">
-          <div className="w-1.5 h-1.5 rounded-full bg-blue-300" />
-          <div className="w-1.5 h-1.5 rounded-full bg-blue-300" />
-        </div>
-        <CountUnit value={timeLeft.seconds} max={60} label="Secs" />
-      </motion.div>
-    </AnimatePresence>
+    <div className="grid grid-cols-4 gap-1.5 xs:gap-2 sm:gap-3 w-full max-w-lg mx-auto my-2 px-1">
+      {units.map((u) => {
+        const Icon = u.icon;
+        return (
+          <motion.div
+            key={u.label}
+            whileHover={{ y: -2, scale: 1.02 }}
+            className={`flex flex-col items-center justify-center py-1.5 xs:py-2 sm:py-2.5 px-1 xs:px-2 rounded-lg sm:rounded-xl bg-[#070D22]/85 ${u.border} backdrop-blur-2xl transition-all duration-300 relative overflow-hidden group`}
+          >
+            {/* Top Glowing Icon */}
+            <div className="mb-0.5">
+              <Icon className={`w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 ${u.color} drop-shadow-[0_0_6px_currentColor]`} />
+            </div>
+
+            {/* Label */}
+            <span className="text-[8px] xs:text-[9px] font-bold text-slate-400 tracking-[0.1em] sm:tracking-[0.18em] uppercase mb-0.5">
+              {u.label}
+            </span>
+
+            {/* Value Number */}
+            <span className="font-heading font-black text-base xs:text-lg sm:text-2xl text-white tracking-tight drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]">
+              {u.value}
+            </span>
+          </motion.div>
+        );
+      })}
+    </div>
   );
 }
 
-
-
-export default function HeroSection() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.4;
-    }
-  }, []);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-  };
+/* -- Floating Code Bits & Binary Symbols Background Animation -- */
+function FloatingCodeBits() {
+  const codeItems = [
+    { text: '01011', top: '15%', left: '8%', duration: 7, delay: 0, color: 'text-cyan-400/35' },
+    { text: '</>', top: '28%', left: '18%', duration: 6, delay: 1, color: 'text-purple-400/40' },
+    { text: '{ ... }', top: '70%', left: '12%', duration: 8, delay: 0.5, color: 'text-blue-400/35' },
+    { text: 'AI', top: '82%', left: '22%', duration: 6.5, delay: 2, color: 'text-cyan-300/30' },
+    { text: 'fn() =>', top: '20%', right: '12%', duration: 7.5, delay: 1.5, color: 'text-purple-300/35' },
+    { text: 'HACK', top: '65%', right: '16%', duration: 8.5, delay: 0.8, color: 'text-cyan-400/30' },
+    { text: '01001', top: '35%', right: '8%', duration: 9, delay: 2.2, color: 'text-blue-300/35' },
+    { text: '1010', top: '85%', right: '25%', duration: 7, delay: 1.2, color: 'text-pink-400/30' },
+    { text: '<code/>', top: '48%', left: '6%', duration: 6.8, delay: 2.5, color: 'text-cyan-400/35' },
+    { text: 'import AI', top: '52%', right: '5%', duration: 7.8, delay: 1.8, color: 'text-indigo-400/35' },
+  ];
 
   return (
-    <section
-      className="relative w-full overflow-hidden"
-      onMouseMove={handleMouseMove}
-    >
-      {/* ––– Video Background ––– */}
-      <video
-        autoPlay muted loop playsInline
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        src="/vidssave.com White Polygons Motion 1 1080P.mp4"
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      {codeItems.map((item, i) => (
+        <motion.span
+          key={i}
+          initial={{ y: 0, opacity: 0.2 }}
+          animate={{
+            y: [-15, 15, -15],
+            opacity: [0.2, 0.45, 0.2],
+            scale: [0.95, 1.05, 0.95],
+          }}
+          transition={{
+            duration: item.duration,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: item.delay,
+          }}
+          style={{
+            top: item.top,
+            left: item.left,
+            right: item.right,
+          }}
+          className={`absolute font-mono font-bold text-xs sm:text-sm tracking-wider select-none backdrop-blur-[1px] drop-shadow-[0_0_8px_currentColor] ${item.color}`}
+        >
+          {item.text}
+        </motion.span>
+      ))}
+    </div>
+  );
+}
+
+export default function HeroSection() {
+  return (
+    <section className="relative w-full overflow-hidden bg-[#050914] text-white min-h-screen flex flex-col items-center justify-center pt-28 pb-16 px-4">
+      
+      {/* Background Radial Glow Orbs */}
+      <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,240,255,0.18),transparent_65%),radial-gradient(ellipse_at_top,rgba(139,92,246,0.2),transparent_55%)]" />
+
+      {/* Cyber Grid Lines Overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none z-0 opacity-20"
+        style={{
+          backgroundImage: 'linear-gradient(to right, rgba(0, 240, 255, 0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 240, 255, 0.15) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }}
       />
 
-      {/* ––– Blur Overlay ––– */}
-      <div className="absolute inset-0 z-0 backdrop-blur-[3px]" />
+      {/* Floating Code Bits & Binary Symbols Background Animation */}
+      <FloatingCodeBits />
 
-      {/* ––– Mouse Pointer Glow ––– */}
+      {/* Bottom Left Cyber Motto Badge: "THINK BEYOND LIMITS" (Elevated, Larger & Stylish) */}
       <motion.div
-        className="pointer-events-none absolute inset-0 z-[1]"
-        animate={{
-          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(37, 99, 235, 0.1), transparent 70%)`
+        initial={{ opacity: 0, x: -40, scale: 0.9 }}
+        animate={{ opacity: 1, x: 0, scale: 1, y: [0, -8, 0] }}
+        transition={{
+          opacity: { duration: 0.8, delay: 0.3 },
+          scale: { duration: 0.8 },
+          y: { duration: 4.5, repeat: Infinity, ease: 'easeInOut' }
         }}
-        transition={{ type: 'tween', ease: 'linear', duration: 0 }}
-      />
+        className="hidden lg:flex items-center gap-3 absolute bottom-28 left-8 xl:bottom-36 xl:left-14 pointer-events-none z-10"
+      >
+        <div className="flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-[#070D22]/90 border border-cyan-400/50 backdrop-blur-2xl shadow-[0_0_30px_rgba(0,240,255,0.35)] group relative overflow-hidden">
+          {/* Subtle Ambient Pulse Light */}
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-transparent pointer-events-none" />
 
-      {/* ––– Light tint ––– */}
-      <div
-        className="absolute inset-0 z-[1] pointer-events-none"
-        style={{
-          background: 'linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.15) 60%, rgba(255,255,255,0.3) 100%)',
+          {/* Electric Zap Icon & Pulsing Beacon */}
+          <div className="relative flex items-center justify-center">
+            <Zap className="w-5 h-5 text-[#00F0FF] drop-shadow-[0_0_10px_#00F0FF] fill-[#00F0FF]/30" />
+            <span className="absolute -top-0.5 -right-0.5 flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00F0FF] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00F0FF]"></span>
+            </span>
+          </div>
+
+          {/* Stylish Larger Typography */}
+          <span className="font-heading font-black italic text-sm sm:text-base lg:text-lg uppercase tracking-[0.25em] text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-[#00F0FF] drop-shadow-[0_0_12px_rgba(0,240,255,0.6)]">
+            THINK BEYOND LIMITS
+          </span>
+        </div>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 30, scale: 0.9 }}
+        animate={{ opacity: 0.9, y: [0, -10, 0], scale: 1 }}
+        transition={{
+          opacity: { duration: 1, delay: 0.4 },
+          scale: { duration: 0.8 },
+          y: { duration: 5, repeat: Infinity, ease: 'easeInOut' }
         }}
-      />
+        className="hidden lg:block absolute bottom-2 right-2 xl:bottom-6 xl:right-8 pointer-events-none z-10 w-72 sm:w-80 md:w-96 lg:w-[400px] xl:w-[480px] h-64 sm:h-72 lg:h-80 xl:h-96"
+      >
+        {/* Neon Glow Aura Behind Laptop */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(0,240,255,0.25),transparent_70%)] blur-2xl pointer-events-none" />
 
-      {/* ––– Grid overlay ––– */}
-      <div
-        className="absolute inset-0 pointer-events-none z-[2]"
-        style={{
-          backgroundImage: 'linear-gradient(to right, rgba(99,155,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(99,155,255,0.04) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }}
-      />
+        <div className="relative w-full h-full">
+          <Image
+            src="/laptop.png"
+            alt="HackSpark Coding Laptop"
+            fill
+            className="object-contain drop-shadow-[0_0_35px_rgba(0,240,255,0.35)]"
+            priority
+          />
+        </div>
+      </motion.div>
 
-      {/* ––– Blur orbs (Static to prevent lag) ––– */}
-      <div
-        className="absolute top-[-100px] right-[-100px] w-[480px] h-[480px] rounded-full pointer-events-none z-[2]"
-        style={{ background: 'radial-gradient(circle, rgba(99,155,255,0.18) 0%, rgba(37,99,235,0.08) 50%, transparent 75%)', filter: 'blur(40px)' }}
-      />
-      <div
-        className="absolute bottom-[-80px] left-[-80px] w-[360px] h-[360px] rounded-full pointer-events-none z-[2]"
-        style={{ background: 'radial-gradient(circle, rgba(147,197,253,0.15) 0%, rgba(37,99,235,0.06) 50%, transparent 75%)', filter: 'blur(32px)' }}
-      />
-
-      {/* ---- Main Content First Screen (100svh) ---- */}
-      <div className="relative z-10 w-full min-h-[100svh] max-w-6xl mx-auto flex flex-col items-center justify-center text-center pt-28 pb-10 sm:pt-24 md:pt-32 px-4">
+      {/* ---- Main Screen Contents ---- */}
+      <div className="relative z-10 w-full max-w-[1450px] mx-auto flex flex-col items-center text-center">
         
-        {/* ---- College Badge ---- */}
+        {/* =========================================================================
+            INSTITUTIONAL / COLLEGE BRANDING FROSTED GLASS BANNER (FULL WIDTH TO CORNERS)
+            ========================================================================= */}
         <motion.div
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.05 }}
-          className="w-full sm:w-auto mb-2 sm:mb-3"
+          transition={{ duration: 0.6, delay: 0.05 }}
+          className="w-full mb-4 sm:mb-6 px-1 sm:px-4 lg:px-6"
         >
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-4 sm:gap-6 rounded-2xl bg-white/95 backdrop-blur-xl border border-slate-200 shadow-[0_8px_32px_rgba(0,0,0,0.08)] p-4 sm:p-5 hover:shadow-[0_16px_48px_rgba(0,0,0,0.12)] hover:bg-white transition-all duration-500 w-full max-w-4xl">
-            <div className="flex items-center justify-center gap-4">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-white flex items-center justify-center border border-slate-100 shadow-sm shrink-0 overflow-hidden">
-                <Image src="/footer.png" alt="NIITM" width={40} height={40} className="object-contain" />
-              </div>
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-white flex items-center justify-center border border-slate-100 shadow-sm shrink-0 overflow-hidden">
-                <Image src="/images.jpg" alt="Partner" width={42} height={42} className="object-contain rounded-xl" />
-              </div>
-            </div>
+          <div className="p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl bg-[#070D22]/90 border border-cyan-400/30 backdrop-blur-2xl shadow-[0_0_20px_rgba(0,240,255,0.12)] w-full">
             
-            {/* Divider - Vertical on lg, Horizontal on small */}
-            <div className="hidden lg:block w-[1px] h-20 bg-gradient-to-b from-transparent via-slate-300 to-transparent" />
-            <div className="lg:hidden w-32 h-[1px] bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
-            
-            <div className="flex flex-col justify-center items-center text-center px-2">
-              <p className="text-lg sm:text-xl lg:text-2xl font-black text-slate-900 tracking-wide uppercase leading-tight drop-shadow-sm">
-                Nehru Institute of Information Technology <span className="text-blue-600">&amp;</span> Management
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-2 lg:gap-3 mt-2">
-                <p className="text-[10px] sm:text-xs text-slate-500 font-bold tracking-[0.2em] uppercase">
-                  In Association With
+            {/* Mobile Layout (< md): 3 Logos on top row, College text below */}
+            <div className="flex md:hidden flex-col items-center gap-3.5 w-full">
+              {/* Top Row: 3 Logos */}
+              <div className="flex items-center justify-center gap-3 xs:gap-4">
+                <div className="w-12 h-12 xs:w-14 xs:h-14 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_12px_rgba(0,240,255,0.25)] p-1.5 shrink-0">
+                  <Image src="/footer.png" alt="NIITM" width={52} height={52} className="object-contain" />
+                </div>
+                <div className="w-12 h-12 xs:w-14 xs:h-14 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_12px_rgba(0,240,255,0.25)] p-1.5 shrink-0">
+                  <Image src="/images.jpg" alt="Partner" width={52} height={52} className="object-contain rounded-full" />
+                </div>
+                <div className="w-12 h-12 xs:w-14 xs:h-14 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_12px_rgba(0,240,255,0.25)] p-1.5 shrink-0">
+                  <Image src="/ngi-7051616-logo.png" alt="NCM" width={52} height={52} className="object-contain" />
+                </div>
+              </div>
+
+              {/* Below: College Name Text */}
+              <div className="flex flex-col justify-center items-center text-center px-1 w-full">
+                <h2 className="text-[12px] xs:text-[13px] font-heading font-black text-white tracking-tight uppercase leading-snug text-center drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]">
+                  Nehru Institute of Information Technology <span className="text-[#00F0FF] font-black">&amp;</span> Management
+                </h2>
+                <p className="text-[10px] xs:text-[11px] font-black tracking-[0.2em] uppercase mt-1 mb-0.5 text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#D946EF] drop-shadow-[0_0_6px_rgba(168,85,247,0.4)]">
+                  IN ASSOCIATION WITH
                 </p>
-                <span className="hidden sm:block w-1.5 h-1.5 rounded-sm bg-blue-500/80 rotate-45" />
-                <p className="text-xs sm:text-base font-black text-slate-800 tracking-wider uppercase leading-tight">
+                <p className="text-[13px] xs:text-[14px] font-black text-white uppercase tracking-wider leading-snug drop-shadow-[0_0_6px_rgba(255,255,255,0.2)]">
                   Nehru College of Management
                 </p>
               </div>
             </div>
 
-            {/* Divider - Vertical on lg, Horizontal on small */}
-            <div className="hidden lg:block w-[1px] h-20 bg-gradient-to-b from-transparent via-slate-300 to-transparent" />
-            <div className="lg:hidden w-32 h-[1px] bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
+            {/* Desktop / Tablet Layout (>= md): Left logos, Center text, Right logo */}
+            <div className="hidden md:flex flex-col lg:flex-row items-center justify-between gap-4 sm:gap-6 w-full">
+              {/* Left Logos */}
+              <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_12px_rgba(0,240,255,0.2)] p-1.5 sm:p-2">
+                  <Image src="/footer.png" alt="NIITM" width={60} height={60} className="object-contain" />
+                </div>
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_12px_rgba(0,240,255,0.2)] p-1.5 sm:p-2">
+                  <Image src="/images.jpg" alt="Partner" width={60} height={60} className="object-contain rounded-full" />
+                </div>
+              </div>
 
-            <div className="flex items-center justify-center">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-white flex items-center justify-center border border-slate-100 shadow-sm shrink-0 overflow-hidden">
-                <Image src="/ngi-7051616-logo.png" alt="NCM" width={48} height={48} className="object-contain" />
+              {/* Center College Text */}
+              <div className="flex flex-col justify-center items-center text-center px-2 flex-1 min-w-0">
+                <h2 className="text-base md:text-xl lg:text-2xl xl:text-[27px] font-heading font-black text-white tracking-tight uppercase leading-tight text-center whitespace-nowrap drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]">
+                  Nehru Institute of Information Technology <span className="text-[#00F0FF] font-black">&amp;</span> Management
+                </h2>
+                <p className="text-xs sm:text-sm md:text-base font-black tracking-[0.25em] uppercase mt-2 mb-1 text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#D946EF] drop-shadow-[0_0_6px_rgba(168,85,247,0.4)]">
+                  IN ASSOCIATION WITH
+                </p>
+                <p className="text-sm sm:text-lg md:text-xl lg:text-2xl font-black text-white uppercase tracking-wider leading-snug drop-shadow-[0_0_6px_rgba(255,255,255,0.2)]">
+                  Nehru College of Management
+                </p>
+              </div>
+
+              {/* Right Logo */}
+              <div className="flex items-center shrink-0">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_12px_rgba(0,240,255,0.2)] p-1.5 sm:p-2">
+                  <Image src="/ngi-7051616-logo.png" alt="NCM" width={60} height={60} className="object-contain" />
+                </div>
               </div>
             </div>
+
           </div>
         </motion.div>
 
-        {/* ––– Event Label ––– */}
+        {/* ---- Organizes Banner (Outside & Below Box) ---- */}
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: -6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex items-center justify-center gap-3 mb-2 sm:mb-4"
+          className="flex items-center justify-center gap-2 sm:gap-4 mb-4 sm:mb-8 px-2"
         >
-          <div className="w-8 h-px bg-slate-400" />
-          <span className="text-[10px] text-slate-500 uppercase tracking-[0.35em] font-bold">
-            Organizes National Level Hackathon &apos;26
+          <div className="w-4 sm:w-16 h-0.5 bg-gradient-to-r from-transparent to-[#00F0FF] shrink-0" />
+          <span className="text-xs sm:text-base md:text-lg font-black text-[#00F0FF] tracking-[0.12em] sm:tracking-[0.2em] uppercase text-center drop-shadow-[0_0_12px_#00F0FF]">
+            Organizes 24 Hours Hackathon &apos;26
           </span>
-          <div className="w-8 h-px bg-slate-400" />
+          <div className="w-4 sm:w-16 h-0.5 bg-gradient-to-l from-transparent to-[#00F0FF] shrink-0" />
         </motion.div>
 
-
-        {/* ––– Main Title ––– */}
+        {/* =========================================================================
+            MAIN TITLE: HACKSPARK '26 WITH ZIG-ZAG LIGHTNING LINE TOUCHING 'H'
+            ========================================================================= */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="mb-4 sm:mb-6 relative"
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="mb-6 sm:mb-8 relative w-full flex flex-col items-center justify-center py-2"
         >
-          {/* Animated Glow Behind Text */}
-          <div className="absolute inset-0 blur-3xl opacity-40 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mix-blend-multiply" />
-          
-          <h1 className="relative font-heading font-black text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tighter leading-none flex items-start justify-center flex-wrap">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-violet-600 to-fuchsia-600 drop-shadow-[0_0_15px_rgba(139,92,246,0.3)]">
-              HACKSPARK
-            </span>
-            <span className="text-3xl sm:text-4xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-br from-fuchsia-500 to-pink-500 mt-2 sm:mt-4 ml-1 sm:ml-2 drop-shadow-[0_0_15px_rgba(236,72,153,0.4)]">
-              &apos;26
-            </span>
-          </h1>
+          <div className="relative inline-flex items-center justify-center">
+            {/* ZIG-ZAG ELECTRIC LIGHTNING LINE TOUCHING 'H' (CONTINUOUS ELECTRIC SURGE WAVE ANIMATION) */}
+            <div className="hidden sm:flex items-center absolute right-full top-1/2 -translate-y-1/2 pr-0 pointer-events-none z-20">
+              <div className="relative flex items-center justify-end">
+                <svg className="w-24 sm:w-36 md:w-48 lg:w-56 h-12 text-[#00F0FF] overflow-visible" viewBox="0 0 200 40" fill="none">
+                  <defs>
+                    <filter id="electric-glow" x="-20%" y="-20%" width="140%" height="140%">
+                      <feGaussianBlur stdDeviation="3" result="blur" />
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                    <linearGradient id="electric-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#00F0FF" stopOpacity="0.2" />
+                      <stop offset="60%" stopColor="#00F0FF" stopOpacity="0.9" />
+                      <stop offset="100%" stopColor="#FFFFFF" stopOpacity="1" />
+                    </linearGradient>
+                  </defs>
+
+                  {/* Faded Base Lightning Trace */}
+                  <path
+                    d="M 0 20 L 40 20 L 60 8 L 85 32 L 110 10 L 135 30 L 160 15 L 180 25 L 200 20"
+                    stroke="#00F0FF"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    opacity="0.35"
+                  />
+
+                  {/* Traveling High-Voltage Cyan Electric Wave Surge */}
+                  <motion.path
+                    d="M 0 20 L 40 20 L 60 8 L 85 32 L 110 10 L 135 30 L 160 15 L 180 25 L 200 20"
+                    stroke="url(#electric-grad)"
+                    strokeWidth="3.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    filter="url(#electric-glow)"
+                    strokeDasharray="60 140"
+                    animate={{ strokeDashoffset: [200, 0] }}
+                    transition={{ duration: 1.4, repeat: Infinity, ease: 'linear' }}
+                  />
+
+                  {/* Inner Pure White High-Voltage Core Wave */}
+                  <motion.path
+                    d="M 0 20 L 40 20 L 60 8 L 85 32 L 110 10 L 135 30 L 160 15 L 180 25 L 200 20"
+                    stroke="#FFFFFF"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeDasharray="30 170"
+                    animate={{ strokeDashoffset: [200, 0] }}
+                    transition={{ duration: 1.4, repeat: Infinity, ease: 'linear' }}
+                  />
+                </svg>
+
+                {/* Electric Contact Node Directly Touching 'H' */}
+                <div className="relative -ml-1 flex items-center justify-center">
+                  <span className="w-3.5 h-3.5 rounded-full bg-[#00F0FF] shadow-[0_0_20px_#00F0FF] shrink-0" />
+                </div>
+              </div>
+            </div>
+
+            {/* ==================== MAIN CENTERPIECE TITLE TEXT ==================== */}
+            <h1 className="relative font-heading font-black text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-[95px] xl:text-[108px] tracking-tight leading-none flex items-baseline justify-center z-10 select-none flex-wrap">
+              {/* HACK (PURE WHITE) */}
+              <span className="text-white font-black tracking-tight relative">
+                HACK
+              </span>
+
+              {/* SPARK (GRADIENT BLUE/CYAN) */}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#00F0FF] font-black tracking-tight ml-0.5 sm:ml-1">
+                SPARK
+              </span>
+
+              {/* '26 (GRADIENT PURPLE/PINK) WITH PERFECTLY CENTERED RIGHT ELECTRIC LINE */}
+              <span className="relative inline-flex items-center ml-1 sm:ml-2">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#D946EF] text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black align-baseline tracking-tight">
+                  &apos;26
+                </span>
+
+                {/* ZIG-ZAG ELECTRIC LIGHTNING LINE TOUCHING '26' (CONTINUOUS ELECTRIC SURGE WAVE ANIMATION) */}
+                <div className="hidden sm:flex items-center absolute left-full top-1/2 -translate-y-1/2 pl-0 pointer-events-none z-20">
+                  <div className="relative flex items-center justify-start">
+                    {/* Electric Contact Node Directly Touching '26' */}
+                    <div className="relative -mr-1 flex items-center justify-center">
+                      <span className="w-3.5 h-3.5 rounded-full bg-[#8B5CF6] shadow-[0_0_20px_#8B5CF6] shrink-0" />
+                    </div>
+
+                    <svg className="w-24 sm:w-36 md:w-48 lg:w-56 h-12 text-[#8B5CF6] overflow-visible" viewBox="0 0 200 40" fill="none">
+                      <defs>
+                        <filter id="electric-glow-purple" x="-20%" y="-20%" width="140%" height="140%">
+                          <feGaussianBlur stdDeviation="3" result="blur" />
+                          <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                          </feMerge>
+                        </filter>
+                        <linearGradient id="electric-grad-purple" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#FFFFFF" stopOpacity="1" />
+                          <stop offset="40%" stopColor="#A855F7" stopOpacity="0.85" />
+                          <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0.2" />
+                        </linearGradient>
+                      </defs>
+
+                      {/* Faded Base Lightning Trace */}
+                      <path
+                        d="M 0 20 L 20 25 L 40 15 L 65 30 L 90 10 L 115 32 L 140 8 L 160 20 L 200 20"
+                        stroke="#8B5CF6"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        opacity="0.35"
+                      />
+
+                      {/* Traveling High-Voltage Purple Electric Wave Surge */}
+                      <motion.path
+                        d="M 0 20 L 20 25 L 40 15 L 65 30 L 90 10 L 115 32 L 140 8 L 160 20 L 200 20"
+                        stroke="url(#electric-grad-purple)"
+                        strokeWidth="3.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        filter="url(#electric-glow-purple)"
+                        strokeDasharray="60 140"
+                        animate={{ strokeDashoffset: [-200, 0] }}
+                        transition={{ duration: 1.4, repeat: Infinity, ease: 'linear' }}
+                      />
+
+                      {/* Inner Pure White High-Voltage Core Wave */}
+                      <motion.path
+                        d="M 0 20 L 20 25 L 40 15 L 65 30 L 90 10 L 115 32 L 140 8 L 160 20 L 200 20"
+                        stroke="#FFFFFF"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeDasharray="30 170"
+                        animate={{ strokeDashoffset: [-200, 0] }}
+                        transition={{ duration: 1.4, repeat: Infinity, ease: 'linear' }}
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </span>
+            </h1>
+          </div>
         </motion.div>
 
-        {/* ---- Tagline ---- */}
+        {/* =========================================================================
+            TAGLINE & QUOTE
+            ========================================================================= */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-col items-center gap-2 sm:gap-4 mb-6 sm:mb-8"
+          className="flex flex-col items-center gap-2 mb-6"
         >
-          <p className="text-sm sm:text-base lg:text-lg font-mono font-bold text-slate-600 tracking-[0.2em] uppercase flex items-center justify-center gap-3 flex-wrap">
-            <span>Innovate</span>
-            <span className="text-blue-400 font-light">/</span>
-            <span>Build</span>
-            <span className="text-blue-400 font-light">/</span>
-            <span>Impact</span>
+          <p className="text-xs sm:text-sm md:text-base font-mono font-bold tracking-[0.25em] uppercase flex items-center justify-center gap-3">
+            <span className="text-[#00F0FF] drop-shadow-[0_0_8px_#00F0FF]">INNOVATE</span>
+            <span className="text-[#8B5CF6] font-light">/</span>
+            <span className="text-[#3B82F6] drop-shadow-[0_0_8px_#3B82F6]">BUILD</span>
+            <span className="text-[#8B5CF6] font-light">/</span>
+            <span className="text-[#EC4899] drop-shadow-[0_0_8px_#EC4899]">IMPACT</span>
           </p>
-          <p className="text-sm sm:text-base text-slate-500 font-medium max-w-2xl leading-relaxed text-center">
+          <p className="text-xs sm:text-sm text-slate-300 italic font-medium max-w-xl text-center leading-relaxed">
             &ldquo;The best way to predict the future is to build it. 24 hours, one idea, infinite possibilities.&rdquo;
           </p>
         </motion.div>
 
-        {/* ── CTA Buttons ── */}
+        {/* =========================================================================
+            VIBRANT GRADIENT CTAs (MATCHING '26 PURPLE/MAGENTA GRADIENT THEME)
+            ========================================================================= */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="flex flex-row items-center justify-center gap-1.5 xs:gap-3 sm:gap-4 mb-6 flex-nowrap w-full max-w-sm sm:max-w-none mx-auto px-1"
+        >
+          <a
+            href="/guidelines.pdf"
+            download="HackSpark_26_Guidelines.pdf"
+            className="flex-1 sm:flex-initial group relative inline-flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 px-2.5 xs:px-4 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-black text-[10px] xs:text-xs sm:text-base text-white bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#D946EF] hover:from-[#7C3AED] hover:to-[#C026D3] shadow-[0_0_30px_rgba(139,92,246,0.6)] hover:shadow-[0_0_45px_rgba(217,70,239,0.9)] hover:scale-105 transition-all duration-300 uppercase tracking-wider cursor-pointer border border-purple-400/30 whitespace-nowrap"
+          >
+            <Download className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 group-hover:translate-y-0.5 transition-transform text-white shrink-0" />
+            <span>RULE BOOK</span>
+          </a>
+
+          <a
+            href="/template.pptx"
+            download="HackSpark_26_PPT_Template.pptx"
+            className="flex-1 sm:flex-initial group relative inline-flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 px-2.5 xs:px-4 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-black text-[10px] xs:text-xs sm:text-base text-white bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#00F0FF] hover:from-[#1D4ED8] hover:to-[#00D8E6] shadow-[0_0_30px_rgba(37,99,235,0.6)] hover:shadow-[0_0_45px_rgba(0,240,255,0.9)] hover:scale-105 transition-all duration-300 uppercase tracking-wider cursor-pointer border border-cyan-400/30 whitespace-nowrap"
+          >
+            <Presentation className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 group-hover:translate-y-0.5 transition-transform text-white shrink-0" />
+            <span>PPT TEMPLATE</span>
+          </a>
+        </motion.div>
+
+        {/* =========================================================================
+            4 CYBER GLASS CARDS COUNTDOWN TIMER
+            ========================================================================= */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-row items-center justify-center gap-4 mb-8 sm:mb-12"
+          className="w-full"
         >
-          <Link
-            href="/register"
-            className="group relative inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-sm text-white bg-blue-600 overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(37,99,235,0.4)]"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 transition-opacity opacity-100 group-hover:opacity-0" />
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-blue-600 transition-opacity opacity-0 group-hover:opacity-100" />
-            <span className="relative z-10 flex items-center gap-2">
-              Register Now
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </span>
-          </Link>
-          <Link
-            href="/#about"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-sm text-slate-700 bg-white/50 backdrop-blur-md border border-white/60 hover:bg-white/80 hover:shadow-lg transition-all hover:scale-105"
-          >
-            Learn More
-          </Link>
+          <CountdownCards />
         </motion.div>
-      </div>
 
-      {/* ––– Flip Clock Countdown (Below the Fold) ––– */}
-      <div className="relative z-10 w-full flex flex-col items-center pb-24 pt-12">
-        <div className="flex items-center gap-4 mb-6">
-          <div className="w-12 h-px bg-slate-300" />
-          <p className="text-[10px] font-bold tracking-[0.3em] text-slate-400 uppercase">Event Starts In</p>
-          <div className="w-12 h-px bg-slate-300" />
-        </div>
-        <FlipClock />
       </div>
     </section>
   );

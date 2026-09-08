@@ -25,10 +25,20 @@ export default function HomePage() {
 
   useEffect(() => {
     // Show intro only once per session
-    const alreadyShown = sessionStorage.getItem(INTRO_SHOWN_KEY);
-    if (!alreadyShown) {
-      setShowIntro(true);
-    } else {
+    try {
+      const alreadyShown = sessionStorage.getItem(INTRO_SHOWN_KEY);
+      if (!alreadyShown) {
+        setShowIntro(true);
+        // Safety fallback: reveal page content after 3.5s even if intro chunk fails on mobile
+        const fallbackTimer = setTimeout(() => {
+          setContentVisible(true);
+        }, 3500);
+        return () => clearTimeout(fallbackTimer);
+      } else {
+        setContentVisible(true);
+      }
+    } catch {
+      // Storage unavailable (e.g. private browsing mode)
       setContentVisible(true);
     }
   }, []);

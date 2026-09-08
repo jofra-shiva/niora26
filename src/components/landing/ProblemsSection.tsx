@@ -171,31 +171,35 @@ export default function ProblemsSection() {
   }, [selectedTrack]);
 
   return (
-    <section id="problems" className="pt-8 pb-16 sm:pb-24 relative overflow-hidden bg-slate-50/50">
-      {/* Background Grid Pattern with Radial Mask */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+    <section id="problems" className="pt-12 pb-16 sm:pb-24 relative overflow-hidden bg-[#050914] text-white">
+      {/* Background Radial Glow Orbs */}
+      <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,240,255,0.12),transparent_65%),radial-gradient(ellipse_at_top,rgba(139,92,246,0.15),transparent_55%)]" />
+
+      {/* Cyber Grid Lines Overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none z-0 opacity-15"
+        style={{
+          backgroundImage: 'linear-gradient(to right, rgba(0, 240, 255, 0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 240, 255, 0.15) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }}
+      />
       
-      {/* Subtle Ambient Glows */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/3" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-100/40 rounded-full blur-[120px] pointer-events-none -translate-x-1/3 translate-y-1/3" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white opacity-60 blur-[120px] rounded-full pointer-events-none" />
-      
-      <div className="section-container relative z-10">
+      <div className="section-container relative z-10 max-w-6xl mx-auto px-4">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 mb-6">
-            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-            <span className="text-xs font-black tracking-widest uppercase text-blue-700">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 sm:px-4 sm:py-1.5 rounded-full bg-[#070D22]/80 border border-blue-500/30 mb-4 sm:mb-6 shadow-[0_0_15px_rgba(0,240,255,0.15)]">
+            <span className="w-2 h-2 rounded-full bg-[#00F0FF] animate-pulse" />
+            <span className="text-[10px] sm:text-xs font-black tracking-widest uppercase text-[#00F0FF]">
               Problem Statements
             </span>
           </div>
-          <h2 className="section-heading mb-4 text-slate-900">Choose Your Challenge</h2>
-          <p className="section-subheading text-slate-600">
+          <h2 className="font-heading font-black text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight mb-3 sm:mb-4">Choose Your Challenge</h2>
+          <p className="text-xs xs:text-sm sm:text-lg text-slate-300 max-w-2xl mx-auto px-1">
             Tackle the most pressing issues of our time across 6 diverse tracks.
           </p>
         </motion.div>
@@ -213,36 +217,36 @@ export default function ProblemsSection() {
                 className="group relative h-full flex cursor-pointer"
                 onClick={() => setSelectedTrack(prob)}
               >
-                <div className="relative w-full h-full bg-white border border-slate-200/80 rounded-[26px] p-5 sm:p-8 flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_40px_-15px_rgba(0,0,0,0.1)] overflow-hidden z-10">
+                <div className="relative w-full h-full bg-[#070D22]/85 border border-blue-500/30 backdrop-blur-xl rounded-[22px] sm:rounded-[26px] p-5 sm:p-8 flex flex-col transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50 hover:shadow-[0_12px_40px_rgba(0,240,255,0.2)] overflow-hidden z-10 text-white">
                   
                   {/* Top Subtle Gradient Line Accent */}
-                  <div className={`absolute top-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-transparent via-${prob.accent} to-transparent`} />
+                  <div className={`absolute top-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-transparent via-[#00F0FF] to-transparent`} />
                   
                   {/* Subtle Background Icon */}
-                  <div className={`absolute right-0 bottom-0 opacity-[0.04] text-slate-900 group-hover:text-${prob.accent} group-hover:opacity-10 transition-colors duration-500 pointer-events-none`}>
-                    <Icon className="w-48 h-48" strokeWidth={1} />
+                  <div className={`absolute right-0 bottom-0 opacity-[0.04] text-white group-hover:text-cyan-400 group-hover:opacity-10 transition-colors duration-500 pointer-events-none`}>
+                    <Icon className="w-36 h-36 sm:w-48 sm:h-48" strokeWidth={1} />
                   </div>
 
                   {/* Header (Icon + Text) */}
-                  <div className="flex items-center gap-4 mb-3 relative z-10">
-                    <div className={`w-14 h-14 shrink-0 rounded-[20px] bg-gradient-to-br ${prob.gradient} flex items-center justify-center text-white shadow-md shadow-slate-200 group-hover:scale-[1.05] transition-transform duration-300`}>
-                      <Icon className="w-6 h-6" strokeWidth={2} />
+                  <div className="flex items-center gap-3.5 sm:gap-4 mb-3 relative z-10">
+                    <div className={`w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-xl sm:rounded-[20px] bg-gradient-to-br ${prob.gradient} flex items-center justify-center text-white shadow-lg group-hover:scale-[1.05] transition-transform duration-300`}>
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2} />
                     </div>
                     
-                    <h3 className="font-bold text-2xl leading-tight tracking-tight text-slate-900">
+                    <h3 className="font-bold text-xl sm:text-2xl leading-tight tracking-tight text-white">
                       {prob.title}
                     </h3>
                   </div>
                   
                   {/* Description */}
-                  <p className="text-slate-600 leading-relaxed font-medium relative z-10 mb-4">
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium relative z-10 mb-4">
                     {prob.description}
                   </p>
 
-                  <div className="flex items-center text-blue-600 text-xs font-mono uppercase tracking-widest font-semibold opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 relative z-10 mt-auto pt-2">
-                    <span className="flex items-center hover:text-blue-800">
+                  <div className="flex items-center text-cyan-400 text-xs font-mono uppercase tracking-widest font-semibold opacity-100 translate-x-0 sm:opacity-0 sm:-translate-x-4 sm:group-hover:opacity-100 sm:group-hover:translate-x-0 transition-all duration-300 relative z-10 mt-auto pt-2">
+                    <span className="flex items-center hover:text-cyan-200">
                       <span>View Details</span>
-                      <ChevronRight className="w-4 h-4 ml-2" />
+                      <ChevronRight className="w-4 h-4 ml-1.5" />
                     </span>
                   </div>
                 </div>
@@ -255,14 +259,14 @@ export default function ProblemsSection() {
       {/* Modern Modal for Problem Statements */}
       <AnimatePresence>
         {selectedTrack && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overscroll-contain">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 xs:p-4 sm:p-6 overscroll-contain">
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-[#050914]/80 backdrop-blur-md"
               onClick={() => setSelectedTrack(null)}
             />
             
@@ -272,25 +276,25 @@ export default function ProblemsSection() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
-              className="relative w-full max-w-2xl bg-white rounded-[32px] shadow-2xl z-10 flex flex-col max-h-[85vh] sm:max-h-[90vh] overflow-y-auto overscroll-contain custom-scrollbar"
+              className="relative w-full max-w-2xl bg-[#070D22] border border-blue-500/40 rounded-[24px] sm:rounded-[32px] shadow-[0_20px_60px_rgba(0,0,0,0.9)] z-10 flex flex-col max-h-[85vh] sm:max-h-[90vh] overflow-y-auto overscroll-contain custom-scrollbar text-white"
             >
               {/* Modal Header */}
-              <div className="px-6 py-6 sm:px-8 sm:py-8 border-b border-slate-100 shrink-0">
+              <div className="px-4 py-5 sm:px-8 sm:py-8 border-b border-blue-500/20 shrink-0">
                 <button 
                   onClick={() => setSelectedTrack(null)}
-                  className="absolute top-6 right-6 p-2 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-900 transition-colors z-10"
+                  className="absolute top-4 right-4 p-1.5 sm:top-6 sm:right-6 sm:p-2 rounded-full bg-blue-950/60 text-slate-300 hover:bg-blue-900/80 hover:text-white transition-colors z-10 border border-blue-500/30"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
-                <div className="flex items-center gap-4 pr-12">
-                  <div className={`w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br ${selectedTrack.gradient} flex items-center justify-center text-white shadow-md`}>
-                    <selectedTrack.icon className="w-6 h-6" strokeWidth={2.5} />
+                <div className="flex items-center gap-3 sm:gap-4 pr-10">
+                  <div className={`w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-xl sm:rounded-2xl bg-gradient-to-br ${selectedTrack.gradient} flex items-center justify-center text-white shadow-md`}>
+                    <selectedTrack.icon className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
                   </div>
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                    <h3 className="text-lg sm:text-2xl font-black text-white tracking-tight">
                       {selectedTrack.title}
                     </h3>
-                    <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest mt-1">
+                    <p className="text-[10px] sm:text-sm font-semibold text-cyan-400 uppercase tracking-widest mt-0.5 sm:mt-1">
                       Track Description
                     </p>
                   </div>
@@ -298,10 +302,10 @@ export default function ProblemsSection() {
               </div>
 
               {/* Modal Content */}
-              <div className="p-6 sm:p-8 shrink-0">
-                <div className="p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-4">
-                  <selectedTrack.icon className={`w-8 h-8 shrink-0 text-${selectedTrack.accent} mt-1`} strokeWidth={1.5} />
-                  <p className="text-slate-700 text-lg sm:text-[19px] leading-relaxed font-medium whitespace-pre-wrap">
+              <div className="p-4 sm:p-8 shrink-0">
+                <div className="p-4 sm:p-8 rounded-xl sm:rounded-2xl bg-[#030712] border border-blue-500/20 flex items-start gap-3 sm:gap-4">
+                  <selectedTrack.icon className="w-6 h-6 sm:w-8 sm:h-8 shrink-0 text-cyan-400 mt-1" strokeWidth={1.5} />
+                  <p className="text-slate-200 text-xs xs:text-sm sm:text-[19px] leading-relaxed font-medium whitespace-pre-wrap">
                     {selectedTrack.modalDescription || selectedTrack.description}
                   </p>
                 </div>

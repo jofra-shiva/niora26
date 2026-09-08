@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 export const dynamic = 'force-dynamic';
 
@@ -60,6 +60,8 @@ function LoginPageInner() {
         toast.error('Invalid email or password');
       } else if (msg.includes('too-many-requests')) {
         toast.error('Too many attempts. Please try again later.');
+      } else if (msg.includes('API key') || msg.includes('api-key') || msg.includes('placeholder') || msg.includes('400') || msg.includes('Bad Request')) {
+        toast.error('Firebase API key is missing! Please configure your .env.local file with real Firebase credentials.');
       } else {
         toast.error('Login failed. Please try again.');
       }

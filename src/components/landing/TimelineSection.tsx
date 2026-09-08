@@ -27,7 +27,7 @@ const TIMELINE_EVENTS = [
   },
   {
     time: 'September 28',
-    title: 'Registration Payment',
+    title: 'Payment & Confirm',
     desc: 'Complete the payment process to officially secure your spot for the main hackathon event.',
     icon: CreditCard,
     color: 'text-amber-500',
@@ -37,8 +37,8 @@ const TIMELINE_EVENTS = [
   },
   {
     time: 'Day 1 · 09:00 AM',
-    title: 'Registration & Check-in',
-    desc: 'Participants arrive, complete registration, and collect their event kits.',
+    title: 'Check-in',
+    desc: 'Participants arrive, complete check-in, and collect their event kits.',
     icon: Users,
     color: 'text-blue-500',
     bg: 'bg-blue-500',
@@ -138,7 +138,7 @@ const TIMELINE_EVENTS = [
   {
     time: 'Day 2 · 10:00 AM',
     title: 'Valedictory & Prize Distribution',
-    desc: 'Final event closing ceremony, winner announcement, and prize distribution.',
+    desc: 'Final event closing ceremony, winner announcement, and prize distribution graced by Valedictory Chief Guest Shanmuga Sundaram.',
     icon: Trophy,
     color: 'text-yellow-500',
     bg: 'bg-yellow-500',
@@ -156,7 +156,9 @@ const TimelineCard = ({ event, index, isLast }: { event: typeof TIMELINE_EVENTS[
   return (
     <motion.div
       ref={cardRef}
-      className={`relative flex items-center justify-between w-full mb-8 sm:mb-16 lg:mb-20 ${
+      className={`relative flex items-center justify-between w-full ${
+        isLast ? 'mb-0' : 'mb-6 sm:mb-16 lg:mb-20'
+      } ${
         isRight ? 'sm:flex-row-reverse' : 'sm:flex-row'
       } flex-row-reverse`}
     >
@@ -165,16 +167,16 @@ const TimelineCard = ({ event, index, isLast }: { event: typeof TIMELINE_EVENTS[
 
       {/* Mask to hide timeline line below the last item */}
       {isLast && (
-        <div className="absolute top-1/2 left-[24px] sm:left-1/2 transform -translate-x-1/2 w-12 bottom-[-200px] bg-slate-50 z-[15]" />
+        <div className="absolute top-1/2 left-[20px] sm:left-1/2 transform -translate-x-1/2 w-10 sm:w-12 bottom-[-200px] bg-[#050914] z-[15]" />
       )}
 
       {/* Center Icon */}
-      <div className="absolute left-[24px] sm:left-1/2 transform -translate-x-1/2 flex items-center justify-center z-20">
+      <div className="absolute left-[20px] sm:left-1/2 transform -translate-x-1/2 flex items-center justify-center z-20">
         <motion.div 
           initial={{ scale: 0, opacity: 0 }}
           animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
           transition={{ delay: 0.2, type: "spring", stiffness: 200, damping: 15 }}
-          className={`relative w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center shadow-lg ${event.glow} p-[3px] overflow-hidden bg-slate-200/60`}
+          className={`relative w-9 h-9 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center shadow-lg ${event.glow} p-[2px] sm:p-[3px] overflow-hidden bg-slate-200/60`}
         >
           {/* Animated Icon Border Fill */}
           <div className="absolute inset-0 z-0">
@@ -186,8 +188,8 @@ const TimelineCard = ({ event, index, isLast }: { event: typeof TIMELINE_EVENTS[
              />
           </div>
 
-          <div className={`relative z-10 w-full h-full rounded-full bg-gradient-to-br ${event.gradient} flex items-center justify-center text-white border-[3px] border-white`}>
-            <Icon className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2.5} />
+          <div className={`relative z-10 w-full h-full rounded-full bg-gradient-to-br ${event.gradient} flex items-center justify-center text-white border-[2px] sm:border-[3px] border-white`}>
+            <Icon className="w-3.5 h-3.5 sm:w-5 sm:h-5" strokeWidth={2.5} />
           </div>
         </motion.div>
       </div>
@@ -197,9 +199,9 @@ const TimelineCard = ({ event, index, isLast }: { event: typeof TIMELINE_EVENTS[
         initial={{ opacity: 0, y: 50, x: isRight ? 50 : -50 }}
         animate={isInView ? { opacity: 1, y: 0, x: 0 } : { opacity: 0, y: 50, x: isRight ? 50 : -50 }}
         transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-        className="w-full sm:w-5/12 ml-[56px] sm:ml-0"
+        className="w-full sm:w-5/12 ml-[46px] sm:ml-0"
       >
-        <div className="relative rounded-[20px] p-[2px] overflow-hidden group shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 bg-slate-200/50">
+        <div className="relative rounded-[16px] sm:rounded-[20px] p-[2px] overflow-hidden group shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 bg-slate-200/50">
           
           {/* Animated Border Fill */}
           <motion.div 
@@ -209,21 +211,21 @@ const TimelineCard = ({ event, index, isLast }: { event: typeof TIMELINE_EVENTS[
             className={`absolute top-0 left-0 w-full bg-gradient-to-b ${event.gradient} z-0`}
           />
 
-          <div className="relative z-10 bg-white/95 backdrop-blur-xl rounded-[18px] p-4 sm:p-5 lg:p-6 h-full overflow-hidden">
+          <div className="relative z-10 bg-[#070D22]/85 border border-blue-500/30 backdrop-blur-xl rounded-[14px] sm:rounded-[18px] p-3.5 sm:p-5 lg:p-6 h-full overflow-hidden text-white shadow-[0_8px_30px_rgba(0,0,0,0.6)]">
             {/* Subtle hover gradient blob */}
-            <div className={`absolute -right-20 -top-20 w-40 h-40 bg-gradient-to-br ${event.gradient} rounded-full blur-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none`} />
+            <div className={`absolute -right-20 -top-20 w-40 h-40 bg-gradient-to-br ${event.gradient} rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none`} />
             
-            <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-100 mb-3`}>
-              <span className={`w-2 h-2 rounded-full ${event.bg} animate-pulse`} />
-              <span className={`text-[10px] sm:text-xs font-bold tracking-widest uppercase bg-gradient-to-r ${event.gradient} bg-clip-text text-transparent`}>
+            <div className={`inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-[#050914] border border-blue-500/20 mb-2 sm:mb-3`}>
+              <span className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full ${event.bg} animate-pulse`} />
+              <span className={`text-[9px] sm:text-xs font-bold tracking-widest uppercase bg-gradient-to-r ${event.gradient} bg-clip-text text-transparent`}>
                 {event.time}
               </span>
             </div>
             
-            <h3 className="font-heading font-bold text-lg sm:text-xl text-slate-900 mb-1.5 sm:mb-2">
+            <h3 className="font-heading font-bold text-base sm:text-xl text-white mb-1 sm:mb-2">
               {event.title}
             </h3>
-            <p className="text-slate-600 leading-relaxed text-xs sm:text-sm">
+            <p className="text-slate-300 leading-relaxed text-xs sm:text-sm">
               {event.desc}
             </p>
           </div>
@@ -249,46 +251,52 @@ export default function TimelineSection() {
   const scaleY = useTransform(smoothProgress, [0, 1], [0, 1]);
 
   return (
-    <section id="timeline" className="pt-8 pb-32 relative bg-slate-50 overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 -left-20 w-72 h-72 bg-indigo-400/10 rounded-full blur-3xl" />
-      </div>
+    <section id="timeline" className="pt-8 sm:pt-12 pb-8 sm:pb-12 relative bg-[#050914] text-white overflow-hidden">
+      {/* Background Radial Glow Orbs */}
+      <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,240,255,0.12),transparent_65%),radial-gradient(ellipse_at_top,rgba(139,92,246,0.15),transparent_55%)]" />
 
-      <div className="section-container relative z-10" ref={containerRef}>
+      {/* Cyber Grid Lines Overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none z-0 opacity-15"
+        style={{
+          backgroundImage: 'linear-gradient(to right, rgba(0, 240, 255, 0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 240, 255, 0.15) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }}
+      />
+
+      <div className="section-container relative z-10 max-w-6xl mx-auto px-4" ref={containerRef}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-10 sm:mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm mb-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 sm:px-4 sm:py-2 rounded-full bg-[#070D22]/80 border border-blue-500/30 shadow-[0_0_15px_rgba(0,240,255,0.15)] mb-4 sm:mb-6">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00F0FF] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00F0FF]"></span>
             </span>
-            <span className="text-xs font-black tracking-widest uppercase text-slate-700">
+            <span className="text-[10px] sm:text-xs font-black tracking-widest uppercase text-[#00F0FF]">
               Event Schedule
             </span>
           </div>
-          <h2 className="section-heading mb-4 text-slate-900">
-            24 Hours, <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Minute by Minute</span>
+          <h2 className="font-heading font-black text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight mb-3 sm:mb-4">
+            24 Hours, <span className="bg-gradient-to-r from-[#2563EB] via-[#00F0FF] to-[#8B5CF6] bg-clip-text text-transparent">Minute by Minute</span>
           </h2>
-          <p className="section-subheading mt-4 text-slate-600 mx-auto max-w-2xl">
-            Organized by NIITM in collaboration with Nehru College of Management. From kickoff to valedictory — here's how HackSpark '26 unfolds.
+          <p className="text-xs xs:text-sm sm:text-lg text-slate-300 mt-2 sm:mt-4 mx-auto max-w-2xl font-medium px-1">
+            Organized by NIITM in collaboration with Nehru College of Management. From kickoff to valedictory — here&apos;s how HackSpark &apos;26 unfolds.
           </p>
         </motion.div>
 
         <div className="relative max-w-4xl mx-auto">
           {/* Static background line */}
-          <div className="absolute left-[24px] sm:left-1/2 transform sm:-translate-x-1/2 top-0 bottom-0 w-1 sm:w-1.5 bg-slate-200/60 rounded-full" />
+          <div className="absolute left-[20px] sm:left-1/2 transform sm:-translate-x-1/2 top-0 bottom-0 w-1 sm:w-1.5 bg-blue-950/60 rounded-full border border-blue-500/20" />
           
           {/* Animated progress line */}
           <motion.div 
             style={{ scaleY }}
-            className="absolute left-[24px] sm:left-1/2 transform sm:-translate-x-1/2 top-0 bottom-0 w-1 sm:w-1.5 bg-gradient-to-b from-blue-500 via-indigo-500 to-purple-500 origin-top rounded-full z-10 shadow-[0_0_15px_rgba(59,130,246,0.5)]" 
+            className="absolute left-[20px] sm:left-1/2 transform sm:-translate-x-1/2 top-0 bottom-0 w-1 sm:w-1.5 bg-gradient-to-b from-[#00F0FF] via-[#3B82F6] to-[#8B5CF6] origin-top rounded-full z-10 shadow-[0_0_15px_rgba(0,240,255,0.6)]" 
           />
 
           <div className="pt-8">

@@ -14,38 +14,38 @@
    ============================================================ */
 
 :root {
-  /* Brand Colors - Formal Professional */
-  --color-primary:       #2563EB; /* Professional blue */
-  --color-primary-dark:  #1D4ED8;
-  --color-primary-light: #3B82F6;
-  --color-accent:        #1E40AF; /* Deep navy accent */
-  --color-accent-light:  #60A5FA;
-  --color-navy:          #0F172A;
-  --color-navy-light:    #1E293B;
+  /* Brand Colors - Dark Theme */
+  --color-primary:       #00F0FF; /* Electric Cyan */
+  --color-primary-dark:  #00C6FF;
+  --color-primary-light: #38EF7D;
+  --color-accent:        #8B5CF6; /* Neon Purple */
+  --color-accent-light:  #D946EF; /* Electric Magenta */
+  --color-navy:          #050914; /* Deep Pitch Navy */
+  --color-navy-light:    #0B0F19;
 
-  /* Neutral Palette - Light/White Theme */
-  --color-bg:            #FFFFFF;
-  --color-bg-subtle:     #F8FAFC;
-  --color-surface:       #FFFFFF;
-  --color-surface-2:     #F1F5F9;
-  --color-border:        rgba(15, 23, 42, 0.1);
-  --color-border-strong: rgba(15, 23, 42, 0.18);
+  /* Neutral Palette - Dark Theme */
+  --color-bg:            #050914;
+  --color-bg-subtle:     #0B0F19;
+  --color-surface:       #070D22;
+  --color-surface-2:     #0F172A;
+  --color-border:        rgba(0, 240, 255, 0.2);
+  --color-border-strong: rgba(139, 92, 246, 0.3);
 
-  /* Text - Light Theme */
-  --color-text-primary:   #0F172A; /* slate-900 */
-  --color-text-secondary: #334155; /* slate-700 */
-  --color-text-muted:     #64748B; /* slate-500 */
+  /* Text - Dark Theme */
+  --color-text-primary:   #F8FAFC; /* slate-50 */
+  --color-text-secondary: #CBD5E1; /* slate-300 */
+  --color-text-muted:     #94A3B8; /* slate-400 */
 
-  /* Glass - Light Theme */
-  --glass-bg:          rgba(255, 255, 255, 0.85);
-  --glass-border:      rgba(15, 23, 42, 0.1);
-  --glass-blur:        16px;
+  /* Glass - Dark Theme */
+  --glass-bg:          rgba(7, 13, 34, 0.85);
+  --glass-border:      rgba(0, 240, 255, 0.25);
+  --glass-blur:        20px;
 
-  /* Shadows - Light Theme */
-  --shadow-sm:   0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-md:   0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.05);
-  --shadow-lg:   0 12px 40px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.06);
-  --shadow-glow: 0 0 40px rgba(37, 99, 235, 0.08);
+  /* Shadows - Dark Theme Glow */
+  --shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.6);
+  --shadow-md:   0 8px 32px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.15);
+  --shadow-lg:   0 16px 48px rgba(0, 0, 0, 0.9), 0 0 35px rgba(217, 70, 239, 0.25);
+  --shadow-glow: 0 0 40px rgba(0, 240, 255, 0.4);
 
   /* Radii */
   --radius-sm:  0.375rem;
