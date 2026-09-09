@@ -96,7 +96,7 @@ const STUDENT_ORGANIZERS: Member[] = [
   {
     name: 'Harsath Ganesan',
     role: 'Student Organizer',
-    image: 'https://media.licdn.com/dms/image/v2/D5635AQENLTxOeGe4JQ/profile-framedphoto-shrink_800_800/B56Zt.gsFaKgAg-/0/1767354057319?e=1788415200&v=beta&t=tIruohw1AgyDF7ZBzvD6JA6m6A8CbT-4OnjSj6poaxo',
+    image: 'https://media.licdn.com/dms/image/v2/D5603AQEPBTIrxipuqw/profile-displayphoto-crop_800_800/B56aB6EMYsHIAI-/0/1788754318514?e=1790208000&v=beta&t=GM1Lf-eeaTZeruaftarJZ5GG8RS943R-mP_V8YhO0_w',
     linkedin: 'https://www.linkedin.com/in/harsathganesan05/',
     phone: '9047023266',
     headline: 'Versatile Full Stack Developer',
