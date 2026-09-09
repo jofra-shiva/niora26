@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -51,60 +51,68 @@ export default function RegisterCompletePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-indigo-500/30 border-t-indigo-500 rounded-full animate-spin" />
+      <div className="min-h-screen flex items-center justify-center bg-[#050914] text-white">
+        <div className="w-8 h-8 border-2 border-cyan-400/30 border-t-[#00F0FF] rounded-full animate-spin shadow-[0_0_15px_#00F0FF]" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col relative">
-      <div className="absolute inset-0 bg-radial-indigo pointer-events-none" />
-      <div className="absolute inset-0 bg-radial-mint pointer-events-none opacity-50" />
+    <div className="min-h-screen flex flex-col relative bg-[#050914] text-white overflow-hidden">
+      {/* Background Radial Glow Orbs */}
+      <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,240,255,0.12),transparent_65%),radial-gradient(ellipse_at_top,rgba(139,92,246,0.15),transparent_60%)]" />
+
+      {/* Cyber Grid Lines Overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none z-0 opacity-20"
+        style={{
+          backgroundImage: 'linear-gradient(to right, rgba(0, 240, 255, 0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 240, 255, 0.15) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }}
+      />
 
       {/* Header */}
-      <header className="glass-card border-b border-white/50 px-4 py-3 sticky top-0 z-20">
-        <div className="max-w-3xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 flex items-center justify-center bg-[#6a35ff] rounded-lg shadow-sm">
-              <span className="font-logo text-lg font-bold text-white">N</span>
+      <header className="bg-[#070D22]/85 backdrop-blur-2xl border-b border-blue-500/30 px-4 py-3 sticky top-0 z-20 shadow-[0_5px_20px_rgba(0,0,0,0.7)]">
+        <div className="max-w-4xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-cyan-400/50 p-0.5 bg-white shadow-[0_0_10px_rgba(0,240,255,0.3)]">
+              <Image src="/logoo.png" alt="HackSpark Logo" width={30} height={30} className="object-cover rounded-full" />
             </div>
-            <span className="font-logo text-lg text-[#6a35ff]">HackSpark '26</span>
+            <span className="font-heading font-black text-lg text-white">HackSpark <span className="text-[#00F0FF]">'26</span></span>
           </div>
-          <span className="text-xs text-slate-400">Registration</span>
+          <span className="text-xs font-mono font-bold text-cyan-300 uppercase tracking-widest">Registration Portal</span>
         </div>
       </header>
 
       {/* Stepper */}
       <div className="px-4 py-6 relative z-10">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <div className="flex items-center justify-between overflow-x-auto scrollbar-none pb-2">
             {STEPS.map((step, i) => {
               const isDone = step.num < currentStep;
               const isCurrent = step.num === currentStep;
-              const isUpcoming = step.num > currentStep;
 
               return (
                 <div key={step.num} className="flex items-center flex-shrink-0">
                   <div className="flex flex-col items-center gap-1">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-black transition-all duration-300 ${
                       isDone
-                        ? 'bg-indigo-500 text-white'
+                        ? 'bg-[#2563EB] text-white shadow-[0_0_10px_rgba(37,99,235,0.6)]'
                         : isCurrent
-                        ? 'bg-white text-indigo-600 shadow-lg ring-2 ring-indigo-500'
-                        : 'bg-slate-100 text-slate-400'
+                        ? 'bg-[#00F0FF] text-black shadow-[0_0_15px_#00F0FF] ring-2 ring-cyan-300 font-black'
+                        : 'bg-blue-950/60 text-slate-400 border border-blue-500/20'
                     }`}>
                       {isDone ? <Check className="w-3.5 h-3.5" /> : step.num}
                     </div>
-                    <span className={`text-[10px] font-semibold hidden sm:block ${
-                      isCurrent ? 'text-indigo-600' : isDone ? 'text-slate-500' : 'text-slate-300'
+                    <span className={`text-[10px] font-bold hidden sm:block ${
+                      isCurrent ? 'text-[#00F0FF]' : isDone ? 'text-slate-300' : 'text-slate-500'
                     }`}>
                       {step.label}
                     </span>
                   </div>
                   {i < STEPS.length - 1 && (
                     <div className={`h-0.5 flex-1 mx-2 min-w-[16px] sm:min-w-[24px] rounded-full transition-all duration-500 ${
-                      step.num < currentStep ? 'bg-indigo-400' : 'bg-slate-200'
+                      step.num < currentStep ? 'bg-[#00F0FF] shadow-[0_0_8px_#00F0FF]' : 'bg-blue-950/60'
                     }`} />
                   )}
                 </div>
@@ -116,7 +124,7 @@ export default function RegisterCompletePage() {
 
       {/* Step Content */}
       <div className="flex-1 px-4 pb-8 relative z-10">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentStep}

@@ -45,58 +45,66 @@ export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-16 sm:py-20 relative bg-white">
-      {/* Background decorations */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent opacity-60" />
+    <section id="faq" className="py-10 sm:py-20 relative bg-[#050914] text-white overflow-hidden">
+      {/* Background Radial Glow Orbs */}
+      <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,240,255,0.12),transparent_65%),radial-gradient(ellipse_at_top,rgba(139,92,246,0.15),transparent_60%)]" />
 
-      <div className="section-container relative z-10" ref={ref}>
+      {/* Cyber Grid Lines Overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none z-0 opacity-20"
+        style={{
+          backgroundImage: 'linear-gradient(to right, rgba(0, 240, 255, 0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 240, 255, 0.15) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }}
+      />
+
+      <div className="section-container relative z-10 max-w-6xl mx-auto px-4" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10 sm:mb-14"
+          className="text-center mb-8 sm:mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 mb-6">
-            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-            <span className="text-xs font-black tracking-widest uppercase text-blue-700">FAQ</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 sm:px-4 sm:py-1.5 rounded-full bg-[#070D22]/85 border border-blue-500/30 backdrop-blur-xl mb-4 sm:mb-6 shadow-[0_0_20px_rgba(0,240,255,0.15)]">
+            <span className="w-2 h-2 rounded-full bg-[#00F0FF] animate-pulse shadow-[0_0_8px_#00F0FF]" />
+            <span className="text-[10px] sm:text-xs font-black tracking-widest uppercase text-cyan-300">FAQ</span>
           </div>
-          <h2 className="section-heading text-slate-900">
+          <h2 className="font-heading font-black text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight">
             Frequently Asked{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] via-[#3B82F6] to-[#8B5CF6]">
               Questions
             </span>
           </h2>
         </motion.div>
 
-        <div className="max-w-2xl mx-auto space-y-3">
+        <div className="max-w-2xl mx-auto space-y-2.5 sm:space-y-3">
           {FAQS.map((faq, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 15 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: i * 0.06 }}
-              className={`bg-white rounded-xl overflow-hidden border transition-all duration-300 ${
+              className={`bg-[#070D22]/85 rounded-xl sm:rounded-2xl overflow-hidden border backdrop-blur-xl transition-all duration-300 ${
                 open === i
-                  ? 'border-blue-200 shadow-[0_4px_20px_rgba(37,99,235,0.1)]'
-                  : 'border-slate-200 hover:border-blue-200 shadow-sm hover:shadow-md'
+                  ? 'border-cyan-400/60 shadow-[0_0_25px_rgba(0,240,255,0.2)] bg-[#0A1332]/95'
+                  : 'border-blue-500/30 hover:border-cyan-500/40 shadow-[0_5px_20px_rgba(0,0,0,0.6)]'
               }`}
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}
-                className="w-full flex items-center justify-between p-4 sm:p-5 text-left gap-4"
+                className="w-full flex items-center justify-between p-3.5 sm:p-5 text-left gap-3 sm:gap-4"
               >
-                <span className={`font-heading font-semibold text-sm sm:text-base tracking-wide transition-colors ${
-                  open === i ? 'text-blue-600' : 'text-slate-800 hover:text-blue-600'
+                <span className={`font-heading font-semibold text-xs xs:text-sm sm:text-base tracking-wide transition-colors ${
+                  open === i ? 'text-[#00F0FF]' : 'text-white hover:text-[#00F0FF]'
                 }`}>
                   {faq.q}
                 </span>
-                <div className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
-                  open === i ? 'bg-blue-100' : 'bg-slate-100'
+                <div className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                  open === i ? 'bg-cyan-500/20 text-[#00F0FF] border border-cyan-400/40' : 'bg-blue-950/60 text-slate-400 border border-blue-500/20'
                 }`}>
                   {open === i
-                    ? <Minus className="w-4 h-4 text-blue-600" />
-                    : <Plus className="w-4 h-4 text-slate-500" />
+                    ? <Minus className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#00F0FF]" />
+                    : <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400" />
                   }
                 </div>
               </button>
@@ -108,8 +116,8 @@ export default function FAQSection() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.25, ease: 'easeInOut' }}
                   >
-                    <div className="px-4 sm:px-5 pb-4 sm:pb-5">
-                      <p className="text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3 sm:pt-4">
+                    <div className="px-3.5 sm:px-5 pb-3.5 sm:pb-5">
+                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-blue-500/20 pt-2.5 sm:pt-4">
                         {faq.a}
                       </p>
                     </div>
