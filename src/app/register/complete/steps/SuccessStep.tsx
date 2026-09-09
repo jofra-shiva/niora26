@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -103,7 +103,7 @@ export default function SuccessStep({ registrationId }: Props) {
           </Link>
           <button
             onClick={() => {
-              const text = `I just registered for HackSpark '26 - The 24H Hackathon! 🚀 Join me at NIITM on 09-10 Oct 2026. Registration ID: ${registration?.registrationId}`;
+              const text = `I just registered for HackSpark '26 - The 24 Hours Hackathon! 🚀 Join me at NIITM on 09-10 Oct 2026. Registration ID: ${registration?.registrationId}`;
               if (navigator.share) {
                 navigator.share({ title: "HackSpark '26", text, url: window.location.origin });
               } else {

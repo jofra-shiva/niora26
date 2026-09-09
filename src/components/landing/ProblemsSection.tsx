@@ -89,7 +89,7 @@ You can build next-generation financial tools such as:
   },
   {
     icon: Shield,
-    title: 'Cybersecurity',
+    title: 'Cyber Security',
     description: 'Develop solutions to protect data privacy, prevent attacks, and secure digital identities.',
     modalDescription: `Develop solutions to protect data privacy, prevent attacks, and secure digital identities.
 You can build robust security architectures such as:

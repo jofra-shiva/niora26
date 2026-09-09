@@ -161,7 +161,7 @@ export default function ContactSection() {
               <div>
                 <p className="text-[9px] font-black font-mono uppercase tracking-[0.2em] text-purple-400 mb-1">Venue</p>
                 <p className="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed">
-                  NIITM Campus, Nehru Nagar<br />
+                  NIITM Campus, Nehru Garden<br />
                   Thirumalayampalayam<br />
                   Coimbatore - 641105
                 </p>

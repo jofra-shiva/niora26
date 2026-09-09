@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 const HIGHLIGHTS = [
   {
-    highlight: '24H',
+    highlight: '24 Hours',
     label: 'Continuous Hackathon',
     desc: '10 AM on 8th Oct → 10 AM on 9th Oct 2026.',
     icon: Clock,
@@ -200,11 +200,11 @@ export default function AboutSection() {
           </h2>
 
           <p className="text-xs xs:text-sm sm:text-lg lg:text-xl leading-relaxed text-slate-300 max-w-4xl mx-auto font-medium px-1 sm:px-0">
-            HackSpark &apos;26 is a premium <span className="font-bold text-cyan-300 border-b-2 border-cyan-500/40">24-hour hackathon</span> focused on{' '}
+            HackSpark &apos;26 is a high-octane <span className="font-bold text-cyan-300 border-b-2 border-cyan-500/40">non-stop 24-hours national-level hackathon</span> focused on{' '}
             <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] via-[#3B82F6] to-[#8B5CF6] border-b-2 border-cyan-400/50 drop-shadow-[0_0_10px_rgba(0,240,255,0.4)]">
               Sustainable AI
             </span>{' '}
-            and innovative technology, organized by the PG Department of Computer Applications, Nehru Institute of Information Technology and Management in collaboration with Nehru College of Management. Participants develop <span className="font-bold text-cyan-300 border-b-2 border-cyan-500/40">AI-powered solutions</span> to address real-world challenges, promote sustainability, and create a smarter, greener future.
+            and innovative technology, organized by the PG Department of Computer Applications, Nehru Institute of Information Technology and Management in association with Nehru College of Management. Participants develop <span className="font-bold text-cyan-300 border-b-2 border-cyan-500/40">AI-powered solutions</span> to address real-world challenges, promote sustainability, and create a smarter, greener future.
           </p>
         </motion.div>
 

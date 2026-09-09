@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | HackSpark '26",
   },
   description:
-    "HackSpark '26 is a 24-hour hackathon by Nehru Institute of Information Technology and Management, affiliated to Anna University, Chennai. ₹20,000 Prize Pool. 09–10 October 2026.",
+    "HackSpark '26 is a premier 24-hours national-level hackathon by Nehru Institute of Information Technology and Management, affiliated to Anna University, Chennai. ₹20,000 Prize Pool. 09–10 October 2026.",
   keywords: [
     "HackSpark '26", 'hackathon', 'NIITM', 'Anna University',
     'coding competition', 'Tamil Nadu hackathon', '2026',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     title: "HackSpark '26",
-    description: 'Code Beyond Limits. Build the Future. 24H Hackathon · ₹20,000 Prize Pool · 09–10 Oct 2026',
+    description: 'Code Beyond Limits. Build the Future. 24 Hours Hackathon · ₹20,000 Prize Pool · 09–10 Oct 2026',
     siteName: "HackSpark '26",
   },
   twitter: {

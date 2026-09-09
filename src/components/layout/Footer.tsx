@@ -44,7 +44,7 @@ export default function Footer() {
 
               {/* Tagline & Description */}
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-sm mb-4 font-medium">
-                Code Beyond Limits. Build the Future. A premier 24-hour national hackathon bringing together visionary developers, creators, and innovators.
+                Code Beyond Limits. Build the Future. A premier 24-hours national hackathon bringing together visionary developers, creators, and innovators.
               </p>
             </div>
 
@@ -81,7 +81,7 @@ export default function Footer() {
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
                 <span className="text-slate-300 text-xs">
-                  NIITM Campus, Nehru Nagar, Thirumalayampalayam, Coimbatore - 641105
+                  NIITM Campus, Nehru Garden, Thirumalayampalayam, Coimbatore - 641105
                 </span>
               </li>
             </ul>
@@ -125,7 +125,7 @@ export default function Footer() {
         {/* Bottom Bar: Copyright & Back to Top */}
         <div className="mt-10 pt-6 border-t border-cyan-500/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <p className="text-[11px] sm:text-xs text-slate-400 font-mono tracking-wider">
-            MADE WITH <span className="text-cyan-400">❤️</span> BY <span className="text-white font-semibold">NIITM MCA DEPARTMENT</span> · © {year} HackSpark &apos;26
+            Developed by <a href="https://www.linkedin.com/in/harsathganesan05/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline hover:text-white transition-colors font-semibold">Harsath</a> &amp; <a href="https://www.linkedin.com/in/sivaprakash-m-dev/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline hover:text-white transition-colors font-semibold">Sivaprakash</a> · © {year} HackSpark &apos;26
           </p>
 
           <div className="flex items-center gap-4">

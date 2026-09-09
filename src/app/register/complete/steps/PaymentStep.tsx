@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState } from 'react';
 import { CreditCard, Shield, Lock, AlertCircle } from 'lucide-react';
@@ -130,7 +130,7 @@ export default function PaymentStep({ registrationId, onNext, onBack }: Props) {
         <p className="font-semibold text-sm text-slate-700 mb-3">Includes</p>
         <ul className="space-y-2">
           {[
-            '24-hour hackathon participation',
+            '24-hours hackathon participation',
             'Food & accommodation at venue',
             'Participant kit & goodies',
             'Mentorship & networking',

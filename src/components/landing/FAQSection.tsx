@@ -27,7 +27,7 @@ const FAQS = [
   },
   {
     q: 'Is accommodation provided?',
-    a: 'Yes! Food and accommodation are arranged for all registered teams throughout the 24-hour event at the venue.',
+    a: 'Yes! Food and accommodation are arranged for all registered teams throughout the 24-hours event at the venue.',
   },
   {
     q: 'How are projects judged?',
