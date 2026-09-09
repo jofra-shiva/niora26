@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, Clock, Timer, Hourglass, ArrowRight, Download, FileText, Presentation } from 'lucide-react';
-import { EVENT_START_DATE } from '@/lib/utils/constants';
+import { EVENT_START_DATE, GOOGLE_FORM_URL } from '@/lib/utils/constants';
 
 /* -- 4 Dark Cyber Glass Cards Countdown -- */
 function CountdownCards() {
@@ -31,7 +31,7 @@ function CountdownCards() {
 
   if (done) return null;
 
-  const daysStr = timeLeft ? timeLeft.days.toString().padStart(2, '0') : '31';
+  const daysStr = timeLeft ? timeLeft.days.toString().padStart(2, '0') : '28';
   const hoursStr = timeLeft ? timeLeft.hours.toString().padStart(2, '0') : '17';
   const minsStr = timeLeft ? timeLeft.minutes.toString().padStart(2, '0') : '55';
   const secsStr = timeLeft ? timeLeft.seconds.toString().padStart(2, '0') : '17';
@@ -217,34 +217,34 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="w-full max-w-5xl mx-auto mb-3 sm:mb-6 px-2 sm:px-4 -mt-3 sm:-mt-5"
+          className="w-full max-w-5xl mx-auto mb-4 sm:mb-8 px-2 sm:px-4 -mt-2 sm:-mt-5"
         >
-          <div className="p-3 xs:p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#070D22]/90 border border-cyan-400/30 backdrop-blur-2xl shadow-[0_0_20px_rgba(0,240,255,0.12)] w-full">
+          <div className="p-4 xs:p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#070D22]/90 border border-cyan-400/35 backdrop-blur-2xl shadow-[0_0_30px_rgba(0,240,255,0.18)] w-full">
             
-            {/* Mobile Layout (< md): 3 Logos on top row, College text below */}
-            <div className="flex md:hidden flex-col items-center gap-2.5 w-full">
+            {/* Mobile Layout (< md): 3 Logos on top row with generous spacing, College text below */}
+            <div className="flex md:hidden flex-col items-center gap-3 xs:gap-4 w-full">
               {/* Top Row: 3 Logos */}
-              <div className="flex items-center justify-center gap-2.5 xs:gap-3">
-                <div className="w-10 h-10 xs:w-12 xs:h-12 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_10px_rgba(0,240,255,0.2)] p-1 shrink-0">
-                  <Image src="/footer.png" alt="NIITM" width={44} height={44} className="object-contain" />
+              <div className="flex items-center justify-center gap-3 xs:gap-4">
+                <div className="w-11 h-11 xs:w-13 xs:h-13 rounded-full bg-white flex items-center justify-center border border-cyan-400/50 shadow-[0_0_12px_rgba(0,240,255,0.3)] p-1 shrink-0">
+                  <Image src="/footer.png" alt="NIITM" width={48} height={48} className="object-contain" />
                 </div>
-                <div className="w-10 h-10 xs:w-12 xs:h-12 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_10px_rgba(0,240,255,0.2)] p-1 shrink-0">
-                  <Image src="/images.jpg" alt="Partner" width={44} height={44} className="object-contain rounded-full" />
+                <div className="w-11 h-11 xs:w-13 xs:h-13 rounded-full bg-white flex items-center justify-center border border-cyan-400/50 shadow-[0_0_12px_rgba(0,240,255,0.3)] p-1 shrink-0">
+                  <Image src="/images.jpg" alt="Partner" width={48} height={48} className="object-contain rounded-full" />
                 </div>
-                <div className="w-10 h-10 xs:w-12 xs:h-12 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_10px_rgba(0,240,255,0.2)] p-1 shrink-0">
-                  <Image src="/ngi-7051616-logo.png" alt="NCM" width={44} height={44} className="object-contain" />
+                <div className="w-11 h-11 xs:w-13 xs:h-13 rounded-full bg-white flex items-center justify-center border border-cyan-400/50 shadow-[0_0_12px_rgba(0,240,255,0.3)] p-1 shrink-0">
+                  <Image src="/ngi-7051616-logo.png" alt="NCM" width={48} height={48} className="object-contain" />
                 </div>
               </div>
 
-              {/* Below: College Name Text */}
-              <div className="flex flex-col justify-center items-center text-center px-1 w-full">
-                <h2 className="text-[10.5px] xs:text-[12px] sm:text-[13.5px] font-heading font-black text-white tracking-tight uppercase leading-tight text-center drop-shadow-[0_0_8px_rgba(255,255,255,0.25)] max-w-full">
+              {/* Below: College Name Text with generous line height & padding */}
+              <div className="flex flex-col justify-center items-center text-center px-2 w-full gap-1">
+                <h2 className="text-xs xs:text-sm font-heading font-black text-white tracking-wide uppercase leading-snug text-center drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] max-w-full">
                   Nehru Institute of Information Technology <span className="text-[#00F0FF] font-black">&amp;</span> Management
                 </h2>
-                <p className="text-[8px] xs:text-[9px] font-black tracking-[0.15em] uppercase my-0.5 text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#D946EF] drop-shadow-[0_0_6px_rgba(168,85,247,0.4)]">
+                <p className="text-[9px] xs:text-[10px] font-black tracking-[0.2em] uppercase my-1 text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#D946EF] drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]">
                   IN ASSOCIATION WITH
                 </p>
-                <p className="text-[10.5px] xs:text-[12px] font-black text-white uppercase tracking-wider leading-tight text-center drop-shadow-[0_0_6px_rgba(255,255,255,0.2)]">
+                <p className="text-xs xs:text-sm font-black text-white uppercase tracking-wider leading-snug text-center drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]">
                   Nehru College of Management
                 </p>
               </div>
@@ -499,7 +499,7 @@ export default function HeroSection() {
           {/* Mobile Only: Register Now CTA Button below Reg Fee pill */}
           <div className="block sm:hidden mt-3 w-full max-w-[260px] mx-auto">
             <a
-              href="https://forms.gle/mjS16iuhAF7CTpMMA"
+              href={GOOGLE_FORM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-flex items-center justify-center gap-2 w-full py-3 px-6 rounded-full font-black text-xs text-white bg-gradient-to-r from-[#00F0FF] via-[#3B82F6] to-[#8B5CF6] active:scale-95 transition-all duration-300 uppercase tracking-widest border border-cyan-400/40"
@@ -520,8 +520,8 @@ export default function HeroSection() {
           className="flex flex-row items-center justify-center gap-1.5 xs:gap-3 sm:gap-4 mb-6 flex-nowrap w-full max-w-sm sm:max-w-none mx-auto px-1"
         >
           <a
-            href="/guidelines.pdf"
-            download="HackSpark_26_Guidelines.pdf"
+            href="/HACKSPARK Rule Book.pdf"
+            download="HACKSPARK Rule Book.pdf"
             className="flex-1 sm:flex-initial group relative inline-flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 px-2.5 xs:px-4 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-black text-[10px] xs:text-xs sm:text-base text-white bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#D946EF] hover:from-[#7C3AED] hover:to-[#C026D3] shadow-[0_0_30px_rgba(139,92,246,0.6)] hover:shadow-[0_0_45px_rgba(217,70,239,0.9)] hover:scale-105 transition-all duration-300 uppercase tracking-wider cursor-pointer border border-purple-400/30 whitespace-nowrap"
           >
             <Download className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 group-hover:translate-y-0.5 transition-transform text-white shrink-0" />
@@ -529,8 +529,8 @@ export default function HeroSection() {
           </a>
 
           <a
-            href="/template.pptx"
-            download="HackSpark_26_PPT_Template.pptx"
+            href="/HackSpark PPT template.pptx"
+            download="HackSpark PPT template.pptx"
             className="flex-1 sm:flex-initial group relative inline-flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 px-2.5 xs:px-4 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-black text-[10px] xs:text-xs sm:text-base text-white bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#00F0FF] hover:from-[#1D4ED8] hover:to-[#00D8E6] shadow-[0_0_30px_rgba(37,99,235,0.6)] hover:shadow-[0_0_45px_rgba(0,240,255,0.9)] hover:scale-105 transition-all duration-300 uppercase tracking-wider cursor-pointer border border-cyan-400/30 whitespace-nowrap"
           >
             <Presentation className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 group-hover:translate-y-0.5 transition-transform text-white shrink-0" />

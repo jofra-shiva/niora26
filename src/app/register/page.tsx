@@ -4,8 +4,7 @@ import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ExternalLink, ArrowRight } from 'lucide-react';
-
-const GOOGLE_FORM_URL = 'https://forms.gle/mjS16iuhAF7CTpMMA';
+import { GOOGLE_FORM_URL } from '@/lib/utils/constants';
 
 export default function RegisterPage() {
   useEffect(() => {

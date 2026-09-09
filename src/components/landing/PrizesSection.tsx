@@ -1,9 +1,182 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { Trophy, Medal, Award, Star, Briefcase, CheckCircle2, Building2, ExternalLink } from 'lucide-react';
+import { Trophy, Medal, Award, Star, Briefcase, CheckCircle2, Building2, ExternalLink, X } from 'lucide-react';
+
+const CHIEF_GUEST = {
+  name: 'Shanmuga Sundaram',
+  role: 'Valedictory Chief Guest',
+  image: '/team/shasunder.jpg',
+  linkedin: 'https://in.linkedin.com/in/shasunder',
+  headline: 'Associate Director - Delivery',
+  about: 'Associate Director - Delivery with 18+ years of experience driving large-scale product engineering and delivery programs across regulated and enterprise environments. Known for building high-performing engineering teams, stabilizing complex delivery portfolios, and translating business priorities into predictable execution outcomes.',
+};
+
+const COMPANY_INFO = {
+  name: 'Inexpensive Coders',
+  role: 'Internship Opportunity Partner',
+  image: '/inexpensive_coders.png',
+  headline: 'Software Development & Tech Talent Partner',
+  about: 'Exclusive Internship Opportunities for ALL HackSpark \'26 Participants offered by Inexpensive Coders. Providing hands-on experience in full-stack web development, software engineering mentorship, real-world project deployments, and career opportunities for top performers.',
+};
+
+function GuestModal({ onClose }: { onClose: () => void }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
+  if (!mounted) return null;
+
+  return createPortal(
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/75 backdrop-blur-md"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.92, y: 30 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.92, y: 30 }}
+        transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+        className="relative bg-[#070D22] border border-cyan-400/40 rounded-[28px] shadow-[0_0_50px_rgba(0,240,255,0.25)] w-full max-w-lg max-h-[90vh] overflow-y-auto custom-scrollbar text-white"
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="relative h-28 bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-900 border-b border-cyan-400/30">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(0,240,255,0.2),transparent)]" />
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors border border-white/20"
+          >
+            <X className="w-4 h-4 text-white" />
+          </button>
+        </div>
+
+        <div className="absolute left-6 top-12 w-28 h-28 rounded-2xl overflow-hidden border-[3px] border-[#070D22] shadow-[0_0_25px_rgba(0,240,255,0.35)] z-10 bg-[#0B1536]">
+          <Image src={CHIEF_GUEST.image} alt={CHIEF_GUEST.name} fill className="object-cover" />
+        </div>
+
+        <div className="px-6 pt-16 pb-6">
+          <div className="mb-1">
+            <h2 className="text-2xl font-black text-white leading-tight">{CHIEF_GUEST.name}</h2>
+            <p className="text-xs font-bold text-[#00F0FF] uppercase tracking-widest mt-1 flex items-center gap-1.5">
+              <Award className="w-3.5 h-3.5" />
+              {CHIEF_GUEST.role}
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2 mt-3 mb-4">
+            <Briefcase className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+            <p className="text-sm text-slate-200 font-semibold">{CHIEF_GUEST.headline}</p>
+          </div>
+
+          <div className="h-px bg-cyan-500/20 mb-4" />
+
+          <div className="mb-6">
+            <p className="text-[10px] font-black uppercase tracking-widest text-cyan-400 mb-2">About Chief Guest</p>
+            <p className="text-sm text-slate-300 leading-relaxed font-medium">{CHIEF_GUEST.about}</p>
+          </div>
+
+          {CHIEF_GUEST.linkedin && (
+            <a
+              href={CHIEF_GUEST.linkedin}
+              target="_blank" rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-sm font-bold py-3 rounded-2xl transition-all border border-cyan-400/30 shadow-[0_0_20px_rgba(0,240,255,0.3)]"
+            >
+              <ExternalLink className="w-4 h-4" />
+              View LinkedIn Profile
+            </a>
+          )}
+        </div>
+      </motion.div>
+    </motion.div>,
+    document.body
+  );
+}
+
+function CompanyModal({ onClose }: { onClose: () => void }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
+  if (!mounted) return null;
+
+  return createPortal(
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/75 backdrop-blur-md"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.92, y: 30 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.92, y: 30 }}
+        transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+        className="relative bg-[#070D22] border border-purple-400/40 rounded-[28px] shadow-[0_0_50px_rgba(168,85,247,0.25)] w-full max-w-lg max-h-[90vh] overflow-y-auto custom-scrollbar text-white"
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="relative h-28 bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-900 border-b border-purple-400/30">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(168,85,247,0.2),transparent)]" />
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors border border-white/20"
+          >
+            <X className="w-4 h-4 text-white" />
+          </button>
+        </div>
+
+        <div className="absolute left-6 top-12 w-28 h-28 rounded-2xl overflow-hidden border-[3px] border-[#070D22] shadow-[0_0_25px_rgba(168,85,247,0.35)] z-10 bg-white p-2 flex items-center justify-center">
+          <Image src={COMPANY_INFO.image} alt={COMPANY_INFO.name} fill className="object-contain p-1" />
+        </div>
+
+        <div className="px-6 pt-16 pb-6">
+          <div className="mb-1">
+            <h2 className="text-2xl font-black text-white leading-tight">{COMPANY_INFO.name}</h2>
+            <p className="text-xs font-bold text-purple-300 uppercase tracking-widest mt-1 flex items-center gap-1.5">
+              <Building2 className="w-3.5 h-3.5" />
+              {COMPANY_INFO.role}
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2 mt-3 mb-4">
+            <Briefcase className="w-4 h-4 text-purple-400 flex-shrink-0" />
+            <p className="text-sm text-slate-200 font-semibold">{COMPANY_INFO.headline}</p>
+          </div>
+
+          <div className="h-px bg-purple-500/20 mb-4" />
+
+          <div className="mb-6">
+            <p className="text-[10px] font-black uppercase tracking-widest text-purple-300 mb-2">About Internship Opportunity</p>
+            <p className="text-sm text-slate-300 leading-relaxed font-medium">{COMPANY_INFO.about}</p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-purple-950/60 border border-purple-500/30 text-xs text-purple-200 font-semibold">
+            ✨ Guaranteed Internship certificate &amp; learning opportunities for all active HackSpark &apos;26 participants!
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>,
+    document.body
+  );
+}
 
 const PRIZES = [
   {
@@ -50,9 +223,16 @@ const PRIZES = [
 export default function PrizesSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+  const [guestModalOpen, setGuestModalOpen] = useState(false);
+  const [companyModalOpen, setCompanyModalOpen] = useState(false);
 
   return (
     <section id="prizes" className="py-10 sm:py-24 relative overflow-hidden bg-[#050914] text-white">
+      <AnimatePresence>
+        {guestModalOpen && <GuestModal onClose={() => setGuestModalOpen(false)} />}
+        {companyModalOpen && <CompanyModal onClose={() => setCompanyModalOpen(false)} />}
+      </AnimatePresence>
+
       {/* Background Radial Glow Orbs */}
       <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,240,255,0.12),transparent_65%),radial-gradient(ellipse_at_bottom,rgba(139,92,246,0.15),transparent_60%)]" />
 
@@ -120,6 +300,7 @@ export default function PrizesSection() {
               whileHover={{ y: -6, scale: 1.02 }}
               viewport={{ once: false, margin: "-40px" }}
               transition={{ duration: 0.5, delay: 0.1, type: "spring", stiffness: 120, damping: 15 }}
+              onClick={() => setGuestModalOpen(true)}
               className="relative rounded-[20px] sm:rounded-[26px] p-[1.5px] overflow-hidden group cursor-pointer w-full shadow-[0_10px_30px_rgba(0,0,0,0.7)]"
             >
               {/* Glowing Gradient Border */}
@@ -161,15 +342,10 @@ export default function PrizesSection() {
                       <CheckCircle2 className="w-3 h-3" />
                       <span>Guest of Honor</span>
                     </div>
-                    <a
-                      href="https://in.linkedin.com/in/shasunder"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-cyan-400 hover:text-white transition-colors"
-                    >
-                      <span>LinkedIn</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
+                    <div className="flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-cyan-400 group-hover:text-white transition-colors">
+                      <span>View Profile</span>
+                      <span className="transform group-hover:translate-x-0.5 transition-transform">→</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -191,6 +367,7 @@ export default function PrizesSection() {
               whileHover={{ y: -6, scale: 1.02 }}
               viewport={{ once: false, margin: "-40px" }}
               transition={{ duration: 0.5, delay: 0.2, type: "spring", stiffness: 120, damping: 15 }}
+              onClick={() => setCompanyModalOpen(true)}
               className="relative rounded-[20px] sm:rounded-[26px] p-[1.5px] overflow-hidden group cursor-pointer w-full shadow-[0_10px_30px_rgba(0,0,0,0.7)]"
             >
               {/* Glowing Gradient Border */}

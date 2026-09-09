@@ -7,6 +7,7 @@ import { Mail, Phone, MessageSquare, MapPin, X } from 'lucide-react';
 const CONVENORS = [
   { name: 'Mrs. Meera Bai C', phone: '9944560889' },
   { name: 'Mrs. Indulekha K V', phone: '7561078733' },
+  { name: 'Dr. A. Nandhini', phone: '7561078733' },
 ];
 
 const STUDENT_ORGANIZERS = [

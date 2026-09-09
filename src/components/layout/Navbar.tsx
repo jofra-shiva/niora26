@@ -10,6 +10,7 @@ import { useAuth } from '@/context/AuthContext';
 import { logout } from '@/lib/firebase/auth';
 import { logActivity } from '@/lib/firebase/firestore';
 import toast from 'react-hot-toast';
+import { GOOGLE_FORM_URL } from '@/lib/utils/constants';
 
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
@@ -161,7 +162,7 @@ export default function Navbar() {
                   </button>
                 </>
               ) : (
-                <a href="https://forms.gle/mjS16iuhAF7CTpMMA" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-5 xl:px-6 py-2.5 rounded-full font-black text-xs sm:text-sm text-white bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#7C3AED] hover:from-[#1D4ED8] hover:to-[#6D28D9] transition-all duration-200 shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] uppercase tracking-wider whitespace-nowrap">
+                <a href={GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-5 xl:px-6 py-2.5 rounded-full font-black text-xs sm:text-sm text-white bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#7C3AED] hover:from-[#1D4ED8] hover:to-[#6D28D9] transition-all duration-200 shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] uppercase tracking-wider whitespace-nowrap">
                   REGISTER NOW
                 </a>
               )}
@@ -223,7 +224,7 @@ export default function Navbar() {
                     </button>
                   </>
                 ) : (
-                  <a href="https://forms.gle/mjS16iuhAF7CTpMMA" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="px-4 py-3 rounded-xl text-base font-black bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center shadow-md flex items-center justify-center gap-2">
+                  <a href={GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="px-4 py-3 rounded-xl text-base font-black bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center shadow-md flex items-center justify-center gap-2">
                     REGISTER NOW <ArrowRight className="w-4 h-4" />
                   </a>
                 )}

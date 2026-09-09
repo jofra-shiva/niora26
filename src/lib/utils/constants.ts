@@ -1,4 +1,4 @@
-﻿// ============================================================
+// ============================================================
 // HackSpark '26 — Constants
 // ============================================================
 
@@ -9,9 +9,11 @@ export const COLLEGE_NAME = 'NEHRU INSTITUTE OF INFORMATION TECHNOLOGY AND MANAG
 export const COLLEGE_AFFILIATION = 'Affiliated to Anna University, Chennai';
 export const DEPARTMENT = 'PG Department of Computer Applications';
 
-// IST = UTC+5:30 → so 10:00 AM IST = 04:30 UTC
-export const EVENT_START_DATE = new Date('2026-10-09T04:30:00Z');
-export const EVENT_END_DATE = new Date('2026-10-10T04:30:00Z');
+export const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSe-YDItuF_CWpSAp5ZttbucK0wbdqdX6PxZS4yj4oyzRL0Y_g/viewform?usp=header";
+
+// IST = UTC+5:30 → 10:00 AM IST on 8th Oct = 04:30 UTC
+export const EVENT_START_DATE = new Date('2026-10-08T04:30:00Z');
+export const EVENT_END_DATE = new Date('2026-10-09T04:30:00Z');
 export const PRIZE_POOL = '₹20,000';
 
 export const REGISTRATION_ID_PREFIX = 'hackspark26-REG';
