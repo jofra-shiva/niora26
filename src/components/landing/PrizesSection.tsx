@@ -282,6 +282,29 @@ export default function PrizesSection() {
           </div>
         </div>
 
+        {/* Participation Note */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-8 sm:mt-12 max-w-3xl mx-auto text-center px-4"
+        >
+          <div className="inline-flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 px-5 py-3 sm:px-8 sm:py-4 rounded-2xl bg-gradient-to-r from-blue-900/40 via-purple-900/40 to-blue-900/40 border border-purple-500/30 backdrop-blur-xl shadow-[0_0_30px_rgba(168,85,247,0.15)] w-full">
+            <div className="flex items-center gap-2">
+              <Award className="w-5 h-5 text-purple-400" />
+              <span className="text-sm sm:text-base font-bold text-white uppercase tracking-wider">For All Participants:</span>
+            </div>
+            <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-purple-500/50" />
+            <div className="flex items-center gap-2 text-center sm:text-left">
+              <span className="text-sm sm:text-base font-semibold text-purple-200">
+                Participation Certificate &amp; Internship Offer
+              </span>
+              <Briefcase className="w-5 h-5 text-cyan-400 shrink-0" />
+            </div>
+          </div>
+        </motion.div>
+
         {/* Additional Perks: Chief Guest (Top Centered) & Internship (Below Centered) */}
         <div className="max-w-2xl mx-auto mt-8 sm:mt-14 flex flex-col gap-6 sm:gap-8">
           

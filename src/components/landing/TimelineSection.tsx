@@ -36,7 +36,7 @@ const TIMELINE_EVENTS = [
     gradient: 'from-amber-500 to-orange-400'
   },
   {
-    time: 'Day 1 · 08-09-2026 · 09:00 AM',
+    time: 'Day 1 · 08-10-2026 · 09:00 AM',
     title: 'Check-in',
     desc: 'Participants arrive, complete check-in, and collect their event kits.',
     icon: Users,
@@ -46,7 +46,7 @@ const TIMELINE_EVENTS = [
     gradient: 'from-blue-600 to-cyan-500'
   },
   {
-    time: 'Day 1 · 08-09-2026 · 10:00 AM',
+    time: 'Day 1 · 08-10-2026 · 10:00 AM',
     title: 'Inauguration & Kick-off',
     desc: 'Official inauguration and the formal beginning of the event.',
     icon: Rocket,
@@ -56,9 +56,9 @@ const TIMELINE_EVENTS = [
     gradient: 'from-indigo-600 to-blue-500'
   },
   {
-    time: 'Day 1 · 08-09-2026 · 01:00 PM',
-    title: 'Lunch Break',
-    desc: 'Take a break and fuel up for the project development phase.',
+    time: 'Day 1 · 08-10-2026 · 01:00 PM',
+    title: 'Lunch Time',
+    desc: 'Take some time to fuel up for the project development phase.',
     icon: Pizza,
     color: 'text-amber-500',
     bg: 'bg-amber-500',
@@ -66,7 +66,7 @@ const TIMELINE_EVENTS = [
     gradient: 'from-amber-500 to-orange-400'
   },
   {
-    time: 'Day 1 · 08-09-2026 · 06:00 PM',
+    time: 'Day 1 · 08-10-2026 · 06:00 PM',
     title: 'Mentorship Round 1',
     desc: 'Expert mentors will visit the teams, review their progress, provide feedback, and offer design and technical guidance.',
     icon: Lightbulb,
@@ -76,7 +76,7 @@ const TIMELINE_EVENTS = [
     gradient: 'from-emerald-600 to-teal-400'
   },
   {
-    time: 'Day 1 · 08-09-2026 · 08:00 PM',
+    time: 'Day 1 · 08-10-2026 · 08:00 PM',
     title: 'Dinner',
     desc: 'Dinner served at the venue for all participants.',
     icon: Coffee,
@@ -86,9 +86,9 @@ const TIMELINE_EVENTS = [
     gradient: 'from-orange-600 to-red-400'
   },
   {
-    time: 'Day 1 · 08-09-2026 · 10:30 PM',
+    time: 'Day 1 · 08-10-2026 · 10:30 PM',
     title: 'Midnight Munchies',
-    desc: 'Refreshment break for participants to keep the momentum going.',
+    desc: 'Refreshments for participants to keep the momentum going.',
     icon: Coffee,
     color: 'text-rose-500',
     bg: 'bg-rose-500',
@@ -96,7 +96,7 @@ const TIMELINE_EVENTS = [
     gradient: 'from-rose-600 to-pink-500'
   },
   {
-    time: 'Day 2 · 09-09-2026 · 01:00 AM',
+    time: 'Day 2 · 09-10-2026 · 01:00 AM',
     title: 'Mentorship Round 2',
     desc: 'Mentors check in on your progress, help debug issues, and guide you toward the final stretch.',
     icon: Lightbulb,
@@ -106,8 +106,8 @@ const TIMELINE_EVENTS = [
     gradient: 'from-violet-600 to-fuchsia-500'
   },
   {
-    time: 'Day 2 · 09-09-2026 · 04:00 AM',
-    title: 'Recharge Break',
+    time: 'Day 2 · 09-10-2026 · 04:00 AM',
+    title: 'Recharge Time',
     desc: 'Take a quick power nap or grab some early morning tea to stay awake!',
     icon: Coffee,
     color: 'text-pink-500',
@@ -116,7 +116,7 @@ const TIMELINE_EVENTS = [
     gradient: 'from-pink-600 to-rose-400'
   },
   {
-    time: 'Day 2 · 09-09-2026 · 07:00 AM',
+    time: 'Day 2 · 09-10-2026 · 07:00 AM',
     title: 'Submission Deadline',
     desc: 'Final project submission deadline. Enjoy a quick breakfast before presentations!',
     icon: Code,
@@ -126,7 +126,7 @@ const TIMELINE_EVENTS = [
     gradient: 'from-purple-600 to-indigo-500'
   },
   {
-    time: 'Day 2 · 09-09-2026 · 08:00 AM',
+    time: 'Day 2 · 09-10-2026 · 08:00 AM',
     title: 'Project Presentation',
     desc: 'Teams present and demonstrate their completed projects before the evaluation panel.',
     icon: Presentation,
@@ -136,7 +136,7 @@ const TIMELINE_EVENTS = [
     gradient: 'from-cyan-600 to-blue-500'
   },
   {
-    time: 'Day 2 · 09-09-2026 · 10:00 AM',
+    time: 'Day 2 · 09-10-2026 · 10:00 AM',
     title: 'Valedictory & Prize Distribution',
     desc: 'Final event closing ceremony, winner announcement, and prize distribution graced by Valedictory Chief Guest Shanmuga Sundaram.',
     icon: Trophy,

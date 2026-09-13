@@ -11,11 +11,11 @@ const FAQS = [
   },
   {
     q: 'What is the team size?',
-    a: 'Teams must have a minimum of 2 members and a maximum of 5 members. Solo participation is not allowed.',
+    a: 'Teams must have a minimum of 2 members and a maximum of 4 members. Solo participation is not allowed.',
   },
   {
     q: 'What is the registration fee?',
-    a: 'The registration fee is ₹500 per team (configurable). This covers food, accommodation, kit, and event access for the entire 24 hours.',
+    a: 'The registration fee is ₹500 per team (configurable). This covers food and accommodation for the entire 24 hours.',
   },
   {
     q: 'Do we need to come with a project idea?',
@@ -32,10 +32,6 @@ const FAQS = [
   {
     q: 'How are projects judged?',
     a: 'Projects are evaluated on Innovation & Creativity, Technical Complexity, Impact & Feasibility, Design/UX, and Presentation Quality.',
-  },
-  {
-    q: 'Can team members be from different colleges?',
-    a: 'Yes, cross-college teams are allowed! Your team members can be from different institutions.',
   },
 ];
 
