@@ -84,7 +84,7 @@ export default function SuccessStep({ registrationId }: Props) {
               'Check your email for a confirmation message',
               'Visit your dashboard to select a problem statement',
               'Prepare your team and ideate before the event',
-              'Arrive at NIITM Campus by 09:00 AM on 09 October 2026',
+              'Arrive at Nehru Institute of Information Technology and Management Campus by 09:00 AM on 09 October 2026',
             ].map((step, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
                 <span className="w-5 h-5 rounded-full bg-indigo-200 text-indigo-700 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
@@ -103,7 +103,7 @@ export default function SuccessStep({ registrationId }: Props) {
           </Link>
           <button
             onClick={() => {
-              const text = `I just registered for HackSpark '26 - The 24 Hours Hackathon! 🚀 Join me at NIITM on 09-10 Oct 2026. Registration ID: ${registration?.registrationId}`;
+              const text = `I just registered for HackSpark '26 - The 24 Hours Hackathon! 🚀 Join me at Nehru Institute of Information Technology and Management on 09-10 Oct 2026. Registration ID: ${registration?.registrationId}`;
               if (navigator.share) {
                 navigator.share({ title: "HackSpark '26", text, url: window.location.origin });
               } else {

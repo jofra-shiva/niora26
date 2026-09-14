@@ -81,7 +81,7 @@ export default function Footer() {
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
                 <span className="text-slate-300 text-xs">
-                  NIITM Campus, Nehru Garden, Thirumalayampalayam, Coimbatore - 641105
+                  Nehru Institute of Information Technology and Management Campus, Nehru Garden, Thirumalayampalayam, Coimbatore - 641105
                 </span>
               </li>
             </ul>

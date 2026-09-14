@@ -113,7 +113,7 @@ export default function PaymentPage() {
           {registration.paymentStatus === 'PAID' && (
             <div className="glass-card rounded-xl p-5 text-center">
               <p className="text-sm text-slate-600">
-                🎉 Your registration is fully confirmed! See you at NIITM on <strong>09 October 2026</strong>.
+                🎉 Your registration is fully confirmed! See you at Nehru Institute of Information Technology and Management on <strong>09 October 2026</strong>.
               </p>
             </div>
           )}

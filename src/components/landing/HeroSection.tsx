@@ -226,7 +226,7 @@ export default function HeroSection() {
               {/* Top Row: 3 Logos */}
               <div className="flex items-center justify-center gap-3 xs:gap-4">
                 <div className="w-11 h-11 xs:w-13 xs:h-13 rounded-full bg-white flex items-center justify-center border border-cyan-400/50 shadow-[0_0_12px_rgba(0,240,255,0.3)] p-1 shrink-0">
-                  <Image src="/footer.png" alt="NIITM" width={48} height={48} className="object-contain" />
+                  <Image src="/footer.png" alt="Nehru Institute of Information Technology and Management" width={48} height={48} className="object-contain" />
                 </div>
                 <div className="w-11 h-11 xs:w-13 xs:h-13 rounded-full bg-white flex items-center justify-center border border-cyan-400/50 shadow-[0_0_12px_rgba(0,240,255,0.3)] p-1 shrink-0">
                   <Image src="/images.jpg" alt="Partner" width={48} height={48} className="object-contain rounded-full" />
@@ -255,7 +255,7 @@ export default function HeroSection() {
               {/* Left Logos */}
               <div className="flex items-center gap-2.5 shrink-0">
                 <div className="w-13 h-13 md:w-15 md:h-15 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_10px_rgba(0,240,255,0.2)] p-1.5">
-                  <Image src="/footer.png" alt="NIITM" width={48} height={48} className="object-contain" />
+                  <Image src="/footer.png" alt="Nehru Institute of Information Technology and Management" width={48} height={48} className="object-contain" />
                 </div>
                 <div className="w-13 h-13 md:w-15 md:h-15 rounded-full bg-white flex items-center justify-center border border-cyan-400/40 shadow-[0_0_10px_rgba(0,240,255,0.2)] p-1.5">
                   <Image src="/images.jpg" alt="Partner" width={48} height={48} className="object-contain rounded-full" />

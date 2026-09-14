@@ -46,11 +46,11 @@ const ADVISORY_BOARD: Member[] = [
   },
   {
     name: 'Dr. K. Ravikumar',
-    role: 'Principal / NIITM',
+    role: 'Principal / Nehru Institute of Information Technology and Management',
     image: '/team/ravikumar.jpg',
     headline: 'Principal · Nehru Institute of Information Technology & Management',
-    about: 'Principal of Nehru Institute of Information Technology & Management (NIITM). Providing academic excellence, administrative leadership, and strategic direction.',
-    education: 'NIITM, Coimbatore',
+    about: 'Principal of Nehru Institute of Information Technology & Management (Nehru Institute of Information Technology and Management). Providing academic excellence, administrative leadership, and strategic direction.',
+    education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
   {
     name: 'Dr. R. Moses Daniel',
@@ -62,11 +62,11 @@ const ADVISORY_BOARD: Member[] = [
   },
   {
     name: 'Dr. S. Menaka',
-    role: 'HOD / NIITM',
+    role: 'HOD / Nehru Institute of Information Technology and Management',
     image: '/team/menaka.jpg',
     headline: 'Head of Department · Nehru Institute of Information Technology & Management',
-    about: 'Head of Department at Nehru Institute of Information Technology & Management (NIITM). Guiding academic excellence, technical innovation, and student mentorship.',
-    education: 'NIITM, Coimbatore',
+    about: 'Head of Department at Nehru Institute of Information Technology & Management (Nehru Institute of Information Technology and Management). Guiding academic excellence, technical innovation, and student mentorship.',
+    education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
   {
     name: 'Dr. M. Sengaliappan',
@@ -85,8 +85,8 @@ const CONVENORS: Member[] = [
     image: '/team/indulekha.jpg',
     phone: '9944560889',
     headline: 'Faculty · PG Dept. of Computer Applications',
-    about: 'A dedicated academician and researcher with deep expertise in computer science and application development. Leads the PG Department of Computer Applications at NIITM, guiding students toward excellence in technology.',
-    education: 'NIITM, Coimbatore',
+    about: 'A dedicated academician and researcher with deep expertise in computer science and application development. Leads the PG Department of Computer Applications at Nehru Institute of Information Technology and Management, guiding students toward excellence in technology.',
+    education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
   {
     name: 'Mrs. Indulekha K V',
@@ -95,7 +95,7 @@ const CONVENORS: Member[] = [
     phone: '7561078733',
     headline: 'Faculty · PG Dept. of Computer Applications',
     about: 'Passionate educator and event organizer with a strong background in software engineering. Plays a key role in shaping the technical curriculum and mentoring students through industry-relevant projects.',
-    education: 'NIITM, Coimbatore',
+    education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
   {
     name: 'Dr. A. Nandhini',
@@ -117,7 +117,7 @@ const STUDENT_COORDINATORS: Member[] = [
     headline: 'MCA Student · Full Stack Enthusiast',
     about: 'A motivated MCA student passionate about full-stack development and building scalable applications. Plays a key coordination role for HackSpark \'26.',
     skills: ['React', 'Node.js', 'Python', 'MongoDB'],
-    education: 'NIITM, Coimbatore',
+    education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
   {
     name: 'Logendiran R',
@@ -127,7 +127,7 @@ const STUDENT_COORDINATORS: Member[] = [
     headline: 'MCA Student · UI/UX & Web Developer',
     about: 'Enthusiastic about creating seamless user experiences and contributing to open-source projects. Coordinating logistics and participant experience for HackSpark \'26.',
     skills: ['Figma', 'React', 'TailwindCSS', 'JavaScript'],
-    education: 'NIITM, Coimbatore',
+    education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
   {
     name: 'Jeevanantha Perumal M',
@@ -137,7 +137,7 @@ const STUDENT_COORDINATORS: Member[] = [
     headline: 'MCA Student · Backend & Cloud Developer',
     about: 'Focuses on backend systems, cloud infrastructure, and DevOps practices. Managing technical operations for HackSpark \'26.',
     skills: ['AWS', 'Docker', 'Django', 'PostgreSQL'],
-    education: 'NIITM, Coimbatore',
+    education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
   {
     name: 'Pathirinath Kamesh S',
@@ -147,7 +147,7 @@ const STUDENT_COORDINATORS: Member[] = [
     headline: 'MCA Student · AI/ML & Data Science',
     about: 'Passionate about machine learning, data analysis, and building intelligent systems. Handling outreach and partnerships for HackSpark \'26.',
     skills: ['Python', 'TensorFlow', 'Pandas', 'scikit-learn'],
-    education: 'NIITM, Coimbatore',
+    education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
   {
     name: 'Gayathiri S',
@@ -157,7 +157,7 @@ const STUDENT_COORDINATORS: Member[] = [
     headline: 'MCA Student · Student Coordinator',
     about: 'Pursuing Master of Computer Applications. Dedicated student coordinator assisting with event operations and participant management for HackSpark \'26.',
     skills: ['Management', 'Coordination', 'Communication'],
-    education: 'NIITM, Coimbatore',
+    education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
   {
     name: 'Jeevika R',
@@ -167,7 +167,7 @@ const STUDENT_COORDINATORS: Member[] = [
     headline: 'MCA Student · Student Coordinator',
     about: 'Pursuing Master of Computer Applications. Dedicated student coordinator assisting with event operations and participant management for HackSpark \'26.',
     skills: ['Management', 'Coordination', 'Communication'],
-    education: 'NIITM, Coimbatore',
+    education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
   {
     name: 'Athul U K',
@@ -175,9 +175,9 @@ const STUDENT_COORDINATORS: Member[] = [
     image: '/team/athul.jpg',
     linkedin: 'https://www.linkedin.com/in/athul-u-k-641273265',
     headline: 'MCA Student · Student Coordinator',
-    about: 'Pursuing Master of Computer Applications at NIITM. Dedicated student coordinator assisting with event management and participant support for HackSpark \'26.',
+    about: 'Pursuing Master of Computer Applications at Nehru Institute of Information Technology and Management. Dedicated student coordinator assisting with event management and participant support for HackSpark \'26.',
     skills: ['Management', 'Coordination'],
-    education: 'NIITM, Coimbatore',
+    education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
   {
     name: 'Kumaran M',
@@ -185,9 +185,9 @@ const STUDENT_COORDINATORS: Member[] = [
     image: '/team/kumaran.jpg',
     linkedin: 'https://www.linkedin.com/in/kumaran-m-290ab0434',
     headline: 'MCA Student · Student Coordinator',
-    about: 'Pursuing Master of Computer Applications at NIITM. Dedicated student coordinator assisting with event management and participant support for HackSpark \'26.',
+    about: 'Pursuing Master of Computer Applications at Nehru Institute of Information Technology and Management. Dedicated student coordinator assisting with event management and participant support for HackSpark \'26.',
     skills: ['Management', 'Coordination'],
-    education: 'NIITM, Coimbatore',
+    education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
 ];
 
@@ -201,7 +201,7 @@ const STUDENT_ORGANIZERS: Member[] = [
     headline: 'Versatile Full Stack Developer',
     about: 'Proficient in React, Node, Python, Flask, HTML, CSS & JS. Developer at Ak technologies. Instrumental in organizing and running HackSpark \'26.',
     skills: ['React', 'Node.js', 'Python', 'Flask', 'HTML/CSS/JS'],
-    education: 'NIITM, Coimbatore',
+    education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
   {
     name: 'Sivaprakash M',
@@ -212,7 +212,7 @@ const STUDENT_ORGANIZERS: Member[] = [
     headline: 'Full Stack Developer | Java | Python',
     about: 'Frontend Developer at AK Technologies. Full Stack developer with experience in Next.js, Java, and Python. Built projects like Time Lion and LeoChat. Active organizer behind HackSpark \'26.',
     skills: ['Java', 'Python', 'Next.js', 'React', 'Node.js'],
-    education: 'NIITM, Coimbatore',
+    education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
   {
     name: 'V. K. Girithar',
@@ -457,9 +457,9 @@ function TeamCard({ member, index }: { member: Member; index: number }) {
               {member.name}
             </h3>
 
-            {/* Subtitle: MCA, NIITM */}
+            {/* Subtitle: MCA, Nehru Institute of Information Technology and Management */}
             <p className="text-[8px] xs:text-[9.5px] sm:text-xs text-cyan-400 font-mono font-semibold uppercase tracking-[0.1em] sm:tracking-[0.12em] text-center mb-0.5">
-              MCA, NIITM
+              MCA, Nehru Institute of Information Technology and Management
             </p>
             <p className="text-[7px] xs:text-[8px] sm:text-[9px] text-slate-400 font-mono font-semibold uppercase tracking-[0.08em] text-center mb-1 sm:mb-2">
               Student Coordinator

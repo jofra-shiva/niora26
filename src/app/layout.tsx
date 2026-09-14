@@ -31,11 +31,11 @@ export const metadata: Metadata = {
   description:
     "HackSpark '26 is a premier 24-hours national-level hackathon by Nehru Institute of Information Technology and Management, affiliated to Anna University, Chennai. ₹20,000 Prize Pool. 09–10 October 2026.",
   keywords: [
-    "HackSpark '26", 'hackathon', 'NIITM', 'Anna University',
+    "HackSpark '26", 'hackathon', 'Nehru Institute of Information Technology and Management', 'Anna University',
     'coding competition', 'Tamil Nadu hackathon', '2026',
     'MCA hackathon', 'college hackathon',
   ],
-  authors: [{ name: 'NIITM PG Department of Computer Applications' }],
+  authors: [{ name: 'Nehru Institute of Information Technology and Management PG Department of Computer Applications' }],
   openGraph: {
     type: 'website',
     title: "HackSpark '26",

@@ -8,7 +8,7 @@ const TIMELINE = [
   { time: '09 Oct · 08:00 PM', title: 'Dinner', type: 'meal', color: 'bg-amber-500' },
   { time: '10 Oct · 02:00 AM', title: 'Midnight Munchies', type: 'break', color: 'bg-orange-500' },
   { time: '10 Oct · 07:00 AM', title: 'Submission Deadline', type: 'deadline', color: 'bg-red-500' },
-  { time: '10 Oct · 08:00 AM', title: 'Project Presentations', type: 'event', color: 'bg-indigo-500' },
+  { time: '10 Oct · 08:00 AM', title: 'Project Evaluation', type: 'event', color: 'bg-indigo-500' },
   { time: '10 Oct · 10:00 AM', title: 'Valedictory & Prize Distribution', type: 'ceremony', color: 'bg-violet-500' },
 ];
 
@@ -24,7 +24,7 @@ export default function TimelinePage() {
         </div>
         <div>
           <h1 className="font-heading font-bold text-2xl text-slate-800">Event Timeline</h1>
-          <p className="text-sm text-slate-500">09–10 October 2026 · NIITM Campus</p>
+          <p className="text-sm text-slate-500">09–10 October 2026 · Nehru Institute of Information Technology and Management Campus</p>
         </div>
       </div>
 
