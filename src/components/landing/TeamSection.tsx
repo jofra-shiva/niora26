@@ -453,20 +453,33 @@ function TeamCard({ member, index }: { member: Member; index: number }) {
             </div>
 
             {/* Name */}
-            <h3 className="font-heading font-bold text-white text-[10px] xs:text-xs sm:text-base group-hover:text-[#00F0FF] transition-colors leading-snug mb-0.5 sm:mb-1 text-center line-clamp-1">
+            <h3 className="font-heading font-bold text-cyan-400 group-hover:text-cyan-300 text-[10px] xs:text-xs sm:text-base transition-colors leading-snug mb-1 sm:mb-1.5 text-center uppercase tracking-wider">
               {member.name}
             </h3>
 
-            {/* Subtitle: MCA, Nehru Institute of Information Technology and Management */}
-            <p className="text-[8px] xs:text-[9.5px] sm:text-xs text-cyan-400 font-mono font-semibold uppercase tracking-[0.1em] sm:tracking-[0.12em] text-center mb-0.5">
-              MCA, Nehru Institute of Information Technology and Management
-            </p>
-            <p className="text-[7px] xs:text-[8px] sm:text-[9px] text-slate-400 font-mono font-semibold uppercase tracking-[0.08em] text-center mb-1 sm:mb-2">
-              Student Coordinator
+            {/* Role / Subtitle */}
+            <p className="text-[7px] xs:text-[8px] sm:text-[9px] text-slate-400 font-mono font-semibold uppercase tracking-[0.08em] text-center mb-1.5 sm:mb-2">
+              {member.role}
             </p>
 
+            {member.headline && (
+              <p className="text-[7.5px] xs:text-[8.5px] sm:text-[10px] text-slate-300/90 font-medium text-center mb-1.5 sm:mb-2 line-clamp-2 px-2">
+                {member.headline}
+              </p>
+            )}
+
+            {member.skills && (
+              <div className="flex flex-wrap items-center justify-center gap-1.5 mt-auto mb-3">
+                {member.skills.slice(0, 2).map(skill => (
+                  <span key={skill} className="text-[6.5px] xs:text-[7px] sm:text-[8px] px-2 py-0.5 rounded-full bg-cyan-900/20 text-cyan-300 border border-cyan-500/30 uppercase tracking-wider">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            )}
+
             {/* View Details hint at bottom */}
-            <div className="flex items-center gap-1 text-[7.5px] xs:text-[9px] sm:text-[10px] font-semibold text-cyan-400 opacity-80 group-hover:opacity-100 transition-all duration-300 mt-auto pt-1 border-t border-blue-500/20 w-full justify-center">
+            <div className="flex items-center gap-1 text-[8px] xs:text-[9px] sm:text-[11px] font-semibold text-cyan-400 opacity-80 group-hover:opacity-100 transition-all duration-300 mt-auto pt-1.5 border-t border-blue-500/20 w-full justify-center">
               <span>View Details</span>
               <span className="transform group-hover:translate-x-0.5 transition-transform">→</span>
             </div>
