@@ -47,7 +47,7 @@ export default function ResetPasswordPage() {
             <div className="w-10 h-10 flex items-center justify-center bg-[#6a35ff] rounded-xl shadow-sm">
               <span className="font-logo text-2xl font-bold text-white">N</span>
             </div>
-            <span className="font-logo text-2xl text-[#6a35ff]">HackSpark '26</span>
+            <span className="font-logo text-2xl text-[#6a35ff]">Hack Spark '26</span>
           </Link>
           <h1 className="font-heading font-bold text-2xl text-slate-800">Reset Password</h1>
           <p className="text-sm text-slate-500 mt-1">We'll send you a password reset link</p>

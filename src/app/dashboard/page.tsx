@@ -103,7 +103,7 @@ export default function DashboardPage() {
           {greeting()}, {profile?.fullName?.split(' ')[0] || 'Participant'} 👋
         </h1>
         <p className="text-slate-500 mt-1 text-sm">
-          Welcome to your HackSpark '26 dashboard.
+          Welcome to your Hack Spark '26 dashboard.
           {!registration && (
             <Link href="/register/complete" className="text-indigo-500 font-semibold ml-1">
               Complete your registration →

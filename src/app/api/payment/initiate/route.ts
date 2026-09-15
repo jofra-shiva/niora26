@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
       receipt: registrationId,
       notes: {
         registrationId,
-        event: "HackSpark '26",
+        event: "Hack Spark '26",
       },
     });
 

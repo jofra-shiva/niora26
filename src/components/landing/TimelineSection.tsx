@@ -285,7 +285,7 @@ export default function TimelineSection() {
             24 Hours, <span className="bg-gradient-to-r from-[#2563EB] via-[#00F0FF] to-[#8B5CF6] bg-clip-text text-transparent">Minute by Minute</span>
           </h2>
           <p className="text-xs xs:text-sm sm:text-lg text-slate-300 mt-2 sm:mt-4 mx-auto max-w-2xl font-medium px-1">
-            Organized by Nehru Institute of Information Technology and Management in association with Nehru College of Management. From kickoff to valedictory — here&apos;s how HackSpark &apos;26 unfolds.
+            Organized by Nehru Institute of Information Technology and Management in association with Nehru College of Management. From kickoff to valedictory — here&apos;s how Hack Spark &apos;26 unfolds.
           </p>
         </motion.div>
 

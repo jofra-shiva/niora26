@@ -53,7 +53,7 @@ export default function PaymentStep({ registrationId, onNext, onBack }: Props) {
           key: keyId,
           amount,
           currency,
-          name: "HackSpark '26",
+          name: "Hack Spark '26",
           description: 'Hackathon Registration Fee',
           order_id: orderId,
           handler: async (response: { razorpay_payment_id: string; razorpay_order_id: string; razorpay_signature: string }) => {

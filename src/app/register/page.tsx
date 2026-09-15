@@ -29,16 +29,16 @@ export default function RegisterPage() {
       <div className="relative z-10 max-w-md w-full text-center bg-[#070D22]/90 backdrop-blur-2xl rounded-2xl p-8 border border-cyan-400/30 shadow-[0_0_30px_rgba(0,240,255,0.2)]">
         <div className="flex items-center justify-center gap-3 mb-6">
           <div className="relative w-12 h-12 rounded-full overflow-hidden border border-cyan-400/50 bg-white p-0.5 shadow-[0_0_15px_rgba(0,240,255,0.4)]">
-            <Image src="/logoo.png" alt="HackSpark Logo" fill className="object-cover rounded-full" />
+            <Image src="/logoo.png" alt="Hack Spark Logo" fill className="object-cover rounded-full" />
           </div>
           <span className="font-heading font-black text-2xl text-white tracking-wider">
-            HackSpark <span className="text-[#00F0FF]">&apos;26</span>
+            Hack Spark <span className="text-[#00F0FF]">&apos;26</span>
           </span>
         </div>
 
         <h1 className="font-heading font-black text-2xl text-white mb-2">Redirecting to Registration...</h1>
         <p className="text-sm text-slate-300 mb-6 leading-relaxed">
-          You are being redirected to the official HackSpark &apos;26 Google Registration Form.
+          You are being redirected to the official Hack Spark &apos;26 Google Registration Form.
         </p>
 
         <a

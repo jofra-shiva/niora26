@@ -144,7 +144,7 @@ export default function ChiefGuestSection() {
             Valedictory <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] via-[#3B82F6] to-[#8B5CF6]">Chief Guest</span>
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto font-medium">
-            Honored to have our esteemed guest for the HackSpark &apos;26 Valedictory &amp; Prize Distribution ceremony.
+            Honored to have our esteemed guest for the Hack Spark &apos;26 Valedictory &amp; Prize Distribution ceremony.
           </p>
         </motion.div>
 

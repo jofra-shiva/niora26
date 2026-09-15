@@ -54,7 +54,7 @@ function ContactCard({ person }: { person: { name: string; phone: string } }) {
                 </button>
               </div>
               <a
-                href={`https://wa.me/91${person.phone}?text=Hi%2C%20I%20have%20a%20query%20regarding%20HACKSPARK%2026%20Hackathon.`}
+                href={`https://wa.me/91${person.phone}?text=Hi%2C%20I%20have%20a%20query%20regarding%20HACK SPARK%2026%20Hackathon.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 px-4 py-3 hover:bg-emerald-900/30 transition-colors border-b border-blue-500/20 group/wa"

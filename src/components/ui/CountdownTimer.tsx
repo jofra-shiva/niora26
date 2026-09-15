@@ -70,7 +70,7 @@ export default function CountdownTimer({
           transition={{ duration: 1, repeat: Infinity }}
           className="w-3 h-3 rounded-full bg-emerald-500"
         />
-        <span className="font-heading font-bold text-xl text-emerald-700">HackSpark '26 IS LIVE</span>
+        <span className="font-heading font-bold text-xl text-emerald-700">Hack Spark '26 IS LIVE</span>
       </div>
     );
   }
@@ -78,7 +78,7 @@ export default function CountdownTimer({
   if (isEnded) {
     return (
       <div className="bg-white border border-slate-200 shadow-sm rounded-2xl px-8 py-4 inline-flex items-center gap-3">
-        <span className="font-heading font-bold text-xl text-slate-500">HackSpark '26 HAS ENDED</span>
+        <span className="font-heading font-bold text-xl text-slate-500">Hack Spark '26 HAS ENDED</span>
       </div>
     );
   }

@@ -77,7 +77,7 @@ export default function AdminOverviewPage() {
     <div className="space-y-8">
       <div>
         <h1 className="font-heading font-bold text-2xl text-slate-800">Admin Overview</h1>
-        <p className="text-slate-500 text-sm mt-1">HackSpark '26 — Real-time event metrics</p>
+        <p className="text-slate-500 text-sm mt-1">Hack Spark '26 — Real-time event metrics</p>
       </div>
 
       {/* Stats Grid */}

@@ -1,8 +1,8 @@
 // ============================================================
-// HackSpark '26 — Constants
+// Hack Spark '26 — Constants
 // ============================================================
 
-export const EVENT_NAME = "HackSpark '26";
+export const EVENT_NAME = "Hack Spark '26";
 export const EVENT_TAGLINE = 'Code Beyond Limits. Build the Future.';
 export const EVENT_DESCRIPTION = '24 Hours of Coding • Creating • Innovating';
 export const COLLEGE_NAME = 'NEHRU INSTITUTE OF INFORMATION TECHNOLOGY AND MANAGEMENT';

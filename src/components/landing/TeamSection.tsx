@@ -115,7 +115,7 @@ const STUDENT_COORDINATORS: Member[] = [
     image: 'https://media.licdn.com/dms/image/v2/D5603AQGv1gUMhNJhpA/profile-displayphoto-crop_800_800/B56Z46FFf4IsAI-/0/1779090875339?e=1789603200&v=beta&t=vEtQrXlCcKDSP8-mMXBO5N-F3hTAjZgDvc3R4G_3iF8',
     linkedin: 'https://www.linkedin.com/in/venkateshtrs02/',
     headline: 'MCA Student · Full Stack Enthusiast',
-    about: 'A motivated MCA student passionate about full-stack development and building scalable applications. Plays a key coordination role for HackSpark \'26.',
+    about: 'A motivated MCA student passionate about full-stack development and building scalable applications. Plays a key coordination role for Hack Spark \'26.',
     skills: ['React', 'Node.js', 'Python', 'MongoDB'],
     education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
@@ -125,7 +125,7 @@ const STUDENT_COORDINATORS: Member[] = [
     image: 'https://media.licdn.com/dms/image/v2/D5603AQG_XcJrNuFQEA/profile-displayphoto-crop_800_800/B56aBEAP_hKkAI-/0/1787847313126?e=1790208000&v=beta&t=74JPbFH8nb4JqvhgBSmfc4CXDO6yUWLEvK07cm23SNI',
     linkedin: 'https://www.linkedin.com/in/logendiran-r-24567a295/',
     headline: 'MCA Student · UI/UX & Web Developer',
-    about: 'Enthusiastic about creating seamless user experiences and contributing to open-source projects. Coordinating logistics and participant experience for HackSpark \'26.',
+    about: 'Enthusiastic about creating seamless user experiences and contributing to open-source projects. Coordinating logistics and participant experience for Hack Spark \'26.',
     skills: ['Figma', 'React', 'TailwindCSS', 'JavaScript'],
     education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
@@ -135,7 +135,7 @@ const STUDENT_COORDINATORS: Member[] = [
     image: '/team/jeevanantha.jpg',
     linkedin: 'https://www.linkedin.com/in/jeevanantha-perumal-m-197b78296/',
     headline: 'MCA Student · Backend & Cloud Developer',
-    about: 'Focuses on backend systems, cloud infrastructure, and DevOps practices. Managing technical operations for HackSpark \'26.',
+    about: 'Focuses on backend systems, cloud infrastructure, and DevOps practices. Managing technical operations for Hack Spark \'26.',
     skills: ['AWS', 'Docker', 'Django', 'PostgreSQL'],
     education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
@@ -145,7 +145,7 @@ const STUDENT_COORDINATORS: Member[] = [
     image: '/team/pathirinath.jpg',
     linkedin: 'https://linkedin.com',
     headline: 'MCA Student · AI/ML & Data Science',
-    about: 'Passionate about machine learning, data analysis, and building intelligent systems. Handling outreach and partnerships for HackSpark \'26.',
+    about: 'Passionate about machine learning, data analysis, and building intelligent systems. Handling outreach and partnerships for Hack Spark \'26.',
     skills: ['Python', 'TensorFlow', 'Pandas', 'scikit-learn'],
     education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
@@ -155,7 +155,7 @@ const STUDENT_COORDINATORS: Member[] = [
     image: '/team/gayathiri.jpg',
     linkedin: 'https://www.linkedin.com/in/gayathri-s-5546002b5',
     headline: 'MCA Student · Student Coordinator',
-    about: 'Pursuing Master of Computer Applications. Dedicated student coordinator assisting with event operations and participant management for HackSpark \'26.',
+    about: 'Pursuing Master of Computer Applications. Dedicated student coordinator assisting with event operations and participant management for Hack Spark \'26.',
     skills: ['Management', 'Coordination', 'Communication'],
     education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
@@ -165,7 +165,7 @@ const STUDENT_COORDINATORS: Member[] = [
     image: '/team/jeevika.jpg',
     linkedin: 'https://www.linkedin.com/in/jeevika-rajasekaran-0a0369291',
     headline: 'MCA Student · Student Coordinator',
-    about: 'Pursuing Master of Computer Applications. Dedicated student coordinator assisting with event operations and participant management for HackSpark \'26.',
+    about: 'Pursuing Master of Computer Applications. Dedicated student coordinator assisting with event operations and participant management for Hack Spark \'26.',
     skills: ['Management', 'Coordination', 'Communication'],
     education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
@@ -175,7 +175,7 @@ const STUDENT_COORDINATORS: Member[] = [
     image: '/team/athul.jpg',
     linkedin: 'https://www.linkedin.com/in/athul-u-k-641273265',
     headline: 'MCA Student · Student Coordinator',
-    about: 'Pursuing Master of Computer Applications at Nehru Institute of Information Technology and Management. Dedicated student coordinator assisting with event management and participant support for HackSpark \'26.',
+    about: 'Pursuing Master of Computer Applications at Nehru Institute of Information Technology and Management. Dedicated student coordinator assisting with event management and participant support for Hack Spark \'26.',
     skills: ['Management', 'Coordination'],
     education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
@@ -185,7 +185,7 @@ const STUDENT_COORDINATORS: Member[] = [
     image: '/team/kumaran.jpg',
     linkedin: 'https://www.linkedin.com/in/kumaran-m-290ab0434',
     headline: 'MCA Student · Student Coordinator',
-    about: 'Pursuing Master of Computer Applications at Nehru Institute of Information Technology and Management. Dedicated student coordinator assisting with event management and participant support for HackSpark \'26.',
+    about: 'Pursuing Master of Computer Applications at Nehru Institute of Information Technology and Management. Dedicated student coordinator assisting with event management and participant support for Hack Spark \'26.',
     skills: ['Management', 'Coordination'],
     education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
@@ -199,7 +199,7 @@ const STUDENT_ORGANIZERS: Member[] = [
     linkedin: 'https://www.linkedin.com/in/harsathganesan05/',
     phone: '9047023266',
     headline: 'Versatile Full Stack Developer',
-    about: 'Proficient in React, Node, Python, Flask, HTML, CSS & JS. Developer at Ak technologies. Instrumental in organizing and running HackSpark \'26.',
+    about: 'Proficient in React, Node, Python, Flask, HTML, CSS & JS. Developer at Ak technologies. Instrumental in organizing and running Hack Spark \'26.',
     skills: ['React', 'Node.js', 'Python', 'Flask', 'HTML/CSS/JS'],
     education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
@@ -210,7 +210,7 @@ const STUDENT_ORGANIZERS: Member[] = [
     linkedin: 'https://www.linkedin.com/in/sivaprakash-m-dev/',
     phone: '8838939801',
     headline: 'Full Stack Developer | Java | Python',
-    about: 'Frontend Developer at AK Technologies. Full Stack developer with experience in Next.js, Java, and Python. Built projects like Time Lion and LeoChat. Active organizer behind HackSpark \'26.',
+    about: 'Frontend Developer at AK Technologies. Full Stack developer with experience in Next.js, Java, and Python. Built projects like Time Lion and LeoChat. Active organizer behind Hack Spark \'26.',
     skills: ['Java', 'Python', 'Next.js', 'React', 'Node.js'],
     education: 'Nehru Institute of Information Technology and Management, Coimbatore',
   },
@@ -348,7 +348,7 @@ function ProfileModal({ member, onClose }: { member: Member; onClose: () => void
             )}
             {member.phone && (
               <a
-                href={`https://wa.me/91${member.phone}?text=Hi%2C%20I%20have%20a%20query%20regarding%20HACKSPARK%2026.`}
+                href={`https://wa.me/91${member.phone}?text=Hi%2C%20I%20have%20a%20query%20regarding%20HACK SPARK%2026.`}
                 target="_blank" rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-2 bg-emerald-950/60 hover:bg-emerald-900/60 text-emerald-400 text-sm font-bold py-2.5 rounded-2xl border border-emerald-500/40 transition-colors shadow-[0_0_15px_rgba(16,185,129,0.2)]"
               >
@@ -380,7 +380,7 @@ function ContactPopup({ name, phone, onClose }: { name: string; phone: string; o
           <button onClick={onClose}><X className="w-3 h-3 text-slate-400 hover:text-white transition-colors" /></button>
         </div>
         <a
-          href={`https://wa.me/91${phone}?text=Hi%2C%20I%20have%20a%20query%20regarding%20HACKSPARK%2026%20Hackathon.`}
+          href={`https://wa.me/91${phone}?text=Hi%2C%20I%20have%20a%20query%20regarding%20HACK SPARK%2026%20Hackathon.`}
           target="_blank" rel="noopener noreferrer"
           className="flex items-center gap-2 px-3 py-2.5 hover:bg-emerald-950/40 transition-colors border-b border-blue-500/20 text-emerald-400"
           onClick={onClose}
@@ -673,7 +673,7 @@ export default function TeamSection() {
             </span>
           </div>
           <h2 className="font-heading font-black text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight mb-3 sm:mb-4">
-            Who&apos;s behind <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] via-[#00F0FF] to-[#8B5CF6]">HackSpark &apos;26</span>
+            Who&apos;s behind <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] via-[#00F0FF] to-[#8B5CF6]">Hack Spark &apos;26</span>
           </h2>
         </motion.div>
 

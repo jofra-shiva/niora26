@@ -20,7 +20,7 @@ const COMPANY_INFO = {
   role: 'Internship Opportunity Partner',
   image: '/inexpensive_coders.png',
   headline: 'Software Development & Tech Talent Partner',
-  about: 'Exclusive Internship Opportunities for ALL HackSpark \'26 Participants offered by Inexpensive Coders. Providing hands-on experience in full-stack web development, software engineering mentorship, real-world project deployments, and career opportunities for top performers.',
+  about: 'Exclusive Internship Opportunities for ALL Hack Spark \'26 Participants offered by Inexpensive Coders. Providing hands-on experience in full-stack web development, software engineering mentorship, real-world project deployments, and career opportunities for top performers.',
 };
 
 function GuestModal({ onClose }: { onClose: () => void }) {
@@ -169,7 +169,7 @@ function CompanyModal({ onClose }: { onClose: () => void }) {
           </div>
 
           <div className="p-4 rounded-2xl bg-purple-950/60 border border-purple-500/30 text-xs text-purple-200 font-semibold">
-            ✨ Guaranteed Internship certificate &amp; learning opportunities for all active HackSpark &apos;26 participants!
+            ✨ Guaranteed Internship certificate &amp; learning opportunities for all active Hack Spark &apos;26 participants!
           </div>
         </div>
       </motion.div>

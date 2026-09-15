@@ -1,5 +1,5 @@
 // ============================================================
-// HackSpark '26 — Firestore Helpers (Fail-Safe / Silent DB Mode)
+// Hack Spark '26 — Firestore Helpers (Fail-Safe / Silent DB Mode)
 // Registration is managed directly via Google Forms
 // ============================================================
 

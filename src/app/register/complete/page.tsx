@@ -76,9 +76,9 @@ export default function RegisterCompletePage() {
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="relative w-8 h-8 rounded-full overflow-hidden border border-cyan-400/50 p-0.5 bg-white shadow-[0_0_10px_rgba(0,240,255,0.3)]">
-              <Image src="/logoo.png" alt="HackSpark Logo" width={30} height={30} className="object-cover rounded-full" />
+              <Image src="/logoo.png" alt="Hack Spark Logo" width={30} height={30} className="object-cover rounded-full" />
             </div>
-            <span className="font-heading font-black text-lg text-white">HackSpark <span className="text-[#00F0FF]">'26</span></span>
+            <span className="font-heading font-black text-lg text-white">Hack Spark <span className="text-[#00F0FF]">'26</span></span>
           </div>
           <span className="text-xs font-mono font-bold text-cyan-300 uppercase tracking-widest">Registration Portal</span>
         </div>

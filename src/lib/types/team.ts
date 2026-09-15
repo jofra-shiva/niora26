@@ -1,5 +1,5 @@
 ﻿// ============================================================
-// HackSpark '26 — Team Types
+// Hack Spark '26 — Team Types
 // ============================================================
 
 import { FirebaseTimestamp, SyncStatus } from './user';

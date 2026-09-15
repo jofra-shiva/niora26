@@ -198,7 +198,7 @@ export default function HeroSection() {
         <div className="relative w-full h-full">
           <Image
             src="/laptop.png"
-            alt="HackSpark Coding Laptop"
+            alt="Hack Spark Coding Laptop"
             fill
             sizes="(max-width: 1024px) 100vw, 480px"
             className="object-contain drop-shadow-[0_0_35px_rgba(0,240,255,0.35)]"
@@ -286,22 +286,10 @@ export default function HeroSection() {
           </div>
         </motion.div>
 
-        {/* ---- Organizes Banner (Outside & Below Box) ---- */}
-        <motion.div
-          initial={{ opacity: 0, y: -6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex items-center justify-center gap-2 sm:gap-4 mb-4 sm:mb-8 px-2"
-        >
-          <div className="w-4 sm:w-16 h-0.5 bg-gradient-to-r from-transparent to-[#00F0FF] shrink-0" />
-          <span className="text-xs sm:text-base md:text-lg font-black text-[#00F0FF] tracking-[0.12em] sm:tracking-[0.2em] uppercase text-center drop-shadow-[0_0_12px_#00F0FF]">
-            Organizes 24 Hours Hackathon &apos;26
-          </span>
-          <div className="w-4 sm:w-16 h-0.5 bg-gradient-to-l from-transparent to-[#00F0FF] shrink-0" />
-        </motion.div>
+
 
         {/* =========================================================================
-            MAIN TITLE: HACKSPARK '26 WITH ZIG-ZAG LIGHTNING LINE TOUCHING 'H'
+            MAIN TITLE: HACK SPARK '26 WITH ZIG-ZAG LIGHTNING LINE TOUCHING 'H'
             ========================================================================= */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -380,7 +368,7 @@ export default function HeroSection() {
               </span>
 
               {/* SPARK (GRADIENT BLUE/CYAN) */}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#00F0FF] font-black tracking-tight ml-0.5 sm:ml-1">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#00F0FF] font-black tracking-tight ml-4 sm:ml-6">
                 SPARK
               </span>
 
@@ -454,6 +442,20 @@ export default function HeroSection() {
               </span>
             </h1>
           </div>
+
+          {/* NEW 24 HRS SUSTAIN AI BANNER */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.18 }}
+            className="mt-8 mb-2 z-20 flex items-center justify-center w-full"
+          >
+            <div className="px-5 py-2 sm:px-8 sm:py-3 rounded-xl bg-[#00F0FF]/10 border border-[#00F0FF]/30 backdrop-blur-md shadow-[0_0_20px_rgba(0,240,255,0.2)]">
+              <h2 className="text-xs sm:text-base md:text-xl font-bold tracking-widest uppercase text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+                24 HRS NATIONAL LEVEL HACKATHON ON <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4ADE80] to-[#22C55E] drop-shadow-[0_0_10px_rgba(74,222,128,0.5)] font-black">SUSTAIN AI</span>
+              </h2>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* =========================================================================
@@ -520,8 +522,8 @@ export default function HeroSection() {
           className="flex flex-row items-center justify-center gap-1.5 xs:gap-3 sm:gap-4 mb-6 flex-nowrap w-full max-w-sm sm:max-w-none mx-auto px-1"
         >
           <a
-            href="/HACKSPARK Rule Book.pdf"
-            download="HACKSPARK Rule Book.pdf"
+            href="/HACK SPARK Rule Book.pdf"
+            download="HACK SPARK Rule Book.pdf"
             className="flex-1 sm:flex-initial group relative inline-flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 px-2.5 xs:px-4 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-black text-[10px] xs:text-xs sm:text-base text-white bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#D946EF] hover:from-[#7C3AED] hover:to-[#C026D3] shadow-[0_0_30px_rgba(139,92,246,0.6)] hover:shadow-[0_0_45px_rgba(217,70,239,0.9)] hover:scale-105 transition-all duration-300 uppercase tracking-wider cursor-pointer border border-purple-400/30 whitespace-nowrap"
           >
             <Download className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 group-hover:translate-y-0.5 transition-transform text-white shrink-0" />
@@ -529,8 +531,8 @@ export default function HeroSection() {
           </a>
 
           <a
-            href="/HackSpark PPT template.pptx"
-            download="HackSpark PPT template.pptx"
+            href="/Hack Spark PPT template.pptx"
+            download="Hack Spark PPT template.pptx"
             className="flex-1 sm:flex-initial group relative inline-flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 px-2.5 xs:px-4 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-black text-[10px] xs:text-xs sm:text-base text-white bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#00F0FF] hover:from-[#1D4ED8] hover:to-[#00D8E6] shadow-[0_0_30px_rgba(37,99,235,0.6)] hover:shadow-[0_0_45px_rgba(0,240,255,0.9)] hover:scale-105 transition-all duration-300 uppercase tracking-wider cursor-pointer border border-cyan-400/30 whitespace-nowrap"
           >
             <Presentation className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 group-hover:translate-y-0.5 transition-transform text-white shrink-0" />

@@ -1,5 +1,5 @@
 ﻿// ============================================================
-// HackSpark '26 — Registration Types
+// Hack Spark '26 — Registration Types
 // ============================================================
 
 import { FirebaseTimestamp, SyncStatus } from './user';

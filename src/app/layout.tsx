@@ -25,26 +25,26 @@ const headingFont = Nunito({
 });
 export const metadata: Metadata = {
   title: {
-    default: "HackSpark '26 — Code Beyond Limits. Build the Future.",
-    template: "%s | HackSpark '26",
+    default: "Hack Spark '26 — Code Beyond Limits. Build the Future.",
+    template: "%s | Hack Spark '26",
   },
   description:
-    "HackSpark '26 is a premier 24-hours national-level hackathon by Nehru Institute of Information Technology and Management, affiliated to Anna University, Chennai. ₹20,000 Prize Pool. 09–10 October 2026.",
+    "Hack Spark '26 is a premier 24-hours national-level hackathon by Nehru Institute of Information Technology and Management, affiliated to Anna University, Chennai. ₹20,000 Prize Pool. 09–10 October 2026.",
   keywords: [
-    "HackSpark '26", 'hackathon', 'Nehru Institute of Information Technology and Management', 'Anna University',
+    "Hack Spark '26", 'hackathon', 'Nehru Institute of Information Technology and Management', 'Anna University',
     'coding competition', 'Tamil Nadu hackathon', '2026',
     'MCA hackathon', 'college hackathon',
   ],
   authors: [{ name: 'Nehru Institute of Information Technology and Management PG Department of Computer Applications' }],
   openGraph: {
     type: 'website',
-    title: "HackSpark '26",
+    title: "Hack Spark '26",
     description: 'Code Beyond Limits. Build the Future. 24 Hours Hackathon · ₹20,000 Prize Pool · 09–10 Oct 2026',
-    siteName: "HackSpark '26",
+    siteName: "Hack Spark '26",
   },
   twitter: {
     card: 'summary_large_image',
-    title: "HackSpark '26",
+    title: "Hack Spark '26",
     description: 'Code Beyond Limits. Build the Future.',
   },
   robots: {
@@ -65,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
+    <html lang="en">
       <body className={`${nunito.variable} ${jetbrainsMono.variable} ${headingFont.variable} font-body antialiased`}>
         <AuthProvider>
           <SmoothScroller>

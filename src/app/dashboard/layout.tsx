@@ -67,7 +67,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div className="w-10 h-10 flex items-center justify-center bg-blue-600 rounded-xl shadow-sm">
             <span className="font-logo text-2xl font-bold text-white">N</span>
           </div>
-          <span className="font-logo text-xl text-slate-900">HACKSPARK <span className="text-blue-600">'26</span></span>
+          <span className="font-logo text-xl text-slate-900">HACK SPARK <span className="text-blue-600">'26</span></span>
         </Link>
       </div>
 
@@ -165,7 +165,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <button onClick={() => setSidebarOpen(true)} className="btn-ghost p-2">
             <Menu className="w-5 h-5" />
           </button>
-          <span className="font-heading font-bold text-sm text-blue-700">HackSpark '26</span>
+          <span className="font-heading font-bold text-sm text-blue-700">Hack Spark '26</span>
         </header>
 
         {/* Page content */}

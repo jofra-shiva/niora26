@@ -191,16 +191,16 @@ export default function AboutSection() {
           <div className="inline-flex items-center gap-2 px-3.5 py-1 sm:px-4 sm:py-1.5 rounded-full bg-[#070D22]/80 border border-blue-500/30 mb-4 sm:mb-6 shadow-[0_0_15px_rgba(0,240,255,0.15)]">
             <span className="w-2 h-2 rounded-full bg-[#00F0FF] animate-pulse" />
             <span className="text-[10px] sm:text-xs font-black tracking-widest uppercase text-[#00F0FF]">
-              About HackSpark &apos;26
+              About Hack Spark &apos;26
             </span>
           </div>
 
           <h2 className="font-heading font-black text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-tight mb-3 sm:mb-6">
-            What is <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] via-[#00F0FF] to-[#8B5CF6]">HackSpark?</span>
+            What is <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] via-[#00F0FF] to-[#8B5CF6]">Hack Spark?</span>
           </h2>
 
           <p className="text-xs xs:text-sm sm:text-lg lg:text-xl leading-relaxed text-slate-300 max-w-4xl mx-auto font-medium px-1 sm:px-0">
-            HackSpark &apos;26 is a high-octane <span className="font-bold text-cyan-300 border-b-2 border-cyan-500/40">non-stop 24-hours national-level hackathon</span> focused on{' '}
+            Hack Spark &apos;26 is a high-octane <span className="font-bold text-cyan-300 border-b-2 border-cyan-500/40">non-stop 24-hours national-level hackathon</span> focused on{' '}
             <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] via-[#3B82F6] to-[#8B5CF6] border-b-2 border-cyan-400/50 drop-shadow-[0_0_10px_rgba(0,240,255,0.4)]">
               Sustainable AI
             </span>{' '}

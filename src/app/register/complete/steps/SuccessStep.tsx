@@ -16,7 +16,7 @@ export default function SuccessStep({ registrationId }: Props) {
   useEffect(() => {
     // This would fetch from Firestore — for now use the passed ID
     setRegistration({
-      registrationId: registrationId.startsWith('HACKSPARK')
+      registrationId: registrationId.startsWith('HACK SPARK')
         ? registrationId
         : `hackspark26-REG-${String(Math.floor(Math.random() * 100000)).padStart(6, '0')}`,
       paymentStatus: 'PAID',
@@ -50,7 +50,7 @@ export default function SuccessStep({ registrationId }: Props) {
           You're In! 🎉
         </h1>
         <p className="text-slate-500 mb-8">
-          Welcome to <span className="font-semibold text-indigo-600">HackSpark '26</span>. Your registration is confirmed!
+          Welcome to <span className="font-semibold text-indigo-600">Hack Spark '26</span>. Your registration is confirmed!
         </p>
 
         {/* Registration details */}
@@ -103,9 +103,9 @@ export default function SuccessStep({ registrationId }: Props) {
           </Link>
           <button
             onClick={() => {
-              const text = `I just registered for HackSpark '26 - The 24 Hours Hackathon! 🚀 Join me at Nehru Institute of Information Technology and Management on 09-10 Oct 2026. Registration ID: ${registration?.registrationId}`;
+              const text = `I just registered for Hack Spark '26 - The 24 Hours Hackathon! 🚀 Join me at Nehru Institute of Information Technology and Management on 09-10 Oct 2026. Registration ID: ${registration?.registrationId}`;
               if (navigator.share) {
-                navigator.share({ title: "HackSpark '26", text, url: window.location.origin });
+                navigator.share({ title: "Hack Spark '26", text, url: window.location.origin });
               } else {
                 navigator.clipboard.writeText(text);
                 toast.success('Share text copied!');

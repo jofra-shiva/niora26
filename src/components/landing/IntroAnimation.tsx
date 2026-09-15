@@ -174,7 +174,7 @@ export default function IntroAnimation({ onComplete }: IntroAnimationProps) {
                   <div className="relative w-full h-full rounded-full overflow-hidden bg-white/10 flex items-center justify-center p-2">
                     <Image
                       src="/logoo.png"
-                      alt="HackSpark Logo"
+                      alt="Hack Spark Logo"
                       fill
                       sizes="160px"
                       priority
@@ -185,7 +185,7 @@ export default function IntroAnimation({ onComplete }: IntroAnimationProps) {
               </motion.div>
             </div>
 
-            {/* HACKSPARK '26 Title & Tagline Below */}
+            {/* HACK SPARK '26 Title & Tagline Below */}
             <motion.div
               initial={{ y: 15, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -193,7 +193,7 @@ export default function IntroAnimation({ onComplete }: IntroAnimationProps) {
               className="text-center space-y-1.5"
             >
               <h1 className="font-logo text-3xl sm:text-4xl md:text-5xl font-black tracking-wider text-white drop-shadow-[0_0_25px_rgba(0,240,255,0.6)]">
-                HACKSPARK <span className="text-[#00F0FF] drop-shadow-[0_0_30px_#00F0FF]">&apos;26</span>
+                HACK SPARK <span className="text-[#00F0FF] drop-shadow-[0_0_30px_#00F0FF]">&apos;26</span>
               </h1>
 
               <p className="text-xs sm:text-sm font-mono tracking-[0.25em] text-cyan-400 uppercase font-semibold drop-shadow-[0_0_10px_rgba(0,240,255,0.5)] pt-1">

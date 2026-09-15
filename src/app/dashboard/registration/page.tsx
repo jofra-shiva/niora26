@@ -47,7 +47,7 @@ export default function RegistrationPage() {
     <div className="max-w-2xl">
       <div className="mb-6">
         <h1 className="font-heading font-bold text-2xl text-slate-800">Registration</h1>
-        <p className="text-sm text-slate-500 mt-1">Your HackSpark '26 registration status</p>
+        <p className="text-sm text-slate-500 mt-1">Your Hack Spark '26 registration status</p>
       </div>
 
       {!registration ? (

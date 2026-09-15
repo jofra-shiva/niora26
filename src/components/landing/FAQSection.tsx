@@ -6,8 +6,8 @@ import { Plus, Minus } from 'lucide-react';
 
 const FAQS = [
   {
-    q: "Who can participate in HACKSPARK '26?",
-    a: "HACKSPARK '26 is open to all college students — undergraduate and postgraduate. Students from any college, any course, and any discipline can participate.",
+    q: "Who can participate in HACK SPARK '26?",
+    a: "HACK SPARK '26 is open to all college students — undergraduate and postgraduate. Students from any college, any course, and any discipline can participate.",
   },
   {
     q: 'What is the team size?',

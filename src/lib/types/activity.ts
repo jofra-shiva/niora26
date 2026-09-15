@@ -1,5 +1,5 @@
 ﻿// ============================================================
-// HackSpark '26 — Activity Log Types
+// Hack Spark '26 — Activity Log Types
 // ============================================================
 
 import { FirebaseTimestamp, SyncStatus } from './user';

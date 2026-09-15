@@ -1,5 +1,5 @@
 ﻿// ============================================================
-// HackSpark '26 — Submission & Problem Statement Types
+// Hack Spark '26 — Submission & Problem Statement Types
 // ============================================================
 
 import { FirebaseTimestamp, SyncStatus } from './user';

@@ -32,11 +32,11 @@ export default function Footer() {
               {/* Brand Header */}
               <div className="flex items-center gap-3 mb-4">
                 <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-cyan-400/50 bg-white p-0.5 shadow-[0_0_20px_rgba(0,240,255,0.4)]">
-                  <Image src="/logoo.png" alt="HackSpark Logo" fill sizes="44px" className="object-cover" />
+                  <Image src="/logoo.png" alt="Hack Spark Logo" fill sizes="44px" className="object-cover" />
                 </div>
                 <div>
                   <span className="font-logo text-xl sm:text-2xl font-black text-white tracking-wider drop-shadow-[0_0_10px_rgba(0,240,255,0.5)]">
-                    HackSpark <span className="text-[#00F0FF]">&apos;26</span>
+                    Hack Spark <span className="text-[#00F0FF]">&apos;26</span>
                   </span>
                   <p className="text-[10px] font-mono tracking-widest text-cyan-400 uppercase">National Level Hackathon</p>
                 </div>
@@ -125,7 +125,7 @@ export default function Footer() {
         {/* Bottom Bar: Copyright & Back to Top */}
         <div className="mt-10 pt-6 border-t border-cyan-500/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <p className="text-[11px] sm:text-xs text-slate-400 font-mono tracking-wider">
-            Developed by <a href="https://www.linkedin.com/in/harsathganesan05/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline hover:text-white transition-colors font-semibold">Harsath</a> &amp; <a href="https://www.linkedin.com/in/sivaprakash-m-dev/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline hover:text-white transition-colors font-semibold">Sivaprakash</a> · © {year} HackSpark &apos;26
+            Developed by <a href="https://www.linkedin.com/in/harsathganesan05/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline hover:text-white transition-colors font-semibold">Harsath</a> &amp; <a href="https://www.linkedin.com/in/sivaprakash-m-dev/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline hover:text-white transition-colors font-semibold">Sivaprakash</a> · © {year} Hack Spark &apos;26
           </p>
 
           <div className="flex items-center gap-4">

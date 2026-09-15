@@ -98,10 +98,10 @@ function LoginPageInner() {
             <div className="w-10 h-10 flex items-center justify-center bg-blue-600 rounded-xl shadow-sm">
               <span className="font-logo text-2xl font-bold text-white">N</span>
             </div>
-            <span className="font-logo text-2xl text-slate-900">HACKSPARK <span className="text-blue-600">'26</span></span>
+            <span className="font-logo text-2xl text-slate-900">HACK SPARK <span className="text-blue-600">'26</span></span>
           </Link>
           <h1 className="font-heading font-bold text-2xl text-slate-900">Welcome back</h1>
-          <p className="text-sm text-slate-500 mt-1">Sign in to your HackSpark '26 account</p>
+          <p className="text-sm text-slate-500 mt-1">Sign in to your Hack Spark '26 account</p>
         </div>
 
         <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
@@ -167,7 +167,7 @@ function LoginPageInner() {
           <p className="text-center text-sm text-slate-500">
             Don't have an account?{' '}
             <Link href="/register" className="text-indigo-600 font-semibold hover:text-indigo-800 transition-colors">
-              Register for HackSpark '26
+              Register for Hack Spark '26
             </Link>
           </p>
         </div>

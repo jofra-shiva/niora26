@@ -66,7 +66,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <span className="font-logo text-2xl font-bold text-white">N</span>
           </div>
           <div>
-            <span className="font-logo text-lg text-[#6a35ff] leading-none block">HackSpark '26</span>
+            <span className="font-logo text-lg text-[#6a35ff] leading-none block">Hack Spark '26</span>
             <span className="text-[10px] text-rose-500 font-semibold tracking-wider uppercase mt-0.5 block">Admin Panel</span>
           </div>
         </div>
@@ -158,7 +158,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <Menu className="w-5 h-5" />
           </button>
           <span className="font-heading font-bold text-sm">
-            <span className="gradient-text">HackSpark '26</span>
+            <span className="gradient-text">Hack Spark '26</span>
             <span className="text-rose-500 text-xs ml-2">Admin</span>
           </span>
         </header>

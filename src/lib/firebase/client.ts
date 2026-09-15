@@ -1,5 +1,5 @@
 ﻿// ============================================================
-// HackSpark '26 — Firebase Client SDK
+// Hack Spark '26 — Firebase Client SDK
 // Only import this in CLIENT components / browser context
 // ============================================================
 

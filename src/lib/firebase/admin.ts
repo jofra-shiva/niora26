@@ -1,5 +1,5 @@
 ﻿// ============================================================
-// HackSpark '26 — Firebase Admin SDK
+// Hack Spark '26 — Firebase Admin SDK
 // SERVER SIDE ONLY — never import in client components
 // ============================================================
 
