@@ -5,9 +5,9 @@ import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MessageSquare, MapPin, X } from 'lucide-react';
 
 const CONVENORS = [
-  { name: 'Mrs. Meera Bai C', phone: '9944560889' },
-  { name: 'Mrs. Indulekha K V', phone: '7561078733' },
-  { name: 'Dr. A. Nandhini', phone: '7561078733' },
+  { name: 'Mrs. Meera Bai C' },
+  { name: 'Mrs. Indulekha K V' },
+  { name: 'Dr. A. Nandhini' },
 ];
 
 const STUDENT_ORGANIZERS = [
@@ -16,8 +16,18 @@ const STUDENT_ORGANIZERS = [
   { name: 'Girithar V K', phone: '9025493230' },
 ];
 
-function ContactCard({ person }: { person: { name: string; phone: string } }) {
+function ContactCard({ person }: { person: { name: string; phone?: string } }) {
   const [open, setOpen] = useState(false);
+
+  if (!person.phone) {
+    return (
+      <div className="w-full text-left bg-[#0B1536]/80 rounded-xl px-4 py-3 border border-blue-500/30 backdrop-blur-xl">
+        <p className="font-heading font-semibold text-white text-sm">
+          {person.name}
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="relative">
@@ -200,7 +210,7 @@ export default function ContactSection() {
             <p className="text-[9px] font-black font-mono uppercase tracking-[0.2em] text-cyan-400 mb-3">Convenors</p>
             <div className="space-y-2">
               {CONVENORS.map((p) => (
-                <ContactCard key={p.phone} person={p} />
+                <ContactCard key={p.name} person={p} />
               ))}
             </div>
           </motion.div>
