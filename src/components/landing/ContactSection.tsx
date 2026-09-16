@@ -13,6 +13,7 @@ const CONVENORS = [
 const STUDENT_ORGANIZERS = [
   { name: 'Harsath G', phone: '9047023266' },
   { name: 'Sivaprakash M', phone: '8838939801' },
+  { name: 'Girithar V K', phone: '9025493230' },
 ];
 
 function ContactCard({ person }: { person: { name: string; phone: string } }) {

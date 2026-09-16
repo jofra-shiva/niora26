@@ -45,8 +45,8 @@ const ADVISORY_BOARD: Member[] = [
     education: 'Nehru Group of Institutions',
   },
   {
-    name: 'Dr. K. Ravikumar',
-    role: 'Principal / Nehru Institute of Information Technology and Management',
+    name: 'Dr. K. Ravi Kumar',
+    role: 'Principal / NIITM',
     image: '/team/ravikumar.jpg',
     headline: 'Principal · Nehru Institute of Information Technology & Management',
     about: 'Principal of Nehru Institute of Information Technology & Management (Nehru Institute of Information Technology and Management). Providing academic excellence, administrative leadership, and strategic direction.',
@@ -219,6 +219,7 @@ const STUDENT_ORGANIZERS: Member[] = [
     role: 'Student Organizer',
     image: 'https://media.licdn.com/dms/image/v2/D5603AQHFvqEfNXJ3xw/profile-displayphoto-crop_800_800/B56Z0PkT9yJgAI-/0/1774082674949?e=1790208000&v=beta&t=rDXOavyApI9RwmuRYgbxGHGFRX9ty9iubDVsV46aYmI',
     linkedin: 'https://www.linkedin.com/in/v-k-girithar-699711321/',
+    phone: '9025493230',
     headline: 'MCA Student · CEO at GV INFO PARK',
     about: 'A proactive MCA student at Nehru College of Management with a passion for leadership and startups. Chief Executive Officer at GV INFO PARK.',
     skills: ['Leadership', 'Sales', 'Python', 'Presentations'],
@@ -335,26 +336,35 @@ function ProfileModal({ member, onClose }: { member: Member; onClose: () => void
           )}
 
           {/* Action buttons */}
-          <div className="flex gap-3">
+          <div className="flex flex-wrap sm:flex-nowrap gap-2.5">
             {member.linkedin && (
               <a
                 href={member.linkedin}
                 target="_blank" rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-sm font-bold py-2.5 rounded-2xl transition-colors border border-blue-400/30 shadow-[0_0_15px_rgba(59,130,246,0.3)]"
+                className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs sm:text-sm font-bold py-2.5 px-3 rounded-2xl transition-colors border border-blue-400/30 shadow-[0_0_15px_rgba(59,130,246,0.3)] min-w-[120px]"
               >
                 <ExternalLink className="w-4 h-4" />
-                View LinkedIn
+                LinkedIn
               </a>
             )}
             {member.phone && (
-              <a
-                href={`https://wa.me/91${member.phone}?text=Hi%2C%20I%20have%20a%20query%20regarding%20HACK SPARK%2026.`}
-                target="_blank" rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 bg-emerald-950/60 hover:bg-emerald-900/60 text-emerald-400 text-sm font-bold py-2.5 rounded-2xl border border-emerald-500/40 transition-colors shadow-[0_0_15px_rgba(16,185,129,0.2)]"
-              >
-                <MessageSquare className="w-4 h-4" />
-                WhatsApp
-              </a>
+              <>
+                <a
+                  href={`tel:+91${member.phone}`}
+                  className="flex-1 flex items-center justify-center gap-1.5 bg-cyan-950/70 hover:bg-cyan-900/80 text-cyan-300 text-xs sm:text-sm font-bold py-2.5 px-3 rounded-2xl border border-cyan-500/40 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.2)] min-w-[120px]"
+                >
+                  <Phone className="w-4 h-4 text-cyan-400" />
+                  <span>📞 Call</span>
+                </a>
+                <a
+                  href={`https://wa.me/91${member.phone}?text=Hi%2C%20I%20have%20a%20query%20regarding%20HACKSPARK%2026.`}
+                  target="_blank" rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-1.5 bg-emerald-950/70 hover:bg-emerald-900/80 text-emerald-400 text-xs sm:text-sm font-bold py-2.5 px-3 rounded-2xl border border-emerald-500/40 transition-colors shadow-[0_0_15px_rgba(16,185,129,0.2)] min-w-[120px]"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                  WhatsApp
+                </a>
+              </>
             )}
           </div>
         </div>
@@ -523,13 +533,25 @@ function TeamCard({ member, index }: { member: Member; index: number }) {
                 )}
               </div>
 
-              {/* "View Profile" hint */}
-              <div className="flex items-center justify-between pt-1 border-t border-blue-500/20 mt-auto">
-                <div className="flex items-center gap-1 sm:gap-1.5 text-[8.5px] sm:text-[9.5px] font-semibold text-cyan-400 opacity-80 group-hover:opacity-100 transition-all duration-300">
-                  <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
-                  <span>View Full Profile</span>
-                </div>
-                <div className="w-4 h-4 sm:w-4.5 sm:h-4.5 rounded-full bg-blue-950/80 border border-blue-500/30 flex items-center justify-center group-hover:bg-[#00F0FF] group-hover:text-black transition-all">
+              {/* Phone number / View Profile hint */}
+              <div className="flex items-center justify-between pt-1.5 border-t border-blue-500/20 mt-auto w-full">
+                {member.phone ? (
+                  <a
+                    href={`tel:+91${member.phone}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex items-center gap-1.5 text-[10px] xs:text-xs font-mono font-bold text-cyan-300 hover:text-emerald-400 transition-colors bg-cyan-950/60 hover:bg-emerald-950/70 border border-cyan-500/40 hover:border-emerald-500/50 px-2.5 py-1 rounded-lg shadow-[0_0_10px_rgba(0,240,255,0.15)]"
+                    title="Click to Call"
+                  >
+                    <span className="text-xs">📞</span>
+                    <span>+91 {member.phone}</span>
+                  </a>
+                ) : (
+                  <div className="flex items-center gap-1 sm:gap-1.5 text-[8.5px] sm:text-[9.5px] font-semibold text-cyan-400 opacity-80 group-hover:opacity-100 transition-all duration-300">
+                    <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                    <span>View Full Profile</span>
+                  </div>
+                )}
+                <div className="w-4 h-4 sm:w-4.5 sm:h-4.5 rounded-full bg-blue-950/80 border border-blue-500/30 flex items-center justify-center group-hover:bg-[#00F0FF] group-hover:text-black transition-all shrink-0">
                   <span className="text-cyan-400 group-hover:text-black text-xs leading-none transform group-hover:translate-x-0.5 transition-all">→</span>
                 </div>
               </div>
