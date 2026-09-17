@@ -15,11 +15,7 @@ const FAQS = [
   },
   {
     q: 'What is the registration fee?',
-    a: 'The registration fee is ₹500 per team (configurable). This covers food and accommodation for the entire 24 hours.',
-  },
-  {
-    q: 'Do we need to come with a project idea?',
-    a: 'Problem statements will be revealed at the inauguration on 09 October 2026. Teams should arrive with general domain knowledge and be ready to innovate.',
+    a: 'Registration is FREE for all teams. ₹500 fee applies only to shortlisted teams.',
   },
   {
     q: 'What should we bring?',

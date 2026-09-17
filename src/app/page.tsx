@@ -11,6 +11,7 @@ import TimelineSection from '@/components/landing/TimelineSection';
 import PrizesSection from '@/components/landing/PrizesSection';
 import TeamSection from '@/components/landing/TeamSection';
 import FAQSection from '@/components/landing/FAQSection';
+import ContactSection from '@/components/landing/ContactSection';
 
 const IntroAnimation = dynamic(
   () => import('@/components/landing/IntroAnimation'),
@@ -56,6 +57,7 @@ export default function HomePage() {
           <PrizesSection />
           <TeamSection />
           <FAQSection />
+          <ContactSection />
         </main>
         <Footer />
       </div>
