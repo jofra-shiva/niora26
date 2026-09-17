@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from '@/context/AuthContext';
 import RippleEffect from '@/components/ui/RippleEffect';
 import SmoothScroller from '@/components/layout/SmoothScroller';
+import Script from 'next/script';
 import './globals.css';
 
 const nunito = Nunito({
@@ -23,33 +24,127 @@ const headingFont = Nunito({
   variable: '--font-next-heading',
   display: 'swap',
 });
+
+const BASE_URL = 'https://hackspark-niitm.vercel.app';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: {
-    default: "Hack Spark '26 — Code Beyond Limits. Build the Future.",
-    template: "%s | Hack Spark '26",
+    default: "HackSpark '26 | 24 Hours National Level Hackathon",
+    template: "%s | HackSpark '26",
   },
   description:
-    "Hack Spark '26 is a premier 24-hours national-level hackathon by Nehru Institute of Information Technology and Management, affiliated to Anna University, Chennai. ₹20,000 Prize Pool. 09–10 October 2026.",
+    "HackSpark '26 is a 24-hour national-level hackathon on Sustainable AI, organized by Nehru Institute of Information Technology & Management (NIITM), Coimbatore, affiliated to Anna University. ₹20,000+ Prize Pool. 09–10 October 2026. Open to all college students.",
   keywords: [
-    "Hack Spark '26", 'hackathon', 'Nehru Institute of Information Technology and Management', 'Anna University',
-    'coding competition', 'Tamil Nadu hackathon', '2026',
-    'MCA hackathon', 'college hackathon',
+    "HackSpark '26",
+    'HackSpark 2026',
+    'Hackathon 2026',
+    'Coimbatore Hackathon',
+    'NIITM Hackathon',
+    'National Level Hackathon',
+    '24 Hours Hackathon',
+    'AI Hackathon',
+    'MCA Hackathon',
+    'Sustainable AI',
+    'Sustainable AI Hackathon',
+    'Anna University Hackathon',
+    'Tamil Nadu Hackathon',
+    'Nehru Institute Hackathon',
+    'College Hackathon 2026',
+    'Tech Hackathon India',
+    'Coding Competition 2026',
   ],
-  authors: [{ name: 'Nehru Institute of Information Technology and Management PG Department of Computer Applications' }],
+  authors: [{ name: 'Nehru Institute of Information Technology and Management', url: BASE_URL }],
+  creator: 'Nehru Institute of Information Technology and Management',
+  publisher: 'Nehru Institute of Information Technology and Management',
+  alternates: {
+    canonical: BASE_URL,
+  },
   openGraph: {
     type: 'website',
-    title: "Hack Spark '26",
-    description: 'Code Beyond Limits. Build the Future. 24 Hours Hackathon · ₹20,000 Prize Pool · 09–10 Oct 2026',
-    siteName: "Hack Spark '26",
+    url: BASE_URL,
+    siteName: "HackSpark '26",
+    title: "HackSpark '26 | 24 Hours National Level Hackathon on Sustainable AI",
+    description:
+      "Join HackSpark '26 — a 24-hour national-level hackathon on Sustainable AI by NIITM Coimbatore. ₹20,000+ Prize Pool. Open to all college students. 09–10 October 2026.",
+    images: [
+      {
+        url: `${BASE_URL}/logoo.png`,
+        width: 1200,
+        height: 630,
+        alt: "HackSpark '26 — 24 Hours National Level Hackathon on Sustainable AI",
+      },
+    ],
+    locale: 'en_IN',
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Hack Spark '26",
-    description: 'Code Beyond Limits. Build the Future.',
+    site: '@hackspark26',
+    creator: '@hackspark26',
+    title: "HackSpark '26 | 24 Hours National Level Hackathon",
+    description:
+      "24-hour national-level hackathon on Sustainable AI by NIITM Coimbatore. ₹20,000+ Prize Pool. 09–10 Oct 2026. Open to all!",
+    images: [`${BASE_URL}/logoo.png`],
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: '',
+  },
+  category: 'technology',
+};
+
+// JSON-LD Structured Data for the Event
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: "HackSpark '26",
+  description:
+    "HackSpark '26 is a 24-hour national-level hackathon on Sustainable AI, organized by Nehru Institute of Information Technology & Management (NIITM), Coimbatore.",
+  url: BASE_URL,
+  startDate: '2026-10-09T09:00:00+05:30',
+  endDate: '2026-10-10T09:00:00+05:30',
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  location: {
+    '@type': 'Place',
+    name: 'Nehru Institute of Information Technology and Management',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'NH 544, Nehru Gardens',
+      addressLocality: 'Coimbatore',
+      addressRegion: 'Tamil Nadu',
+      postalCode: '641105',
+      addressCountry: 'IN',
+    },
+  },
+  organizer: {
+    '@type': 'EducationalOrganization',
+    name: 'Nehru Institute of Information Technology and Management',
+    url: 'https://niitm.org',
+  },
+  image: [`${BASE_URL}/logoo.png`],
+  offers: {
+    '@type': 'Offer',
+    url: `${BASE_URL}/register`,
+    price: '200',
+    priceCurrency: 'INR',
+    availability: 'https://schema.org/InStock',
+    validFrom: '2026-09-01T00:00:00+05:30',
+  },
+  about: {
+    '@type': 'Thing',
+    name: 'Sustainable AI',
   },
 };
 
@@ -65,7 +160,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" dir="ltr">
+      <head>
+        <link rel="canonical" href={BASE_URL} />
+        <Script
+          id="json-ld-event"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${nunito.variable} ${jetbrainsMono.variable} ${headingFont.variable} font-body antialiased`}>
         <AuthProvider>
           <SmoothScroller>
