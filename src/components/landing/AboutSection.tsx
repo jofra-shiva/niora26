@@ -20,7 +20,7 @@ const HIGHLIGHTS = [
   {
     highlight: '₹20K',
     label: 'Prize Pool',
-    desc: 'Top teams compete for cash prizes, merit certificates, and recognition.',
+    desc: 'Top teams compete for cash prizes, merit certificates, and internship opportunities.',
     icon: Trophy,
     image: '/about-prize.jpg',
     borderColor: '#6366f1',
@@ -114,16 +114,16 @@ function HighlightCard({ item, index }: { item: typeof HIGHLIGHTS[0]; index: num
         {/* Header (Icon + Text) */}
         <div className="flex items-center gap-3.5 sm:gap-4 mb-4 sm:mb-6 relative z-10">
           {/* Modern Icon instead of raster image */}
-          <div 
+          <div
             className="w-12 h-12 sm:w-16 sm:h-16 shrink-0 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-sm relative overflow-hidden"
-            style={{ 
+            style={{
               background: `linear-gradient(135deg, ${item.borderColor}25, ${item.borderColor}40)`,
               border: `1px solid ${item.borderColor}60`
             }}
           >
-            <Icon 
-              className="w-6 h-6 sm:w-8 sm:h-8 relative z-10" 
-              style={{ color: item.borderColor }} 
+            <Icon
+              className="w-6 h-6 sm:w-8 sm:h-8 relative z-10"
+              style={{ color: item.borderColor }}
               strokeWidth={2.5}
             />
           </div>

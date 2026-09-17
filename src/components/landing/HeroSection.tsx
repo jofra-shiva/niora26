@@ -123,7 +123,7 @@ function FloatingCodeBits() {
 export default function HeroSection() {
   return (
     <section className="relative w-full overflow-hidden bg-[#050914] text-white min-h-screen flex flex-col items-center justify-center pt-28 pb-16 px-4">
-      
+
       {/* Background Radial Glow Orbs */}
       <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,240,255,0.18),transparent_65%),radial-gradient(ellipse_at_top,rgba(139,92,246,0.2),transparent_55%)]" />
 
@@ -158,28 +158,28 @@ export default function HeroSection() {
           animate={{ opacity: [1, 0.55, 1, 0.75, 1] }}
           transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', times: [0, 0.15, 0.3, 0.6, 1] }}
         >
-            {/* Bulb outline */}
-            <path d="M19 2C10.716 2 4 8.716 4 17c0 5.2 2.6 9.8 6.5 12.6V33h17v-3.4C31.4 26.8 34 22.2 34 17c0-8.284-6.716-15-15-15z" stroke="#3B82F6" strokeWidth="1.5" fill="rgba(59,130,246,0.08)"/>
-            {/* Base rings */}
-            <rect x="11" y="34" width="16" height="2.5" rx="1.25" fill="#3B82F6" opacity="0.7"/>
-            <rect x="12.5" y="37.5" width="13" height="2" rx="1" fill="#3B82F6" opacity="0.5"/>
-            <rect x="14" y="40.5" width="10" height="2" rx="1" fill="#3B82F6" opacity="0.3"/>
-            {/* Circuit filament */}
-            <line x1="19" y1="29" x2="19" y2="22" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round"/>
-            <line x1="19" y1="22" x2="13" y2="16" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round"/>
-            <line x1="19" y1="22" x2="25" y2="16" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round"/>
-            <line x1="19" y1="22" x2="19" y2="14" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round"/>
-            {/* Circuit nodes */}
-            <circle cx="19" cy="29" r="2" fill="#FBBF24" opacity="0.9"/>
-            <circle cx="13" cy="16" r="1.5" fill="#FBBF24" opacity="0.8"/>
-            <circle cx="25" cy="16" r="1.5" fill="#FBBF24" opacity="0.8"/>
-            <circle cx="19" cy="14" r="1.5" fill="#FBBF24" opacity="0.8"/>
-            {/* Glow rays */}
-            <line x1="19" y1="4" x2="19" y2="1" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
-            <line x1="30" y1="8" x2="32.5" y2="5.5" stroke="#3B82F6" strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
-            <line x1="8" y1="8" x2="5.5" y2="5.5" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
-            <line x1="34" y1="17" x2="37" y2="17" stroke="#3B82F6" strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
-            <line x1="4" y1="17" x2="1" y2="17" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
+          {/* Bulb outline */}
+          <path d="M19 2C10.716 2 4 8.716 4 17c0 5.2 2.6 9.8 6.5 12.6V33h17v-3.4C31.4 26.8 34 22.2 34 17c0-8.284-6.716-15-15-15z" stroke="#3B82F6" strokeWidth="1.5" fill="rgba(59,130,246,0.08)" />
+          {/* Base rings */}
+          <rect x="11" y="34" width="16" height="2.5" rx="1.25" fill="#3B82F6" opacity="0.7" />
+          <rect x="12.5" y="37.5" width="13" height="2" rx="1" fill="#3B82F6" opacity="0.5" />
+          <rect x="14" y="40.5" width="10" height="2" rx="1" fill="#3B82F6" opacity="0.3" />
+          {/* Circuit filament */}
+          <line x1="19" y1="29" x2="19" y2="22" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="19" y1="22" x2="13" y2="16" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="19" y1="22" x2="25" y2="16" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="19" y1="22" x2="19" y2="14" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round" />
+          {/* Circuit nodes */}
+          <circle cx="19" cy="29" r="2" fill="#FBBF24" opacity="0.9" />
+          <circle cx="13" cy="16" r="1.5" fill="#FBBF24" opacity="0.8" />
+          <circle cx="25" cy="16" r="1.5" fill="#FBBF24" opacity="0.8" />
+          <circle cx="19" cy="14" r="1.5" fill="#FBBF24" opacity="0.8" />
+          {/* Glow rays */}
+          <line x1="19" y1="4" x2="19" y2="1" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
+          <line x1="30" y1="8" x2="32.5" y2="5.5" stroke="#3B82F6" strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
+          <line x1="8" y1="8" x2="5.5" y2="5.5" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
+          <line x1="34" y1="17" x2="37" y2="17" stroke="#3B82F6" strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
+          <line x1="4" y1="17" x2="1" y2="17" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
         </motion.svg>
       </motion.div>
       <motion.div
@@ -209,7 +209,7 @@ export default function HeroSection() {
 
       {/* ---- Main Screen Contents ---- */}
       <div className="relative z-10 w-full max-w-[1450px] mx-auto flex flex-col items-center text-center">
-        
+
         {/* =========================================================================
             INSTITUTIONAL / COLLEGE BRANDING FROSTED GLASS BANNER (COMPACT BOX)
             ========================================================================= */}
@@ -220,7 +220,7 @@ export default function HeroSection() {
           className="w-full max-w-5xl mx-auto mb-4 sm:mb-8 px-2 sm:px-4 -mt-2 sm:-mt-5"
         >
           <div className="p-4 xs:p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#070D22]/90 border border-cyan-400/35 backdrop-blur-2xl shadow-[0_0_30px_rgba(0,240,255,0.18)] w-full">
-            
+
             {/* Mobile Layout (< md): 3 Logos on top row with generous spacing, College text below */}
             <div className="flex md:hidden flex-col items-center gap-3 xs:gap-4 w-full">
               {/* Top Row: 3 Logos */}
@@ -239,7 +239,7 @@ export default function HeroSection() {
               {/* Below: College Name Text with generous line height & padding */}
               <div className="flex flex-col justify-center items-center text-center px-2 w-full gap-1">
                 <h2 className="text-xs xs:text-sm font-heading font-black text-white tracking-wide uppercase leading-snug text-center drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] max-w-full">
-                  Nehru Institute of Information Technology <span className="text-[#00F0FF] font-black">&amp;</span> Management
+                  Nehru Institute of Information Technology <span className="text-[#00F0FF] font-black">And</span> Management
                 </h2>
                 <p className="text-[9px] xs:text-[10px] font-black tracking-[0.2em] uppercase my-1 text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#D946EF] drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]">
                   IN ASSOCIATION WITH
@@ -265,7 +265,7 @@ export default function HeroSection() {
               {/* Center College Text */}
               <div className="flex flex-col justify-center items-center text-center px-1 flex-1 min-w-0 overflow-hidden">
                 <h2 className="text-xs md:text-sm lg:text-base xl:text-lg font-heading font-black text-white tracking-tight uppercase leading-tight text-center whitespace-nowrap drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]">
-                  Nehru Institute of Information Technology <span className="text-[#00F0FF] font-black">&amp;</span> Management
+                  Nehru Institute of Information Technology <span className="text-[#00F0FF] font-black">And</span> Management
                 </h2>
                 <p className="text-[9.5px] sm:text-[10.5px] md:text-xs font-black tracking-[0.2em] uppercase mt-1 mb-0.5 text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#D946EF] drop-shadow-[0_0_6px_rgba(168,85,247,0.4)] whitespace-nowrap">
                   IN ASSOCIATION WITH
@@ -522,8 +522,8 @@ export default function HeroSection() {
           className="flex flex-row items-center justify-center gap-1.5 xs:gap-3 sm:gap-4 mb-6 flex-nowrap w-full max-w-sm sm:max-w-none mx-auto px-1"
         >
           <a
-            href="/HACK SPARK Rule Book.pdf"
-            download="HACK SPARK Rule Book.pdf"
+            href="/HACKSPARK 26 RuleBook.pdf"
+            download="HACKSPARK 26 RuleBook.pdf"
             className="flex-1 sm:flex-initial group relative inline-flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 px-2.5 xs:px-4 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-black text-[10px] xs:text-xs sm:text-base text-white bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#D946EF] hover:from-[#7C3AED] hover:to-[#C026D3] shadow-[0_0_30px_rgba(139,92,246,0.6)] hover:shadow-[0_0_45px_rgba(217,70,239,0.9)] hover:scale-105 transition-all duration-300 uppercase tracking-wider cursor-pointer border border-purple-400/30 whitespace-nowrap"
           >
             <Download className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 group-hover:translate-y-0.5 transition-transform text-white shrink-0" />
@@ -531,8 +531,8 @@ export default function HeroSection() {
           </a>
 
           <a
-            href="/Hack Spark PPT template.pptx"
-            download="Hack Spark PPT template.pptx"
+            href="/HackSpark PPT template.pptx"
+            download="HackSpark PPT template.pptx"
             className="flex-1 sm:flex-initial group relative inline-flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 px-2.5 xs:px-4 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-black text-[10px] xs:text-xs sm:text-base text-white bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#00F0FF] hover:from-[#1D4ED8] hover:to-[#00D8E6] shadow-[0_0_30px_rgba(37,99,235,0.6)] hover:shadow-[0_0_45px_rgba(0,240,255,0.9)] hover:scale-105 transition-all duration-300 uppercase tracking-wider cursor-pointer border border-cyan-400/30 whitespace-nowrap"
           >
             <Presentation className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 group-hover:translate-y-0.5 transition-transform text-white shrink-0" />
