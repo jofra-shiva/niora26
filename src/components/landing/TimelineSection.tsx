@@ -6,7 +6,7 @@ import { Code, Coffee, Presentation, Rocket, Trophy, Lightbulb, Pizza, Users, Ma
 
 const TIMELINE_EVENTS = [
   {
-    time: 'September 25',
+    time: 'September 30',
     title: 'Registration & PPT Submission',
     desc: 'Complete registration and submit your PPT within this date.',
     icon: FileText,
@@ -16,9 +16,9 @@ const TIMELINE_EVENTS = [
     gradient: 'from-indigo-600 to-violet-500'
   },
   {
-    time: 'September 27',
-    title: 'Shortlist Confirmation',
-    desc: 'Selected teams will receive an official confirmation email to proceed to the next stage.',
+    time: 'On or Before Oct 1',
+    title: 'Shortlist Announcement',
+    desc: 'Selected teams will receive an official confirmation email on or before October 1.',
     icon: Mail,
     color: 'text-emerald-500',
     bg: 'bg-emerald-500',
@@ -26,7 +26,7 @@ const TIMELINE_EVENTS = [
     gradient: 'from-emerald-500 to-teal-400'
   },
   {
-    time: 'September 28',
+    time: 'To Be Announced',
     title: 'Payment & Confirm',
     desc: 'Complete the payment process to officially secure your spot for the main hackathon event.',
     icon: CreditCard,
