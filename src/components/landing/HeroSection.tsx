@@ -522,8 +522,10 @@ export default function HeroSection() {
           className="flex flex-row items-center justify-center gap-1.5 xs:gap-3 sm:gap-4 mb-6 flex-nowrap w-full max-w-sm sm:max-w-none mx-auto px-1"
         >
           <a
-            href="/HACKSPARK 26 RuleBook.pdf"
-            download="HACKSPARK 26 RuleBook.pdf"
+            href="/HACKSPARK26 RuleBook.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            download="HACKSPARK26 RuleBook.pdf"
             className="flex-1 sm:flex-initial group relative inline-flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 px-2.5 xs:px-4 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-black text-[10px] xs:text-xs sm:text-base text-white bg-gradient-to-r from-[#8B5CF6] via-[#A855F7] to-[#D946EF] hover:from-[#7C3AED] hover:to-[#C026D3] shadow-[0_0_30px_rgba(139,92,246,0.6)] hover:shadow-[0_0_45px_rgba(217,70,239,0.9)] hover:scale-105 transition-all duration-300 uppercase tracking-wider cursor-pointer border border-purple-400/30 whitespace-nowrap"
           >
             <Download className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 group-hover:translate-y-0.5 transition-transform text-white shrink-0" />
