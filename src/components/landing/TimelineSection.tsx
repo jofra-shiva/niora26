@@ -6,9 +6,14 @@ import { Code, Coffee, Presentation, Rocket, Trophy, Lightbulb, Pizza, Users, Ma
 
 const TIMELINE_EVENTS = [
   {
-    time: 'September 30',
-    title: 'Registration & PPT Submission',
-    desc: 'Complete registration and submit your PPT within this date.',
+    time: (
+      <>
+        <span className="line-through opacity-60 mr-2">September 30</span>
+        <span>October 5</span>
+      </>
+    ) as any,
+    title: 'Registration Extended & PPT Submission',
+    desc: 'Registration deadline has been extended! Complete registration and submit your PPT on or before October 5.',
     icon: FileText,
     color: 'text-indigo-500',
     bg: 'bg-indigo-500',
