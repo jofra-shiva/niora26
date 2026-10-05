@@ -109,7 +109,7 @@ const STUDENT_COORDINATORS: Member[] = [
   {
     name: 'Venkatesh T R S',
     role: 'Student Coordinator',
-    image: 'https://media.licdn.com/dms/image/v2/D5603AQGv1gUMhNJhpA/profile-displayphoto-crop_800_800/B56Z46FFf4IsAI-/0/1779090875339?e=1789603200&v=beta&t=vEtQrXlCcKDSP8-mMXBO5N-F3hTAjZgDvc3R4G_3iF8',
+    image: '/team/vengaesh.png',
     linkedin: 'https://www.linkedin.com/in/venkateshtrs02/',
     headline: 'MCA Student · Full Stack Enthusiast',
     about: 'A motivated MCA student passionate about full-stack development and building scalable applications. Plays a key coordination role for Hack Spark \'26.',
@@ -119,7 +119,7 @@ const STUDENT_COORDINATORS: Member[] = [
   {
     name: 'Logendiran R',
     role: 'Student Coordinator',
-    image: 'https://media.licdn.com/dms/image/v2/D5603AQG_XcJrNuFQEA/profile-displayphoto-crop_800_800/B56aBEAP_hKkAI-/0/1787847313126?e=1790208000&v=beta&t=74JPbFH8nb4JqvhgBSmfc4CXDO6yUWLEvK07cm23SNI',
+    image: '/team/logendiran.png',
     linkedin: 'https://www.linkedin.com/in/logendiran-r-24567a295/',
     headline: 'MCA Student · UI/UX & Web Developer',
     about: 'Enthusiastic about creating seamless user experiences and contributing to open-source projects. Coordinating logistics and participant experience for Hack Spark \'26.',
@@ -203,7 +203,7 @@ const STUDENT_ORGANIZERS: Member[] = [
   {
     name: 'Sivaprakash M',
     role: 'Student Organizer',
-    image: 'https://media.licdn.com/dms/image/v2/D5603AQEk0GczFKrgpA/profile-displayphoto-scale_400_400/B56ZpogW_NHkAk-/0/1762689906770?e=1789603200&v=beta&t=6RxeiYtTWPFnJxTbKEeE4x9o5QBbCeBaj6cCvLnpgIs',
+    image: '/team/sivaprakash.png',
     linkedin: 'https://www.linkedin.com/in/sivaprakash-m-dev/',
     phone: '8838939801',
     headline: 'Full Stack Developer | Java | Python',
@@ -214,7 +214,7 @@ const STUDENT_ORGANIZERS: Member[] = [
   {
     name: 'V. K. Girithar',
     role: 'Student Organizer',
-    image: 'https://media.licdn.com/dms/image/v2/D5603AQHFvqEfNXJ3xw/profile-displayphoto-crop_800_800/B56Z0PkT9yJgAI-/0/1774082674949?e=1790208000&v=beta&t=rDXOavyApI9RwmuRYgbxGHGFRX9ty9iubDVsV46aYmI',
+    image: '/team/girithar.png',
     linkedin: 'https://www.linkedin.com/in/v-k-girithar-699711321/',
     phone: '9025493230',
     headline: 'MCA Student · CEO at GV INFO PARK',
